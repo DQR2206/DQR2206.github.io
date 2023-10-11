@@ -1,0 +1,393 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>git指令的初步学习 | living happy and healthy</title><meta name="author" content="dqr_infinity"><meta name="copyright" content="dqr_infinity"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="初学版本管理 谁还没有被git折磨过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git指令的初步学习">
+<meta property="og:url" content="http://dqr2206.github.io/2023/09/10/gitlines/index.html">
+<meta property="og:site_name" content="living happy and healthy">
+<meta property="og:description" content="初学版本管理 谁还没有被git折磨过">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://dqr2206.github.io/img/baixue.webp">
+<meta property="article:published_time" content="2023-09-10T15:24:00.000Z">
+<meta property="article:modified_time" content="2023-10-11T01:30:40.760Z">
+<meta property="article:author" content="dqr_infinity">
+<meta property="article:tag" content="Sep">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dqr2206.github.io/img/baixue.webp"><link rel="shortcut icon" href="/./img/web.jpeg"><link rel="canonical" href="http://dqr2206.github.io/2023/09/10/gitlines/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":0,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最近更新为准"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":10,"languages":{"author":"作者: dqr_infinity","link":"链接: ","source":"来源: living happy and healthy","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'git指令的初步学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-11 09:30:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/gugong.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="living happy and healthy"><span class="site-name">living happy and healthy</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git指令的初步学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-10T15:24:00.000Z" title="发表于 2023-09-10 23:24:00">2023-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-11T01:30:40.760Z" title="更新于 2023-10-11 09:30:40">2023-10-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%88%E5%AF%BC/">面向对象先导</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git指令的初步学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="面向OO的git指令"><a href="#面向OO的git指令" class="headerlink" title="面向OO的git指令"></a>面向OO的git指令</h3><p>​		<strong>在秋季学期开设的OOpre课程中，我首次接触到使用Gitlab对代码进行版本管理，在第一次OOpre作业中我就受到了提交库的拷打，现在是2023年9月10日晚上22:46,开始编写面向OO的git指令</strong></p>
+<ol start="0">
+<li><p><strong>windows命令行操作经典指令</strong></p>
+<ol>
+<li>cd:change dictionary<ul>
+<li>cd D:    #只有转移磁盘需要加冒号:</li>
+<li>cd OO #进一步转移到目录下文件夹</li>
+<li>cd ..     #回退一层目录</li>
+</ul>
+</li>
+</ol>
+<p>​     2.pwd:print working dictionary 打印当前工作目录</p>
+<p>​     3. git 指令 git是一个终端</p>
+</li>
+<li><p>提交注意</p>
+<p>​     在每一次作业的发布中，分为作业发布区和个人仓库区，常见的操作是从作业发布区进行repository的clone,在本地完成作业后push到个人仓库区，需要注意的是公共发布区是没有push权限的，下面以第一次作业为例</p>
+</li>
+<li><p><strong>完成作业的常见步骤</strong></p>
+<ol>
+<li><p><strong>从公共发布区clone</strong></p>
+<p>​		<strong>需要注意的是这里的每一个步骤都可以通过IDEA编译器操作或是通过git终端操作，这里我们主要介绍通过git的操作方式(我更加喜欢)。</strong></p>
+<p>​       进行源的clone,通过以下代码实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone url path</span><br></pre></td></tr></table></figure>
+
+<p>​       其中url代表远程仓库的地址如SSH密钥，path代表路径，绝对路径或相对路径均可以，如果指定的路径不存在则会创建该目录，笔者经过验证，在路径不存在的情况下，确实会进行生成。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p> <strong>需要注意的是在clone后已经存在.git文件</strong></p>
+<ol start="2">
+<li><p>对代码进行修改后的一系列</p>
+<ol>
+<li><p><strong>常用指令git init</strong></p>
+<p>git init指令用于生成本地的.git跟踪版本文件，是万恶的开端</p>
+</li>
+<li><p><strong>git status</strong></p>
+<p>git status用于查看当前文件的情况，是否被跟踪(tracked 用于代码管理)，是否有修改等等</p>
+</li>
+<li><p><strong>git add</strong></p>
+<p>git add 指令是很常用的操作，用于将文件添加到tracked,常见的有这几种用法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将.git目录下全体文件加入tracked</span></span><br><span class="line">git add .</span><br><span class="line"><span class="comment">//添加单个文件进行版本管理</span></span><br><span class="line">git add &lt;filename&gt;<span class="comment">//其中如果filename中包含空格的话需要对文件名进行双引号处理 &quot;filename&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>通常对文件进行修改后或新建文件后需要进行git add 这时可以通过git status 进行文件状态的查询</p>
+</li>
+</ol>
+</li>
+</ol>
+<p> 这时可以通过git add 对改变的文件进行track。</p>
+<ol start="3">
+<li><p><strong>git commit</strong></p>
+<p>git commit用于将代码提交到本地代码库，常用的命令行有:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m  <span class="string">&quot;message&quot;</span>  <span class="comment">//参数-m代表提交的同时进行消息说明 在&quot;message&quot;中写出对于此次提交的注释，便于以后git log查看</span></span><br><span class="line">git commit -am <span class="string">&quot;message&quot;</span>  <span class="comment">//与之前相比多了参数-a 这表示进行了add操作，这一条指令就相当于git add+commit</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p><strong>git log</strong></p>
+<p>​		git log可以查看commit记录，查看每一次commit会发现每一次commit都对应着一个编号，这个编号用于版本的回退，后面会提及。</p>
+</li>
+</ol>
+</li>
+<li><p><strong>git push</strong></p>
+<p>git push是第一次需要联网进行的操作，用于将代码推送到远端服务器,在push之前可以查看已存在的SSH路径。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote<span class="comment">//显示出所有SSH </span></span><br><span class="line">git remote -v<span class="comment">//显示出当前使用SSH的地址</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>可以发现我们当前已经存在命名过的SSH origin，并且知晓了他的地址。也就是说我们当前进行的push操作是将代码推送到origin对应的远程仓库，但是我们知道，此时进行push会push到课程公共发布区，而这是不被允许且没有权限的。这时就涉及到新建推送地址SSH(个人代码库)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;name&gt; &lt;url&gt;<span class="comment">//其中&lt;name&gt;的名字应当与想要推送到的仓库一致，不可以乱起名，url为对应仓库的SSH</span></span><br><span class="line">git remote remove &lt;name&gt;<span class="comment">//删除SSH源，比如这里当我们只需要提交代码时就可以删除公共发布区的SSH</span></span><br></pre></td></tr></table></figure>
+
+<p>这时，我们距离push还有很多的细节，</p>
+<ul>
+<li><p>课程组提供的个人代码库默认为master分支，需要观察我们的代码分支是否为master,这一点在命令行的蓝色部分有显示</p>
+<p>若我们的代码在master分支，则无许进行修改，否则需要进行分支的修改，因为我们的提交是需要分支对应的，我们本地库的master分支对应提交到远程代码库的master分支。具体步骤如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git branch<span class="comment">//查看现有的分支 在测验环境下只有main</span></span><br><span class="line">git branch &lt;newname&gt;<span class="comment">//新建一个分支，这里我们一般是将name设置为master,顺应作业提交规则</span></span><br><span class="line">git branch master</span><br><span class="line"><span class="comment">//这时就可以进行代码分支的切换</span></span><br><span class="line">git checkout master<span class="comment">//切换到master分支</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>检查目标库中是否有本地没有的文件</p>
+<p>很多代码托管平台如github,gitee在创建仓库的时候会询问是否添加README.md文档(在OO课程组提供的个人代码库中初始时为空的)，这时如果push会进行报错，因为远程仓库中包含本地不存在的工作(README.md),有几种解决方法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.同步</span></span><br><span class="line">git pull origin master</span><br><span class="line">git add .</span><br><span class="line">git commit</span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">//2.如果只是因为README.md原因，可以选择在本地生成</span></span><br><span class="line">git pull --rebase origin master</span><br><span class="line">git push origin master</span><br><span class="line"> <span class="comment">//强推，用本地代码强制覆盖git仓库内内容，在仓库为空时可以使用</span></span><br><span class="line">git push -f origin master<span class="comment">//-f force</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>git push</strong>是我们上传作业最重要的工作，我们应当使用以下代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;sshname&gt; &lt;branch&gt;<span class="comment">//仓库名+分支名</span></span><br><span class="line"><span class="comment">//例如</span></span><br><span class="line">git push homework_1 master</span><br><span class="line"><span class="comment">//需要注意的是 这里的branch如果原仓库中没有，此行指令会在仓库中新建branch并将代码提交到branch当中</span></span><br></pre></td></tr></table></figure>
+
+<p>希望我们都可以顺利PUSH!!!</p>
+</li>
+</ul>
+<ol start="6">
+<li><p><strong>git revert</strong></p>
+<p>版本回退是一个非常好用的功能，可以调出前几次的commit.这里我们需要先使用git log查看git commit记录,在提交记录中有提交的HASH值和指定标签,这种方式是进行一个新的提交来表示撤销操作，而不会抹除历史记录。需要使用git push重新推送到远程仓库中。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;commit-hash&gt;<span class="comment">//回退到指定hash</span></span><br><span class="line">git revert &lt;tag-name&gt;<span class="comment">//回退到指定标签</span></span><br><span class="line">git revert HEAD~n<span class="comment">//回退到前N个提交</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>还有一些版本管理上的内容需要补充</strong></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://DQR2206.github.io">dqr_infinity</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://dqr2206.github.io/2023/09/10/gitlines/">http://dqr2206.github.io/2023/09/10/gitlines/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://DQR2206.github.io" target="_blank">living happy and healthy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Sep/">Sep</a></div><div class="post_share"><div class="social-share" data-image="/img/baixue.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/./img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/24/pre/" title="Pre上机logisim部分——俄罗斯方块"><img class="cover" src="/img/gugong.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Pre上机logisim部分——俄罗斯方块</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/16/malloc%E5%88%86%E9%85%8D%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" title="malloc分配二维数组"><img class="cover" src="/img/gugong.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">malloc分配二维数组</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/09/24/pre/" title="Pre上机logisim部分——俄罗斯方块"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-24</div><div class="title">Pre上机logisim部分——俄罗斯方块</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODcyMi8zNTE4NA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dqr_infinity</div><div class="author-info__description">欢迎来看看！！！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/DQRinfinity" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="https://22373362@buaa.edu.cn" target="_blank" title=""><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91OO%E7%9A%84git%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">面向OO的git指令</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/09/24/pre/" title="Pre上机logisim部分——俄罗斯方块"><img src="/img/gugong.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pre上机logisim部分——俄罗斯方块"/></a><div class="content"><a class="title" href="/2023/09/24/pre/" title="Pre上机logisim部分——俄罗斯方块">Pre上机logisim部分——俄罗斯方块</a><time datetime="2023-09-24T15:24:00.000Z" title="发表于 2023-09-24 23:24:00">2023-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/10/gitlines/" title="git指令的初步学习"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git指令的初步学习"/></a><div class="content"><a class="title" href="/2023/09/10/gitlines/" title="git指令的初步学习">git指令的初步学习</a><time datetime="2023-09-10T15:24:00.000Z" title="发表于 2023-09-10 23:24:00">2023-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/16/malloc%E5%88%86%E9%85%8D%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" title="malloc分配二维数组"><img src="/img/gugong.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="malloc分配二维数组"/></a><div class="content"><a class="title" href="/2023/07/16/malloc%E5%88%86%E9%85%8D%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" title="malloc分配二维数组">malloc分配二维数组</a><time datetime="2023-07-16T08:02:00.000Z" title="发表于 2023-07-16 16:02:00">2023-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/15/HASH--leetcode01/" title="Leetcode01"><img src="/img/humian.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Leetcode01"/></a><div class="content"><a class="title" href="/2023/07/15/HASH--leetcode01/" title="Leetcode01">Leetcode01</a><time datetime="2023-07-15T05:24:00.000Z" title="发表于 2023-07-15 13:24:00">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/14/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区"><img src="/img/gugong.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言内存分区"/></a><div class="content"><a class="title" href="/2023/07/14/C%E8%AF%AD%E8%A8%80%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA/" title="C语言内存分区">C语言内存分区</a><time datetime="2023-07-14T07:19:00.000Z" title="发表于 2023-07-14 15:19:00">2023-07-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/gugong.webp')"><div id="footer-wrap"><div class="copyright">&copy;2023 By dqr_infinity</div><div class="footer_custom_text">你是怎么找到这来的？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="8421590201" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
