@@ -1,0 +1,370 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>verilog | living happy and healthy</title><meta name="author" content="dqr_infinity"><meta name="copyright" content="dqr_infinity"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="verilog相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="verilog">
+<meta property="og:url" content="http://dqr2206.github.io/2023/10/14/verilog/index.html">
+<meta property="og:site_name" content="living happy and healthy">
+<meta property="og:description" content="verilog相关">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://dqr2206.github.io/img/baixue.webp">
+<meta property="article:published_time" content="2023-10-14T00:22:00.000Z">
+<meta property="article:modified_time" content="2023-10-14T10:51:39.838Z">
+<meta property="article:author" content="dqr_infinity">
+<meta property="article:tag" content="Oct">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dqr2206.github.io/img/baixue.webp"><link rel="shortcut icon" href="/./img/web.jpeg"><link rel="canonical" href="http://dqr2206.github.io/2023/10/14/verilog/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":0,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最近更新为准"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":10,"languages":{"author":"作者: dqr_infinity","link":"链接: ","source":"来源: living happy and healthy","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'verilog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-14 18:51:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/humian.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="living happy and healthy"><span class="site-name">living happy and healthy</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">verilog</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-14T00:22:00.000Z" title="发表于 2023-10-14 08:22:00">2023-10-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-14T10:51:39.838Z" title="更新于 2023-10-14 18:51:39">2023-10-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%BB%84/">计组</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="verilog"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="verilog-P1课前复习"><a href="#verilog-P1课前复习" class="headerlink" title="verilog(P1课前复习)"></a>verilog(P1课前复习)</h3><p><strong>长文，做好战斗准备！</strong></p>
+<h4 id="1-同步复位与异步复位"><a href="#1-同步复位与异步复位" class="headerlink" title="1.同步复位与异步复位"></a>1.同步复位与异步复位</h4><h5 id="1-同步复位"><a href="#1-同步复位" class="headerlink" title="1.同步复位"></a>1.同步复位</h5><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(clr)</span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">               status &lt;= <span class="number">4&#x27;b0000</span>; </span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                <span class="comment">//statement</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-异步复位"><a href="#2-异步复位" class="headerlink" title="2.异步复位"></a>2.异步复位</h5><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">posedge</span> clr)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(clr)</span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                status &lt;= <span class="number">4&#x27;b0000</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                <span class="comment">//statement</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>异步复位将clr加入敏感符号列表</strong></p>
+<h4 id="2-为状态机编写可显示状态名称的testbench"><a href="#2-为状态机编写可显示状态名称的testbench" class="headerlink" title="2.为状态机编写可显示状态名称的testbench"></a>2.为状态机编写可显示状态名称的testbench</h4><p>​	<strong>编写testbench是我们在本地进行模块动态语法检查和功能检查的重要手段：一定要在本地编写testbench!不编写testbench的语法检查不完全！</strong>编写testbench的一个重要目的是进行<code>debug</code>,但是<code>Isim</code>默认的仿真波形图只有输入变量和输出变量，引出第一步：在波形图中添加模块中变量进行查看。</p>
+<h5 id="1-如何在波形图中添加其他变量"><a href="#1-如何在波形图中添加其他变量" class="headerlink" title="1.如何在波形图中添加其他变量"></a>1.如何在波形图中添加其他变量</h5><ol>
+<li>如果在左侧页面没有<code>Instance and Process</code>窗口，左上方菜单栏:<code>View</code>-&gt;<code>panel</code>,添加想要查看的窗口</li>
+<li>在<code>Instance and Process</code>窗口中展开tb模块，展开uut实例，点击下面的选项，在右侧<code>Objects</code>窗口中就会出现此模块中包含的变量，右键变量名，选择<code>Add to wave window</code>即可加入到波形图中进行查看。实操如下图所示。</li>
+</ol>
+<img src="./../img/image-20231014095048067.png" alt="image-20231014095048067" style="zoom: 67%;" />
+
+<h5 id="2-如何显示出表示状态的字符串"><a href="#2-如何显示出表示状态的字符串" class="headerlink" title="2.如何显示出表示状态的字符串"></a>2.如何显示出表示状态的字符串</h5><p>​	我们知道，在编写<code>testbench</code>时我们不会额外引入变量，而只是对输入端口进行模拟，故如果想要在波形图中查看状态名称，就要在<code>verilog module</code>中添加用于存储与状态对应的字符串变量的寄存器变量，之后将这个变量添加到查看波形图中。添加变量并建立起与状态之间的对应关系如下例。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">ifndef</span> SYSTHESIS</span></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">23</span>:<span class="number">0</span>] state_string;</span><br><span class="line"><span class="keyword">always</span>@(*)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">case</span>(status):</span><br><span class="line">         s0:state_string = <span class="string">&quot;s0&quot;</span>;</span><br><span class="line">         s1:state_string = <span class="string">&quot;s1&quot;</span>;</span><br><span class="line">        <span class="keyword">default</span>:state_string = <span class="string">&quot;s99&quot;</span>;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="meta">`<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>​	在波形图中显示的数值默认都是多位二进制，可以点击变量<code>右键-&gt;Radix</code>，将字符串更改为ASCII表示。</p>
+<img src="./../img/image-20231014101014162.png" alt="image-20231014101014162" style="zoom:50%;" />
+
+<p><strong>注意：</strong></p>
+<ol>
+<li><p>state_string的位宽由最大显示字符个数决定<code>1word = 8bits</code>,即<code>位宽 = 字符数*8</code></p>
+</li>
+<li><p>提交文件中编写此宏定义语句块并不会影响正常测评</p>
+</li>
+</ol>
+<h5 id="3-在testbench模块中模拟输入"><a href="#3-在testbench模块中模拟输入" class="headerlink" title="3.在testbench模块中模拟输入"></a>3.在testbench模块中模拟输入</h5><p>​	这里直接给出例子，模拟比较简单，注意延迟时间的设置。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> block_tb;</span><br><span class="line">	<span class="comment">// Inputs</span></span><br><span class="line">	<span class="keyword">reg</span> clk;</span><br><span class="line">	<span class="keyword">reg</span> reset;</span><br><span class="line">	<span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] in;</span><br><span class="line">	<span class="comment">// Outputs</span></span><br><span class="line">	<span class="keyword">wire</span> result;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Instantiate the Unit Under Test (UUT)</span></span><br><span class="line">	BlockChecker uut (</span><br><span class="line">		<span class="variable">.clk</span>(clk), </span><br><span class="line">		<span class="variable">.reset</span>(reset), </span><br><span class="line">		<span class="variable">.in</span>(in), </span><br><span class="line">		<span class="variable">.result</span>(result)</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">		<span class="comment">// Initialize Inputs</span></span><br><span class="line">		clk = <span class="number">0</span>;</span><br><span class="line">		reset = <span class="number">1</span>;</span><br><span class="line">		in = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Wait 10 ns for global reset to finish</span></span><br><span class="line">		#<span class="number">10</span>;</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// Add stimulus here</span></span><br><span class="line">		#<span class="number">10</span> reset = <span class="number">0</span>;</span><br><span class="line">		in = <span class="string">&quot;a&quot;</span>;</span><br><span class="line">		#<span class="number">10</span> in = <span class="string">&quot; &quot;</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">      <span class="keyword">always</span> #<span class="number">5</span> clk = ~clk;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>时序逻辑中有reset信号的一定要初始化为1再修改为0</li>
+<li>在初始化模块外编写时钟信号<code>always #5 clk = ~clk</code>,这里表示时钟周期为5ns</li>
+</ol>
+<h4 id="3-verilog代码规范"><a href="#3-verilog代码规范" class="headerlink" title="3.verilog代码规范"></a>3.verilog代码规范</h4><h5 id="1-变量命名"><a href="#1-变量命名" class="headerlink" title="1.变量命名"></a>1.变量命名</h5><h6 id="1-信号名称采用全小写，单词之间下划线分隔，snake-case"><a href="#1-信号名称采用全小写，单词之间下划线分隔，snake-case" class="headerlink" title="1.信号名称采用全小写，单词之间下划线分隔，snake_case"></a>1.信号名称采用全小写，单词之间下划线分隔，<code>snake_case</code></h6><h6 id="2-信号低电平有效时用-n后缀表示，rst-n"><a href="#2-信号低电平有效时用-n后缀表示，rst-n" class="headerlink" title="2.信号低电平有效时用_n后缀表示，rst_n"></a>2.信号低电平有效时用_n后缀表示，<code>rst_n</code></h6><h5 id="2-组合逻辑"><a href="#2-组合逻辑" class="headerlink" title="2.组合逻辑"></a>2.组合逻辑</h5><h6 id="1-采用always描述组合逻辑时，列表内用-而不是列举敏感信号"><a href="#1-采用always描述组合逻辑时，列表内用-而不是列举敏感信号" class="headerlink" title="1.采用always描述组合逻辑时，列表内用*而不是列举敏感信号"></a>1.采用<code>always</code>描述组合逻辑时，列表内用*而不是列举敏感信号</h6><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//right</span></span><br><span class="line"><span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(rst_n)<span class="keyword">begin</span></span><br><span class="line">        c = a + b;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            c = <span class="number">1&#x27;b0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//worse</span></span><br><span class="line"><span class="keyword">always</span>@(a,b) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(rst_n)<span class="keyword">begin</span></span><br><span class="line">        c = a + b;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            c = <span class="number">1&#x27;b0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="2-always块中如果使用if-则每个分支下都需要进行赋值"><a href="#2-always块中如果使用if-则每个分支下都需要进行赋值" class="headerlink" title="2.always块中如果使用if,则每个分支下都需要进行赋值"></a>2.always块中如果使用if,则每个分支下都需要进行赋值</h6><h6 id="3-组合逻辑中只使用阻塞赋值"><a href="#3-组合逻辑中只使用阻塞赋值" class="headerlink" title="3.组合逻辑中只使用阻塞赋值&#x3D;"></a>3.组合逻辑中只使用阻塞赋值&#x3D;</h6><h6 id="4-可以使用assign表示组合逻辑"><a href="#4-可以使用assign表示组合逻辑" class="headerlink" title="4.可以使用assign表示组合逻辑"></a>4.可以使用assign表示组合逻辑</h6><h6 id="5-对于复杂表达式涉及到符号性，确定最外层表达式符号-向内传播，或者直接将有符号运算抽离出来设置变量（更加建议）"><a href="#5-对于复杂表达式涉及到符号性，确定最外层表达式符号-向内传播，或者直接将有符号运算抽离出来设置变量（更加建议）" class="headerlink" title="5.对于复杂表达式涉及到符号性，确定最外层表达式符号+向内传播，或者直接将有符号运算抽离出来设置变量（更加建议）"></a>5.对于复杂表达式涉及到符号性，确定最外层表达式符号+向内传播，或者直接将有符号运算抽离出来设置变量（更加建议）</h6><h5 id="3-时序逻辑"><a href="#3-时序逻辑" class="headerlink" title="3.时序逻辑"></a>3.时序逻辑</h5><h6 id="1-一般情况下使用上升沿posedge进行触发"><a href="#1-一般情况下使用上升沿posedge进行触发" class="headerlink" title="1.一般情况下使用上升沿posedge进行触发"></a>1.一般情况下使用上升沿<code>posedge</code>进行触发</h6><h6 id="2-只使用非阻塞赋值"><a href="#2-只使用非阻塞赋值" class="headerlink" title="2.只使用非阻塞赋值 &lt;&#x3D;"></a>2.只使用非阻塞赋值 &lt;&#x3D;</h6><h6 id="3-使用localparam命名状态机各个状态"><a href="#3-使用localparam命名状态机各个状态" class="headerlink" title="3.使用localparam命名状态机各个状态"></a>3.使用localparam命名状态机各个状态</h6><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GOOD</span></span><br><span class="line"><span class="keyword">localparam</span> sInit = <span class="number">2&#x27;d0</span>;</span><br><span class="line"><span class="keyword">localparam</span> sIdle = <span class="number">2&#x27;d1</span>;</span><br><span class="line"><span class="keyword">localparam</span> sWork = <span class="number">2&#x27;d2</span>;</span><br><span class="line"><span class="keyword">localparam</span> sDone = <span class="number">2&#x27;d3</span>;</span><br><span class="line"><span class="keyword">reg</span> [<span class="number">1</span>:<span class="number">0</span>] state;</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-不要在敏感列表以外的地方使用时钟信号"><a href="#4-不要在敏感列表以外的地方使用时钟信号" class="headerlink" title="4.不要在敏感列表以外的地方使用时钟信号"></a>4.不要在敏感列表以外的地方使用时钟信号</h6><h5 id="5-不要在多个always块内为同一变量赋值"><a href="#5-不要在多个always块内为同一变量赋值" class="headerlink" title="5.不要在多个always块内为同一变量赋值"></a>5.不要在多个always块内为同一变量赋值</h5><h4 id="4-数制与位拼接"><a href="#4-数制与位拼接" class="headerlink" title="4.数制与位拼接"></a>4.数制与位拼接</h4><p>​	在P1_Q3_ext一题中，我遇到了位拼接相关的问题，总结如下：</p>
+<ol>
+<li>在verilog语法中，当常量不说明位数时默认为32位，进制为十进制，故在位拼接中应尤其注意指明常量的位数</li>
+<li>截取某一信号的某几位<code>in[n:m]</code> 表示,如果表示全部保留这个信号，直接用变量名表达<code>in</code></li>
+<li>表示重复的位数，16{imm[15]}外也应有大括号，表达为<code>&#123;16&#123;imm[15]&#125;&#125;</code></li>
+</ol>
+<h4 id="5-关于assign与always-——组合逻辑的转写"><a href="#5-关于assign与always-——组合逻辑的转写" class="headerlink" title="5.关于assign与always@(*)——组合逻辑的转写"></a>5.关于assign与always@(*)——组合逻辑的转写</h4><p>​	在P1课下提交的六指令ALU构造中，遇到了有关符号数处理的相关问题，在初始状态下的<code>assign+三目运算符+子表达式</code>的情况下很容易就将子表达式的符号性自顶向下传播没了<code>QWQ</code>导致运算结果错误，我的初版代码中，将表达式状态拆分为<code>assign+三目运算符+变量</code>的形式，即将运算提前存储在wire变量中,三目运算符实际上是对值进行选择，这样也就无所谓符号问题。</p>
+<p>​	在复习过程中，我突然想到这种复杂的由多个三目运算符构成的表达式完全可以由分支结构代替，在编写的过程中我发现：</p>
+<ol>
+<li>在always块中进行赋值的只能为reg类型的变量，故需要设置新的变量来存储值，或者改变输出端口的数据类型(这两种方法都可以AC)</li>
+<li>assign不能在always块或initial块中使用</li>
+</ol>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将输出端口改为reg类型，直接在always块中进行赋值</span></span><br><span class="line"><span class="keyword">module</span> alu (</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] A,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] B,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] ALUOp,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] C</span><br><span class="line">);</span><br><span class="line"><span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b000</span>)</span><br><span class="line">     C = A + B;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b001</span>)</span><br><span class="line">     C = A - B;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b010</span>)</span><br><span class="line">     C = A &amp; B;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b011</span>)</span><br><span class="line">     C = A | B;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b100</span>)</span><br><span class="line">     C = A &gt;&gt; B;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">     C = <span class="built_in">$signed</span>(A)&gt;&gt;&gt;B; </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//设置中间变量寄存器，最后 assign C = tmp;</span></span><br><span class="line"><span class="keyword">module</span> alu (</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] A,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] B,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] ALUOp,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] C</span><br><span class="line">);</span><br><span class="line"><span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] tmp;</span><br><span class="line"><span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b000</span>)</span><br><span class="line">     tmp = A + B;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b001</span>)</span><br><span class="line">     tmp = A - B;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b010</span>)</span><br><span class="line">     tmp = A &amp; B;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b011</span>)</span><br><span class="line">     tmp = A | B;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ALUOp == <span class="number">3&#x27;b100</span>)</span><br><span class="line">     tmp = A &gt;&gt; B;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">     tmp = <span class="built_in">$signed</span>(A)&gt;&gt;&gt;B; </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">assign</span> C = tmp;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-组合逻辑语法和时序逻辑语法"><a href="#6-组合逻辑语法和时序逻辑语法" class="headerlink" title="6.组合逻辑语法和时序逻辑语法"></a>6.组合逻辑语法和时序逻辑语法</h4><p><strong>注意：verilog中无自增自减运算符</strong></p>
+<h5 id="1-initial"><a href="#1-initial" class="headerlink" title="1.initial"></a>1.initial</h5><p>​	initial后紧跟的语句或顺序语句块在硬件仿真开始时就会进行，且只会运行一次，可以用于为寄存器赋初值，initial块是不可综合的！因此，考虑到综合性，我们一般使用reset信号进行赋初值操作。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> a;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    a = <span class="number">1&#x27;b0</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-always"><a href="#2-always" class="headerlink" title="2.always"></a>2.always</h5><p>​	always块在时序逻辑和组合逻辑中都有应用，需要注意的是always块中不能使用assign语句。不能在多个always块中对一个变量进行赋值且always块中只能对reg型变量进行赋值。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//组合逻辑  reg型数据与阻塞赋值配合</span></span><br><span class="line"><span class="keyword">always</span>@(*)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        a = A + B;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="comment">//时序逻辑 非阻塞赋值</span></span><br><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        a &lt;= A + B;</span><br><span class="line">    <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-if"><a href="#3-if" class="headerlink" title="3.if"></a>3.if</h5><p>​	<code>if-else if -else</code>模块只能出现在顺序块中，顺序块(以begin开始，以end表示结束),所有的else语句都应写出。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//组合逻辑</span></span><br><span class="line"><span class="keyword">always</span>@(*)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(a&gt;b)<span class="keyword">begin</span></span><br><span class="line">        out = a;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        out = b;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="5-case"><a href="#5-case" class="headerlink" title="5.case"></a>5.case</h5><p>​	case语句只能出现在顺序块中，分支也只能是语句或顺序块，case语句一定要注意编写default,不要忘记<strong>endcase</strong>!</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">case</span>(data)</span><br><span class="line">            <span class="number">0</span>: out &lt;= <span class="number">4</span>;</span><br><span class="line">            <span class="number">1</span>: out &lt;= <span class="number">5</span>;</span><br><span class="line">            <span class="number">2</span>: out &lt;= <span class="number">2</span>;</span><br><span class="line">            <span class="number">3</span>: out &lt;= <span class="number">1</span></span><br><span class="line">            <span class="keyword">default</span> : out &lt;= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">    <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="6-for"><a href="#6-for" class="headerlink" title="6.for"></a>6.for</h5><p>​	循环变量可以为integer或reg类型，使用reg类型作为循环变量时要合理设置位宽。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> test(</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">1</span>:<span class="number">0</span>] x,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] ans <span class="comment">//将输出变量定义为reg类型可以直接在always中进行赋值</span></span><br><span class="line">);</span><br><span class="line">    <span class="keyword">integer</span> i;<span class="comment">//循环变量定义在always语句块之外</span></span><br><span class="line">    <span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">        ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i=i+<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                ans = ans + x;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//七人投票表决器</span></span><br><span class="line"><span class="keyword">module</span> vote7 (</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">6</span>:<span class="number">0</span>] vote,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> pass</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">reg</span> [<span class="number">2</span>:<span class="number">0</span>] sum;</span><br><span class="line">    integet i;</span><br><span class="line">    <span class="keyword">always</span>@(vote)<span class="keyword">begin</span></span><br><span class="line">        sum = <span class="number">3&#x27;b000</span>;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">7</span> ; i = i + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                <span class="keyword">if</span>(vote[i])</span><br><span class="line">                    sum = sum + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">if</span>(sum &gt;= <span class="number">3&#x27;d4</span>) pass = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">else</span> pass = <span class="number">1&#x27;b0</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="7-while"><a href="#7-while" class="headerlink" title="7.while"></a>7.while</h5><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//统计八位二进制数中1的位数</span></span><br><span class="line"><span class="keyword">module</span> counts1_while(</span><br><span class="line">    <span class="keyword">input</span> clk,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] rega,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] count</span><br><span class="line">);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk)<span class="keyword">begin</span>:count1</span><br><span class="line">        <span class="keyword">reg</span>[<span class="number">7</span>:<span class="number">0</span>] tempreg;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        tempreg = rega;</span><br><span class="line">        <span class="keyword">while</span>(tempreg)<span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span>(tempreg[<span class="number">0</span>])</span><br><span class="line">                count = count + <span class="number">1</span>;</span><br><span class="line">            tempreg = tempreg &gt;&gt; <span class="number">1</span>&#x27;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://DQR2206.github.io">dqr_infinity</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://dqr2206.github.io/2023/10/14/verilog/">http://dqr2206.github.io/2023/10/14/verilog/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://DQR2206.github.io" target="_blank">living happy and healthy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Oct/">Oct</a></div><div class="post_share"><div class="social-share" data-image="/img/baixue.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/./img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/10/13/BlockChecker/" title="P1_L1_BlockChecker"><img class="cover" src="/img/humian.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">P1_L1_BlockChecker</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/10/13/BlockChecker/" title="P1_L1_BlockChecker"><img class="cover" src="/img/humian.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-13</div><div class="title">P1_L1_BlockChecker</div></div></a></div><div><a href="/2023/10/10/OOpre-HW4/" title="OOpre_HW4"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-10</div><div class="title">OOpre_HW4</div></div></a></div><div><a href="/2023/10/12/P1%E8%AF%BE%E4%B8%8BALU%E4%B8%8EVerilog%E7%AC%A6%E5%8F%B7%E5%A4%84%E7%90%86/" title="P1_L3_ALU &amp;&amp; Verilog中的符号处理"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-12</div><div class="title">P1_L3_ALU &amp;&amp; Verilog中的符号处理</div></div></a></div><div><a href="/2023/10/02/p0kexia/" title="P0课下提交"><img class="cover" src="/img/humian.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-02</div><div class="title">P0课下提交</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODcyMi8zNTE4NA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dqr_infinity</div><div class="author-info__description">欢迎来看看！！！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/DQRinfinity" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="https://22373362@buaa.edu.cn" target="_blank" title=""><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#verilog-P1%E8%AF%BE%E5%89%8D%E5%A4%8D%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">verilog(P1课前复习)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1.同步复位与异步复位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.同步复位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.异步复位</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%BA%E7%8A%B6%E6%80%81%E6%9C%BA%E7%BC%96%E5%86%99%E5%8F%AF%E6%98%BE%E7%A4%BA%E7%8A%B6%E6%80%81%E5%90%8D%E7%A7%B0%E7%9A%84testbench"><span class="toc-number">1.2.</span> <span class="toc-text">2.为状态机编写可显示状态名称的testbench</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%A6%82%E4%BD%95%E5%9C%A8%E6%B3%A2%E5%BD%A2%E5%9B%BE%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%85%B6%E4%BB%96%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.如何在波形图中添加其他变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E5%87%BA%E8%A1%A8%E7%A4%BA%E7%8A%B6%E6%80%81%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.如何显示出表示状态的字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%9C%A8testbench%E6%A8%A1%E5%9D%97%E4%B8%AD%E6%A8%A1%E6%8B%9F%E8%BE%93%E5%85%A5"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.在testbench模块中模拟输入</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-verilog%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-number">1.3.</span> <span class="toc-text">3.verilog代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.变量命名</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E4%BF%A1%E5%8F%B7%E5%90%8D%E7%A7%B0%E9%87%87%E7%94%A8%E5%85%A8%E5%B0%8F%E5%86%99%EF%BC%8C%E5%8D%95%E8%AF%8D%E4%B9%8B%E9%97%B4%E4%B8%8B%E5%88%92%E7%BA%BF%E5%88%86%E9%9A%94%EF%BC%8Csnake-case"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1.信号名称采用全小写，单词之间下划线分隔，snake_case</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E4%BF%A1%E5%8F%B7%E4%BD%8E%E7%94%B5%E5%B9%B3%E6%9C%89%E6%95%88%E6%97%B6%E7%94%A8-n%E5%90%8E%E7%BC%80%E8%A1%A8%E7%A4%BA%EF%BC%8Crst-n"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">2.信号低电平有效时用_n后缀表示，rst_n</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.组合逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E9%87%87%E7%94%A8always%E6%8F%8F%E8%BF%B0%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%97%B6%EF%BC%8C%E5%88%97%E8%A1%A8%E5%86%85%E7%94%A8-%E8%80%8C%E4%B8%8D%E6%98%AF%E5%88%97%E4%B8%BE%E6%95%8F%E6%84%9F%E4%BF%A1%E5%8F%B7"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">1.采用always描述组合逻辑时，列表内用*而不是列举敏感信号</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-always%E5%9D%97%E4%B8%AD%E5%A6%82%E6%9E%9C%E4%BD%BF%E7%94%A8if-%E5%88%99%E6%AF%8F%E4%B8%AA%E5%88%86%E6%94%AF%E4%B8%8B%E9%83%BD%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">2.always块中如果使用if,则每个分支下都需要进行赋值</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E4%B8%AD%E5%8F%AA%E4%BD%BF%E7%94%A8%E9%98%BB%E5%A1%9E%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">3.组合逻辑中只使用阻塞赋值&#x3D;</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8assign%E8%A1%A8%E7%A4%BA%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">4.可以使用assign表示组合逻辑</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-%E5%AF%B9%E4%BA%8E%E5%A4%8D%E6%9D%82%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B6%89%E5%8F%8A%E5%88%B0%E7%AC%A6%E5%8F%B7%E6%80%A7%EF%BC%8C%E7%A1%AE%E5%AE%9A%E6%9C%80%E5%A4%96%E5%B1%82%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%A6%E5%8F%B7-%E5%90%91%E5%86%85%E4%BC%A0%E6%92%AD%EF%BC%8C%E6%88%96%E8%80%85%E7%9B%B4%E6%8E%A5%E5%B0%86%E6%9C%89%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E6%8A%BD%E7%A6%BB%E5%87%BA%E6%9D%A5%E8%AE%BE%E7%BD%AE%E5%8F%98%E9%87%8F%EF%BC%88%E6%9B%B4%E5%8A%A0%E5%BB%BA%E8%AE%AE%EF%BC%89"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">5.对于复杂表达式涉及到符号性，确定最外层表达式符号+向内传播，或者直接将有符号运算抽离出来设置变量（更加建议）</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.时序逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E4%B8%80%E8%88%AC%E6%83%85%E5%86%B5%E4%B8%8B%E4%BD%BF%E7%94%A8%E4%B8%8A%E5%8D%87%E6%B2%BFposedge%E8%BF%9B%E8%A1%8C%E8%A7%A6%E5%8F%91"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">1.一般情况下使用上升沿posedge进行触发</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E5%8F%AA%E4%BD%BF%E7%94%A8%E9%9D%9E%E9%98%BB%E5%A1%9E%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">2.只使用非阻塞赋值 &lt;&#x3D;</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8localparam%E5%91%BD%E5%90%8D%E7%8A%B6%E6%80%81%E6%9C%BA%E5%90%84%E4%B8%AA%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">3.使用localparam命名状态机各个状态</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E4%B8%8D%E8%A6%81%E5%9C%A8%E6%95%8F%E6%84%9F%E5%88%97%E8%A1%A8%E4%BB%A5%E5%A4%96%E7%9A%84%E5%9C%B0%E6%96%B9%E4%BD%BF%E7%94%A8%E6%97%B6%E9%92%9F%E4%BF%A1%E5%8F%B7"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">4.不要在敏感列表以外的地方使用时钟信号</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E4%B8%8D%E8%A6%81%E5%9C%A8%E5%A4%9A%E4%B8%AAalways%E5%9D%97%E5%86%85%E4%B8%BA%E5%90%8C%E4%B8%80%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.4.</span> <span class="toc-text">5.不要在多个always块内为同一变量赋值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%95%B0%E5%88%B6%E4%B8%8E%E4%BD%8D%E6%8B%BC%E6%8E%A5"><span class="toc-number">1.4.</span> <span class="toc-text">4.数制与位拼接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%85%B3%E4%BA%8Eassign%E4%B8%8Ealways-%E2%80%94%E2%80%94%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%9A%84%E8%BD%AC%E5%86%99"><span class="toc-number">1.5.</span> <span class="toc-text">5.关于assign与always@(*)——组合逻辑的转写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E8%AF%AD%E6%B3%95%E5%92%8C%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E8%AF%AD%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">6.组合逻辑语法和时序逻辑语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-initial"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.initial</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-always"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.always</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-if"><span class="toc-number">1.6.3.</span> <span class="toc-text">3.if</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-case"><span class="toc-number">1.6.4.</span> <span class="toc-text">5.case</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-for"><span class="toc-number">1.6.5.</span> <span class="toc-text">6.for</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-while"><span class="toc-number">1.6.6.</span> <span class="toc-text">7.while</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/10/14/verilog/" title="verilog"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="verilog"/></a><div class="content"><a class="title" href="/2023/10/14/verilog/" title="verilog">verilog</a><time datetime="2023-10-14T00:22:00.000Z" title="发表于 2023-10-14 08:22:00">2023-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/13/BlockChecker/" title="P1_L1_BlockChecker"><img src="/img/humian.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P1_L1_BlockChecker"/></a><div class="content"><a class="title" href="/2023/10/13/BlockChecker/" title="P1_L1_BlockChecker">P1_L1_BlockChecker</a><time datetime="2023-10-12T17:18:00.000Z" title="发表于 2023-10-13 01:18:00">2023-10-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/12/P1%E8%AF%BE%E4%B8%8BALU%E4%B8%8EVerilog%E7%AC%A6%E5%8F%B7%E5%A4%84%E7%90%86/" title="P1_L3_ALU &amp;&amp; Verilog中的符号处理"><img src="/img/gugong.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P1_L3_ALU &amp;&amp; Verilog中的符号处理"/></a><div class="content"><a class="title" href="/2023/10/12/P1%E8%AF%BE%E4%B8%8BALU%E4%B8%8EVerilog%E7%AC%A6%E5%8F%B7%E5%A4%84%E7%90%86/" title="P1_L3_ALU &amp;&amp; Verilog中的符号处理">P1_L3_ALU &amp;&amp; Verilog中的符号处理</a><time datetime="2023-10-11T16:21:00.000Z" title="发表于 2023-10-12 00:21:00">2023-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/10/OOpre-HW4/" title="OOpre_HW4"><img src="/img/gugong.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OOpre_HW4"/></a><div class="content"><a class="title" href="/2023/10/10/OOpre-HW4/" title="OOpre_HW4">OOpre_HW4</a><time datetime="2023-10-10T04:56:53.000Z" title="发表于 2023-10-10 12:56:53">2023-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/02/p0kexia/" title="P0课下提交"><img src="/img/humian.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P0课下提交"/></a><div class="content"><a class="title" href="/2023/10/02/p0kexia/" title="P0课下提交">P0课下提交</a><time datetime="2023-10-02T04:56:53.000Z" title="发表于 2023-10-02 12:56:53">2023-10-02</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/humian.webp')"><div id="footer-wrap"><div class="copyright">&copy;2023 By dqr_infinity</div><div class="footer_custom_text">你是怎么找到这来的？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="8421590201" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
