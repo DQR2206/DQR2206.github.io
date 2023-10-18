@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>HW_5:常见bug分析</title>
+      <link href="/2023/10/18/HW-5bug%E5%88%86%E6%9E%90/"/>
+      <url>/2023/10/18/HW-5bug%E5%88%86%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="OOpre-HW-5-常见bug分析"><a href="#OOpre-HW-5-常见bug分析" class="headerlink" title="OOpre_HW_5:常见bug分析"></a>OOpre_HW_5:常见bug分析</h2><p>​本次作业的任务比较简单，对课程组给出的代码进行debug,只有中测，让我这种挂了强测的鼠鼠好欣慰。</p><h4 id="一-输入解析类错误"><a href="#一-输入解析类错误" class="headerlink" title="一.输入解析类错误"></a>一.输入解析类错误</h4><p>​常见的有<code>scanner</code>一类的函数，我们需要注意的无非以下几个函数的功能</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> scanner.next(); <span class="comment">//读取下一个字符串</span></span><br><span class="line"><span class="number">2.</span> scanner.nextint();<span class="comment">//读取下一个数字</span></span><br><span class="line"><span class="number">3.</span> scanner.nextLine();<span class="comment">//读取下一行字符串</span></span><br></pre></td></tr></table></figure><p>​作业中出现了几次使用<code>scanner.nextLine()</code>方法读取下一个字符串的错误，这种错误还是比较明显的。</p><h4 id="二-深克隆与浅克隆"><a href="#二-深克隆与浅克隆" class="headerlink" title="二.深克隆与浅克隆"></a>二.深克隆与浅克隆</h4><p>​在我的作业代码中，对于深克隆和浅克隆共出现了一个功能中的两次错误，即克隆小队的操作和克隆士兵的操作。</p><h5 id="1-浅克隆"><a href="#1-浅克隆" class="headerlink" title="1.浅克隆"></a>1.浅克隆</h5><p>​浅克隆即只对对象的引用进行克隆，换句话说是创建出来新的一个指针，与原对象指向相同的一块内存空间。本质上两个引用指向的是同一个实例，一个指针对对象进行修改，另一个指针进行访问时就会体现出这种修改。例如:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Team</span> <span class="variable">team1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Team</span>(<span class="number">123456</span>,<span class="string">&quot;dqr&quot;</span>);</span><br><span class="line"><span class="type">Team</span> <span class="variable">team2</span> <span class="operator">=</span> team1;</span><br></pre></td></tr></table></figure><h5 id="2-深克隆"><a href="#2-深克隆" class="headerlink" title="2.深克隆"></a>2.深克隆</h5><p>​深克隆不仅要创建出新的引用，还要开辟出新的内存空间，本质上就是一个新的变量，只不过变量的构造方法中传入参数是需要被克隆的对象的参数。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Team</span> <span class="variable">team1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Team</span>(<span class="number">123456</span>,<span class="string">&quot;dqr&quot;</span>);</span><br><span class="line"><span class="type">Team</span> <span class="variable">team2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Team</span>(team1.getID(),team1.getName());</span><br></pre></td></tr></table></figure><h4 id="三-相等比较-equals"><a href="#三-相等比较-equals" class="headerlink" title="三.相等比较 &#x3D;&#x3D;&#x2F;equals ?"></a>三.相等比较 &#x3D;&#x3D;&#x2F;equals ?</h4><ol><li>&#x3D;&#x3D;是比较两个引用是否是同一个对象</li><li>equals为内容比较，比如名字，咒语等等</li></ol><h4 id="四-遍历容器：迭代器删除"><a href="#四-遍历容器：迭代器删除" class="headerlink" title="四.遍历容器：迭代器删除"></a>四.遍历容器：迭代器删除</h4><p>​对于容器中的元素删除，我们可能经常会用到“边遍历边删除的操作”</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Dog dog:arrayList)&#123;</span><br><span class="line">     arrayList.remove(dog);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>​这种操作会报错如下:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">&quot;main&quot;</span> java.util.ConcurrentModificationException</span><br><span class="line">at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:<span class="number">911</span>)</span><br><span class="line">at java.util.ArrayList$Itr.next(ArrayList.java:<span class="number">861</span>)</span><br></pre></td></tr></table></figure><p>​正确的做法是删除的时候不应该使用for循环，而应该使用迭代器遍历删除</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;Dog&gt;iterator= arrayList.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext())&#123;</span><br><span class="line">       Dog dog=iterator.next();</span><br><span class="line">       iterator.remove();</span><br><span class="line">       System.out.println(dog.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面向对象先导 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Oct </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HW_4强测修复&amp;&amp;代码架构重构</title>
       <link href="/2023/10/18/HW-4%E5%BC%BA%E6%B5%8B%E4%BF%AE%E5%A4%8D/"/>
       <url>/2023/10/18/HW-4%E5%BC%BA%E6%B5%8B%E4%BF%AE%E5%A4%8D/</url>
