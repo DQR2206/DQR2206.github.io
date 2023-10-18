@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>P1上机日志 | living happy and healthy</title><meta name="author" content="dqr_infinity"><meta name="copyright" content="dqr_infinity"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="P1上机verilog部件设计以及状态机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P1上机日志">
+<meta property="og:url" content="http://dqr2206.github.io/2023/10/16/P1%E4%B8%8A%E6%9C%BA%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:site_name" content="living happy and healthy">
+<meta property="og:description" content="P1上机verilog部件设计以及状态机">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://dqr2206.github.io/img/humian.webp">
+<meta property="article:published_time" content="2023-10-16T15:32:20.000Z">
+<meta property="article:modified_time" content="2023-10-18T11:44:10.860Z">
+<meta property="article:author" content="dqr_infinity">
+<meta property="article:tag" content="Oct">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dqr2206.github.io/img/humian.webp"><link rel="shortcut icon" href="/./img/web.jpeg"><link rel="canonical" href="http://dqr2206.github.io/2023/10/16/P1%E4%B8%8A%E6%9C%BA%E6%97%A5%E5%BF%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":0,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最近更新为准"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200000000000000},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":10,"languages":{"author":"作者: dqr_infinity","link":"链接: ","source":"来源: living happy and healthy","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'P1上机日志',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: flase,
+  isToc: true,
+  postUpdate: '2023-10-18 19:44:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/gugong.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="living happy and healthy"><span class="site-name">living happy and healthy</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">P1上机日志</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-16T15:32:20.000Z" title="发表于 2023-10-16 23:32:20">2023-10-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-18T11:44:10.860Z" title="更新于 2023-10-18 19:44:10">2023-10-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%BB%84/">计组</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="P1上机日志"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="P1上机——verilog完成部件设计以及状态机"><a href="#P1上机——verilog完成部件设计以及状态机" class="headerlink" title="P1上机——verilog完成部件设计以及状态机"></a>P1上机——verilog完成部件设计以及状态机</h2><p>​	<strong>永远在周一晚上上机之前才是我学计组效率最高的时候</strong></p>
+<p>​													——地球人</p>
+<h3 id="一-三段式状态机的设计"><a href="#一-三段式状态机的设计" class="headerlink" title="一.三段式状态机的设计"></a>一.三段式状态机的设计</h3><p>​	在上机之前我心血来潮想要把自己编写状态机的代码风格从一直以来的一段式更新为三段式，在看了网上好多有的没的真真假假对对错错的写法之后，我决定转头求助蒋老师和曾老师，果然得到了靠谱的答案，并成功应用到晚上的上机中<code>QAQ</code>。</p>
+<p>​	<strong>分段思路：就如同状态机的设计图，有三个模块：状态转移逻辑(组合逻辑)，状态存储（时序逻辑），输出逻辑（组合逻辑）</strong>，在verilog中分段实现即可，逻辑更加清晰。具体来说可以写成<code>always-always-assign</code>这种形式，当然最后一段也可以写成always.</p>
+<p>​	下面给出示例代码:</p>
+<p>​	<strong>Moore型</strong>  输出逻辑中对状态进行判断</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> moore_example(</span><br><span class="line">    <span class="keyword">input</span> in;</span><br><span class="line">    <span class="keyword">input</span> clk;</span><br><span class="line">    <span class="keyword">input</span> rst_n;</span><br><span class="line">    <span class="keyword">output</span> check;</span><br><span class="line">);</span><br><span class="line"><span class="keyword">localparam</span> s0 = <span class="number">4&#x27;b0001</span>;</span><br><span class="line"><span class="keyword">localparam</span> s1 = <span class="number">4&#x27;b0010</span>;</span><br><span class="line"><span class="keyword">localparam</span> s2 = <span class="number">4&#x27;b0100</span>;</span><br><span class="line"><span class="keyword">localparam</span> s3 = <span class="number">4&#x27;b1000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] state;</span><br><span class="line"><span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] n_state;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//状态存储逻辑</span></span><br><span class="line">    <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_b)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rst_n)<span class="keyword">begin</span></span><br><span class="line">            state &lt;= s0;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">           	state &lt;= n_state; </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="comment">//状态转移逻辑  一般来说两层case嵌套逻辑更加清楚</span></span><br><span class="line">    <span class="keyword">always</span>@(*)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">case</span>(state)<span class="keyword">begin</span></span><br><span class="line">            s0:</span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                <span class="keyword">case</span>(in)<span class="keyword">begin</span></span><br><span class="line">                    <span class="number">1&#x27;b1</span>:n_state = s1;</span><br><span class="line">                    <span class="number">1&#x27;b0</span>:n_state = s0;</span><br><span class="line">                <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="comment">//省略其他部分</span></span><br><span class="line">             <span class="keyword">default</span>:</span><br><span class="line">                n_state = s0;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">                    </span><br><span class="line"><span class="comment">//输出逻辑</span></span><br><span class="line">                    <span class="keyword">assign</span> check  = (state == s3)?<span class="number">1&#x27;b1</span>:<span class="number">1&#x27;b0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>Mealy型</strong> 输出逻辑中对当前状态和输入进行判断</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> moore_example(</span><br><span class="line">    <span class="keyword">input</span> in;</span><br><span class="line">    <span class="keyword">input</span> clk;</span><br><span class="line">    <span class="keyword">input</span> rst_n;</span><br><span class="line">    <span class="keyword">output</span> check;</span><br><span class="line">);</span><br><span class="line"><span class="keyword">localparam</span> s0 = <span class="number">4&#x27;b0001</span>;</span><br><span class="line"><span class="keyword">localparam</span> s1 = <span class="number">4&#x27;b0010</span>;</span><br><span class="line"><span class="keyword">localparam</span> s2 = <span class="number">4&#x27;b0100</span>;</span><br><span class="line"><span class="keyword">localparam</span> s3 = <span class="number">4&#x27;b1000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] state;</span><br><span class="line"><span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] n_state;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//状态存储逻辑</span></span><br><span class="line">    <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_b)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(!rst_n)<span class="keyword">begin</span></span><br><span class="line">            state &lt;= s0;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">           	state &lt;= n_state; </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="comment">//状态转移逻辑  一般来说两层case嵌套逻辑更加清楚</span></span><br><span class="line">    <span class="keyword">always</span>@(*)<span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">case</span>(state)<span class="keyword">begin</span></span><br><span class="line">            s0:</span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                <span class="keyword">case</span>(in)<span class="keyword">begin</span></span><br><span class="line">                    <span class="number">1&#x27;b1</span>:n_state = s1;</span><br><span class="line">                    <span class="number">1&#x27;b0</span>:n_state = s0;</span><br><span class="line">                <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="comment">//省略其他部分</span></span><br><span class="line">             <span class="keyword">default</span>:</span><br><span class="line">                n_state = s0;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">                    </span><br><span class="line"><span class="comment">//输出逻辑</span></span><br><span class="line">                    <span class="keyword">assign</span> check  = (state == s2 &amp;&amp; in == <span class="number">1&#x27;b0</span>)?<span class="number">1&#x27;b1</span>:<span class="number">1&#x27;b0</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>三段式状态机的逻辑果然清晰好多！</strong></p>
+<h3 id="二-上机题目简记"><a href="#二-上机题目简记" class="headerlink" title="二.上机题目简记"></a>二.上机题目简记</h3><h4 id="1-32位向量乘法"><a href="#1-32位向量乘法" class="headerlink" title="1.32位向量乘法"></a>1.32位向量乘法</h4><h5 id="1-题意复现"><a href="#1-题意复现" class="headerlink" title="1.题意复现"></a>1.题意复现</h5><p>​	计算32位向量乘法</p>
+<h5 id="2-我的解法"><a href="#2-我的解法" class="headerlink" title="2.我的解法"></a>2.我的解法</h5><p>​	这个题目比较签到题，相当于推荐题目中的<code>Voter_Plus</code>的简化版，毕竟只用到了组合逻辑中的循环，速速AC！</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] cnt;<span class="comment">//计数器 向量中每一位只会出现0/1</span></span><br><span class="line"><span class="keyword">integer</span> i;<span class="comment">//计数变量</span></span><br><span class="line"><span class="keyword">always</span>@(*)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i=i+<span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line">        cnt = cnt + vector_a[i]*vector_b[i];</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">assign</span> out = cnt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-coloring涂色问题"><a href="#2-coloring涂色问题" class="headerlink" title="2.coloring涂色问题"></a>2.coloring涂色问题</h4><h5 id="1-题意复现-1"><a href="#1-题意复现-1" class="headerlink" title="1.题意复现"></a>1.题意复现</h5><p>​	题意为：DQR闲着没事涂色玩，一共有红(<code>2&#39;b00</code>)、绿(<code>2&#39;b01</code>)、蓝(<code>2&#39;b10</code>)三种颜色，涂色的规则如下:</p>
+<ol>
+<li>不允许有三个连续的颜色相同的色块</li>
+<li>不允许红色与绿色相邻</li>
+</ol>
+<p>​	如果出现非法的情况，将输出端口check置为1，并将最近涂的颜色擦除，进行下一次上色。</p>
+<h5 id="2-我的解法-1"><a href="#2-我的解法-1" class="headerlink" title="2.我的解法"></a>2.我的解法</h5><p>​	这个题目不知道有没有更好的解法，但是我是通过设计14状态的Moore状态机实现的，这里我对于红绿相邻的情况进行了比较细致的分类:</p>
+<ol>
+<li>红绿</li>
+<li>红红绿</li>
+<li>绿红</li>
+<li>绿绿红</li>
+</ol>
+<p>​	这样做的好处是便于进行“颜色的擦除“，即状态的回退，下面附上状态转移图</p>
+<p><img src="/./../img/image-20231018175530539.png" alt="image-20231018175530539"></p>
+<p>​	<strong>进行一下简单的解释</strong>：</p>
+<ol>
+<li><p>状态中表示连续颜色的检测，即遇到与上一次不同的颜色时直接跳转，如</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">state == R ; in == B ; n_state = B;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在外侧的红绿相邻状态中，状态转移实际上是与他们的上一状态相同的，因为擦除颜色相当于回到上一状态</p>
+</li>
+</ol>
+<h4 id="3-数字匹配numberNest"><a href="#3-数字匹配numberNest" class="headerlink" title="3.数字匹配numberNest"></a>3.数字匹配numberNest</h4><h5 id="1-题意复现-2"><a href="#1-题意复现-2" class="headerlink" title="1.题意复现"></a>1.题意复现</h5><p>​	定义两个相同数字之间的部分为”数字匹配“，要求如下:</p>
+<ol>
+<li>一个数字的匹配中的数字必须比这个数大，如123321合理,12322321不合理</li>
+<li>一个数字匹配的下一个数字只能比这个数字大1，如12344321合理，1331不合理</li>
+</ol>
+<p>​	输入的序列合理时输出0，不合理输出1，题目保证输入的序列从1开始并且输入的数字在1-5之间。</p>
+<h5 id="2-讨论区的解法（这题我当时挂了）"><a href="#2-讨论区的解法（这题我当时挂了）" class="headerlink" title="2.讨论区的解法（这题我当时挂了）"></a>2.讨论区的解法（这题我当时挂了）</h5><h6 id="1-状态机"><a href="#1-状态机" class="headerlink" title="1.状态机"></a>1.状态机</h6><p>​	按照当前输入数字进行设计状态，6个就够了。</p>
+<h6 id="2-两个if法-lrgg起的名字-我也不知道为什么QAQ"><a href="#2-两个if法-lrgg起的名字-我也不知道为什么QAQ" class="headerlink" title="2.两个if法(lrgg起的名字 我也不知道为什么QAQ)"></a>2.两个if法(lrgg起的名字 我也不知道为什么<code>QAQ</code>)</h6><p>​	在任何状态下，合理的输入只有两种：</p>
+<ol>
+<li>in &#x3D; state + 1;这代表进行下一个数字的匹配 state &#x3D; state + 1;</li>
+<li>in &#x3D; state;序列结束了当前匹配，state &#x3D; state - 1;</li>
+</ol>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> numberNest(</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] in;</span><br><span class="line">    <span class="keyword">input</span> rst_n;</span><br><span class="line">    <span class="keyword">input</span> clk;</span><br><span class="line">    <span class="keyword">output</span> check;</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">reg</span> [<span class="number">2</span>:<span class="number">0</span>] state;<span class="comment">//表示当前状态，同时也是上一个输入的数字</span></span><br><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(!rst_n)<span class="keyword">begin</span></span><br><span class="line">        check &lt;= <span class="number">0</span>;</span><br><span class="line">        state &lt;= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span>  <span class="comment">//开始下一数字匹配</span></span><br><span class="line">        <span class="keyword">if</span>(in == state + <span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line">            check &lt;= <span class="number">0</span>;</span><br><span class="line">            state &lt;= state + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(in == state) <span class="keyword">begin</span>    <span class="comment">//结束当前数字匹配</span></span><br><span class="line">            check &lt;= <span class="number">0</span>;</span><br><span class="line">            state &lt;= state - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span>  <span class="comment">//输入数字不合法</span></span><br><span class="line">            check &lt;= <span class="number">1</span>;</span><br><span class="line">            state &lt;= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>代码好短，lrgg好强！</strong></p>
+<h3 id="三-后记"><a href="#三-后记" class="headerlink" title="三.后记"></a>三.后记</h3><h4 id="1-检测特定序列的另一种解法-序列缓存法"><a href="#1-检测特定序列的另一种解法-序列缓存法" class="headerlink" title="1.检测特定序列的另一种解法:序列缓存法"></a>1.检测特定序列的另一种解法:序列缓存法</h4><p>​	在<code>verilog</code>状态机中，我们经常遇到设计状态机来匹配特定后缀的字符串的问题，以往我们会设计出一个状态机，但是事实上我们可以缓存一个需要匹配的字符串长度的数组来存下已经输入的字符，输入新字符时将最早进来的字符顶出，相当于移位寄存器或者说是一个队列。</p>
+<p>​	下面以匹配字符串1101为例，代码分成两个部分，一部分更新缓存序列，一部分根据序列内容输出。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> sequence_detect(</span><br><span class="line">	<span class="keyword">input</span> clk,</span><br><span class="line">	<span class="keyword">input</span> rst_n,</span><br><span class="line">	<span class="keyword">input</span> a,</span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> match</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] str;</span><br><span class="line">  <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n)</span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">	  <span class="keyword">if</span>(rst_n ==<span class="number">1&#x27;b0</span>)</span><br><span class="line">	  <span class="keyword">begin</span></span><br><span class="line">	  	str &lt;=<span class="number">4&#x27;b0000</span>;</span><br><span class="line">	  <span class="keyword">end</span></span><br><span class="line">	  <span class="keyword">else</span></span><br><span class="line">	  <span class="keyword">begin</span></span><br><span class="line">          str &lt;= &#123;str[<span class="number">2</span>:<span class="number">0</span>],a&#125;; <span class="comment">//最左侧出队</span></span><br><span class="line">	  <span class="keyword">end</span>	</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n)</span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">	  <span class="keyword">if</span>(rst_n ==<span class="number">1&#x27;b0</span>)</span><br><span class="line">	  		match &lt;=<span class="number">&#x27;d0</span>;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span>(a_reg == <span class="number">4&#x27;b1101</span>)</span><br><span class="line">	  	match &lt;=<span class="number">&#x27;d1</span>;</span><br><span class="line">	  <span class="keyword">else</span></span><br><span class="line">	  	match &lt;=<span class="number">&#x27;d0</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-以饮料售货机为例说明Mealy状态机比Moore状态机少状态"><a href="#2-以饮料售货机为例说明Mealy状态机比Moore状态机少状态" class="headerlink" title="2.以饮料售货机为例说明Mealy状态机比Moore状态机少状态"></a>2.以饮料售货机为例说明Mealy状态机比Moore状态机少状态</h4><p>​	假设我们有这样的一个饮料售货机，每次只能投入0.5元或1元，饮料的售价为两元，当购买成功时<code>sell = 1</code>,并输出找零<code>change</code>。</p>
+<p>我们知道对于一个相同的情景可以设计出两种状态机，这里我们先考虑Moore状态机。</p>
+<h5 id="1-Moore状态机"><a href="#1-Moore状态机" class="headerlink" title="1.Moore状态机"></a>1.Moore状态机</h5><p>​	对于Moore状态机我们应当列出全部的状态，即投入货币的金额，我们可以以一种<strong>售价附近最小粒度</strong>的思想来解决状态个数问题，</p>
+<p>0,0.5,1,1.5,2,2.5共6个状态，在2,2.5状态时输出1.</p>
+<h5 id="2-Mealy状态机"><a href="#2-Mealy状态机" class="headerlink" title="2.Mealy状态机"></a>2.Mealy状态机</h5><p>​	对于Mealy状态机，当当前状态(已经投放金额)+当前投币大于两元时就应该输出<code>sell==1</code>并输出找零，无需2,2.5这两个状态。</p>
+<p>​	这样我们就可以理解<strong>Moore型比Mealy型状态多，Mealy型比Moore型输出早</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://DQR2206.github.io">dqr_infinity</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://dqr2206.github.io/2023/10/16/P1%E4%B8%8A%E6%9C%BA%E6%97%A5%E5%BF%97/">http://dqr2206.github.io/2023/10/16/P1%E4%B8%8A%E6%9C%BA%E6%97%A5%E5%BF%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://DQR2206.github.io" target="_blank">living happy and healthy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Oct/">Oct</a></div><div class="post_share"><div class="social-share" data-image="/img/humian.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/./img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/10/18/HW-4%E5%BC%BA%E6%B5%8B%E4%BF%AE%E5%A4%8D/" title="OOpre_HW_4强测修复&amp;&amp;代码架构重构"><img class="cover" src="/img/humian.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">OOpre_HW_4强测修复&amp;&amp;代码架构重构</div></div></a></div><div class="next-post pull-right"><a href="/2023/10/15/verilog%E7%BC%96%E5%86%99%E7%94%B5%E8%B7%AF%E4%B8%AD%E7%9A%84%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/" title="verilog编写电路中的时序逻辑与组合逻辑分离"><img class="cover" src="/img/humian.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">verilog编写电路中的时序逻辑与组合逻辑分离</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/10/13/BlockChecker/" title="P1_L1_BlockChecker"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-13</div><div class="title">P1_L1_BlockChecker</div></div></a></div><div><a href="/2023/10/18/HW-4%E5%BC%BA%E6%B5%8B%E4%BF%AE%E5%A4%8D/" title="OOpre_HW_4强测修复&amp;&amp;代码架构重构"><img class="cover" src="/img/humian.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-18</div><div class="title">OOpre_HW_4强测修复&amp;&amp;代码架构重构</div></div></a></div><div><a href="/2023/10/18/HW-5bug%E5%88%86%E6%9E%90/" title="OOpre_HW_5:常见bug分析"><img class="cover" src="/img/baixue.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-18</div><div class="title">OOpre_HW_5:常见bug分析</div></div></a></div><div><a href="/2023/10/10/OOpre-HW4/" title="OOpre_HW4"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-10</div><div class="title">OOpre_HW4</div></div></a></div><div><a href="/2023/10/09/P0-logisim/" title="P0-logisim"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-09</div><div class="title">P0-logisim</div></div></a></div><div><a href="/2023/10/12/P1%E8%AF%BE%E4%B8%8BALU%E4%B8%8EVerilog%E7%AC%A6%E5%8F%B7%E5%A4%84%E7%90%86/" title="P1_L3_ALU &amp;&amp; Verilog中的符号处理"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-12</div><div class="title">P1_L3_ALU &amp;&amp; Verilog中的符号处理</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODcyMi8zNTE4NA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dqr_infinity</div><div class="author-info__description">欢迎来看看！！！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DQR2206?tab=repositories"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/DQRinfinity" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="https://22373362@buaa.edu.cn" target="_blank" title=""><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#P1%E4%B8%8A%E6%9C%BA%E2%80%94%E2%80%94verilog%E5%AE%8C%E6%88%90%E9%83%A8%E4%BB%B6%E8%AE%BE%E8%AE%A1%E4%BB%A5%E5%8F%8A%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">P1上机——verilog完成部件设计以及状态机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E4%B8%89%E6%AE%B5%E5%BC%8F%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">一.三段式状态机的设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%8A%E6%9C%BA%E9%A2%98%E7%9B%AE%E7%AE%80%E8%AE%B0"><span class="toc-number">1.2.</span> <span class="toc-text">二.上机题目简记</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-32%E4%BD%8D%E5%90%91%E9%87%8F%E4%B9%98%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.32位向量乘法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E9%A2%98%E6%84%8F%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.题意复现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.我的解法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-coloring%E6%B6%82%E8%89%B2%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.coloring涂色问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E9%A2%98%E6%84%8F%E5%A4%8D%E7%8E%B0-1"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1.题意复现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95-1"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2.我的解法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%95%B0%E5%AD%97%E5%8C%B9%E9%85%8DnumberNest"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.数字匹配numberNest</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E9%A2%98%E6%84%8F%E5%A4%8D%E7%8E%B0-2"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1.题意复现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E8%AE%A8%E8%AE%BA%E5%8C%BA%E7%9A%84%E8%A7%A3%E6%B3%95%EF%BC%88%E8%BF%99%E9%A2%98%E6%88%91%E5%BD%93%E6%97%B6%E6%8C%82%E4%BA%86%EF%BC%89"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2.讨论区的解法（这题我当时挂了）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">1.状态机</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E4%B8%A4%E4%B8%AAif%E6%B3%95-lrgg%E8%B5%B7%E7%9A%84%E5%90%8D%E5%AD%97-%E6%88%91%E4%B9%9F%E4%B8%8D%E7%9F%A5%E9%81%93%E4%B8%BA%E4%BB%80%E4%B9%88QAQ"><span class="toc-number">1.2.3.2.2.</span> <span class="toc-text">2.两个if法(lrgg起的名字 我也不知道为什么QAQ)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E5%90%8E%E8%AE%B0"><span class="toc-number">1.3.</span> <span class="toc-text">三.后记</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A3%80%E6%B5%8B%E7%89%B9%E5%AE%9A%E5%BA%8F%E5%88%97%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E8%A7%A3%E6%B3%95-%E5%BA%8F%E5%88%97%E7%BC%93%E5%AD%98%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.检测特定序列的另一种解法:序列缓存法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BB%A5%E9%A5%AE%E6%96%99%E5%94%AE%E8%B4%A7%E6%9C%BA%E4%B8%BA%E4%BE%8B%E8%AF%B4%E6%98%8EMealy%E7%8A%B6%E6%80%81%E6%9C%BA%E6%AF%94Moore%E7%8A%B6%E6%80%81%E6%9C%BA%E5%B0%91%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.以饮料售货机为例说明Mealy状态机比Moore状态机少状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Moore%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">1.Moore状态机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Mealy%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">2.Mealy状态机</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/10/18/HW-5bug%E5%88%86%E6%9E%90/" title="OOpre_HW_5:常见bug分析"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OOpre_HW_5:常见bug分析"/></a><div class="content"><a class="title" href="/2023/10/18/HW-5bug%E5%88%86%E6%9E%90/" title="OOpre_HW_5:常见bug分析">OOpre_HW_5:常见bug分析</a><time datetime="2023-10-18T07:08:44.000Z" title="发表于 2023-10-18 15:08:44">2023-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/18/HW-4%E5%BC%BA%E6%B5%8B%E4%BF%AE%E5%A4%8D/" title="OOpre_HW_4强测修复&amp;&amp;代码架构重构"><img src="/img/humian.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OOpre_HW_4强测修复&amp;&amp;代码架构重构"/></a><div class="content"><a class="title" href="/2023/10/18/HW-4%E5%BC%BA%E6%B5%8B%E4%BF%AE%E5%A4%8D/" title="OOpre_HW_4强测修复&amp;&amp;代码架构重构">OOpre_HW_4强测修复&amp;&amp;代码架构重构</a><time datetime="2023-10-18T06:01:00.000Z" title="发表于 2023-10-18 14:01:00">2023-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/16/P1%E4%B8%8A%E6%9C%BA%E6%97%A5%E5%BF%97/" title="P1上机日志"><img src="/img/humian.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P1上机日志"/></a><div class="content"><a class="title" href="/2023/10/16/P1%E4%B8%8A%E6%9C%BA%E6%97%A5%E5%BF%97/" title="P1上机日志">P1上机日志</a><time datetime="2023-10-16T15:32:20.000Z" title="发表于 2023-10-16 23:32:20">2023-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/15/verilog%E7%BC%96%E5%86%99%E7%94%B5%E8%B7%AF%E4%B8%AD%E7%9A%84%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/" title="verilog编写电路中的时序逻辑与组合逻辑分离"><img src="/img/humian.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="verilog编写电路中的时序逻辑与组合逻辑分离"/></a><div class="content"><a class="title" href="/2023/10/15/verilog%E7%BC%96%E5%86%99%E7%94%B5%E8%B7%AF%E4%B8%AD%E7%9A%84%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E4%B8%8E%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E5%88%86%E7%A6%BB/" title="verilog编写电路中的时序逻辑与组合逻辑分离">verilog编写电路中的时序逻辑与组合逻辑分离</a><time datetime="2023-10-15T05:42:00.000Z" title="发表于 2023-10-15 13:42:00">2023-10-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/14/verilog/" title="verilog"><img src="/img/gugong.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="verilog"/></a><div class="content"><a class="title" href="/2023/10/14/verilog/" title="verilog">verilog</a><time datetime="2023-10-14T00:22:00.000Z" title="发表于 2023-10-14 08:22:00">2023-10-14</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/gugong.webp')"><div id="footer-wrap"><div class="copyright">&copy;2023 By dqr_infinity</div><div class="footer_custom_text">你是怎么找到这来的？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="8421590201" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
