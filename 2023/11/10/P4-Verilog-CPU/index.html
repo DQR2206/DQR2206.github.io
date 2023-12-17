@@ -1,0 +1,1026 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>支持40条指令P4_Verilog_CPU | living happy and healthy</title><meta name="author" content="dqr_infinity"><meta name="copyright" content="dqr_infinity"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="用Verilog翻译P3电路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支持40条指令P4_Verilog_CPU">
+<meta property="og:url" content="http://dqr2206.github.io/2023/11/10/P4-Verilog-CPU/index.html">
+<meta property="og:site_name" content="living happy and healthy">
+<meta property="og:description" content="用Verilog翻译P3电路">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://dqr2206.github.io/img/gugong.webp">
+<meta property="article:published_time" content="2023-11-10T09:48:31.000Z">
+<meta property="article:modified_time" content="2023-11-20T18:04:15.270Z">
+<meta property="article:author" content="dqr_infinity">
+<meta property="article:tag" content="Nov">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dqr2206.github.io/img/gugong.webp"><link rel="shortcut icon" href="/./img/web.jpeg"><link rel="canonical" href="http://dqr2206.github.io/2023/11/10/P4-Verilog-CPU/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":0,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最近更新为准"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200000000000000},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":10,"languages":{"author":"作者: dqr_infinity","link":"链接: ","source":"来源: living happy and healthy","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '支持40条指令P4_Verilog_CPU',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: flase,
+  isToc: true,
+  postUpdate: '2023-11-21 02:04:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/humian.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="living happy and healthy"><span class="site-name">living happy and healthy</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">支持40条指令P4_Verilog_CPU</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-10T09:48:31.000Z" title="发表于 2023-11-10 17:48:31">2023-11-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-20T18:04:15.270Z" title="更新于 2023-11-21 02:04:15">2023-11-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%BB%84/">计组</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="支持40条指令P4_Verilog_CPU"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="P4-Verilog-CPU-Design-Document"><a href="#P4-Verilog-CPU-Design-Document" class="headerlink" title="P4-Verilog-CPU-Design-Document"></a><center>P4-Verilog-CPU-Design-Document</center></h1><div align = "right">——22373362杜启嵘</div>	
+
+<h2 id="零-数据通路描述-P4设计文档中最好加上P3图"><a href="#零-数据通路描述-P4设计文档中最好加上P3图" class="headerlink" title="零.数据通路描述(P4设计文档中最好加上P3图)"></a>零.数据通路描述(P4设计文档中最好加上P3图)</h2><p><img src="/./../img/image-20231121015155892.png" alt="image-20231121015155892"></p>
+<p>​	本次设计文档基于P3-logisim-CPU的设计文档完成，P4的主要任务即为将logisim电路映射到verilog代码(看图写话？)，对上次P3中实现的每个模块单独建立<code>module.v</code>，利用verilog语言对其行为进行建模，注意本次CPU设计中，不同于P3的异步复位，P4在各模块中使用<code>同步复位!!!</code>，verilog语言表示同步复位与异步复位如下代码:</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同步复位表示方法</span></span><br><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(reset) <span class="keyword">begin</span></span><br><span class="line">        PC &lt;= <span class="number">32&#x27;h0000_3000</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        PC &lt;= npc; </span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//异步复位表示方法   将复位信号加入敏感信号列表</span></span><br><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">posedge</span> reset) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(reset) <span class="keyword">begin</span></span><br><span class="line">        PC &lt;= <span class="number">32&#x27;h0000_3000</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        PC &lt;= npc;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="一-模块设计"><a href="#一-模块设计" class="headerlink" title="一.模块设计"></a>一.模块设计</h2><h3 id="1-IFU取指令单元"><a href="#1-IFU取指令单元" class="headerlink" title="1.IFU取指令单元"></a>1.IFU取指令单元</h3><p>​	IFU中存储单元有PC寄存器和存储指令的ROM。IFU中存储指令要求的ROM大小为16KiB，即4096*32bit。在verilog语言中使用寄存器数组实现对ROM的模拟，即4096个32位的寄存器。使用系统命令<code>$readmemh(&quot;code.txt,ROM&quot;)</code>将code.txt中的16进制代码读入名为ROM的数组中，由于PC同步复位到32’h0000_3000，而ROM中对应存储第一条指令的地址为0，即PC寄存器中存储的地址与真实ROM地址存在0x0000_3000差量，故设计<code>reg [31:0] tmp</code>存储实际的地址，即<code>pc-0x0000_3000</code>，进而读出指令的地址为<code>tmp[13:2]</code>。</p>
+<h4 id="1-端口定义列表"><a href="#1-端口定义列表" class="headerlink" title="1.端口定义列表:"></a>1.端口定义列表:</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td>同步复位信号</td>
+</tr>
+<tr>
+<td>npc</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>下一指令地址</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>O</td>
+<td>[31:0]</td>
+<td>当前指令地址</td>
+</tr>
+<tr>
+<td>instr</td>
+<td>O</td>
+<td>[31:0]</td>
+<td>当前执行指令</td>
+</tr>
+</tbody></table>
+<h4 id="2-设计代码"><a href="#2-设计代码" class="headerlink" title="2.设计代码:"></a>2.设计代码:</h4><p><strong>需要注意的是利用系统任务$readmemh向ROM中读入数据需要单独在initial块中进行</strong>，</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化ROM中内容</span></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="built_in">$readmemh</span>(<span class="string">&quot;code.txt&quot;</span>,ROM);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-small-tip-add-source的用法"><a href="#3-small-tip-add-source的用法" class="headerlink" title="3.small tip : add source的用法"></a>3.small tip : add source的用法</h4><p>​	对于code.txt的导入和上机时对于下载代码的导入，使用<strong>add source</strong>功能方便快捷，之前一直不知道这个功能，麻烦了好多<code>QAQ</code></p>
+<p>之前使用新建文件之后移动到该文件夹下的方法，在很多环境下无法成功读取入IM(例如机房电脑和虚拟机)，<strong>add source 插图如下</strong></p>
+<p><img src="/./../img/image-20231121015825155.png" alt="image-20231121015825155"></p>
+<p><strong>注：使用add source对代码进行改动是可以同步到原文件的!</strong></p>
+<h3 id="2-IS指令分线器"><a href="#2-IS指令分线器" class="headerlink" title="2. IS指令分线器"></a>2. IS指令分线器</h3><p>​	此模块的功能比较简单，由组合逻辑完成，传入当前运行的指令将其分割。</p>
+<h4 id="端口定义列表"><a href="#端口定义列表" class="headerlink" title="端口定义列表:"></a>端口定义列表:</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>instr</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>输入执行指令码</td>
+</tr>
+<tr>
+<td>opcode</td>
+<td>O</td>
+<td>[5:0]</td>
+<td>操作码</td>
+</tr>
+<tr>
+<td>rs</td>
+<td>O</td>
+<td>[4:0]</td>
+<td>rs</td>
+</tr>
+<tr>
+<td>rt</td>
+<td>O</td>
+<td>[4:0]</td>
+<td>rt</td>
+</tr>
+<tr>
+<td>rd</td>
+<td>O</td>
+<td>[4:0]</td>
+<td>rd</td>
+</tr>
+<tr>
+<td>shamt</td>
+<td>O</td>
+<td>[4:0]</td>
+<td>移位</td>
+</tr>
+<tr>
+<td>funct</td>
+<td>O</td>
+<td>[5:0]</td>
+<td>功能码</td>
+</tr>
+<tr>
+<td>imm</td>
+<td>O</td>
+<td>[15:0]</td>
+<td>立即数</td>
+</tr>
+<tr>
+<td>address</td>
+<td>O</td>
+<td>[25:0]</td>
+<td>J类指令跳转地址</td>
+</tr>
+</tbody></table>
+<h3 id="3-NPC地址计算单元"><a href="#3-NPC地址计算单元" class="headerlink" title="3. NPC地址计算单元"></a>3. NPC地址计算单元</h3><h4 id="端口定义列表-1"><a href="#端口定义列表-1" class="headerlink" title="端口定义列表:"></a>端口定义列表:</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pc</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>当前地址</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>B类跳转地址</td>
+</tr>
+<tr>
+<td>j_address</td>
+<td>I</td>
+<td>[25:0]</td>
+<td>J类跳转地址</td>
+</tr>
+<tr>
+<td>reg_address</td>
+<td>I</td>
+<td>[31:0]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="4-GRF寄存器堆"><a href="#4-GRF寄存器堆" class="headerlink" title="4. GRF寄存器堆"></a>4. GRF寄存器堆</h3><h4 id="端口定义列表-2"><a href="#端口定义列表-2" class="headerlink" title="端口定义列表"></a>端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td>同步复位信号</td>
+</tr>
+<tr>
+<td>rs</td>
+<td>I</td>
+<td>[4:0]</td>
+<td>读寄存器1</td>
+</tr>
+<tr>
+<td>rt</td>
+<td>I</td>
+<td>[4:0]</td>
+<td>读寄存器2</td>
+</tr>
+<tr>
+<td>rd</td>
+<td>I</td>
+<td>5</td>
+<td>写寄存器</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>I</td>
+<td>1</td>
+<td>写入使能</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>当前指令地址</td>
+</tr>
+<tr>
+<td>writedata</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>写入</td>
+</tr>
+<tr>
+<td>readdata1</td>
+<td>O</td>
+<td>[31:0]</td>
+<td>寄存器1中存储的数值</td>
+</tr>
+<tr>
+<td>readdata2</td>
+<td>O</td>
+<td>[31:0]</td>
+<td>寄存器2中存储的数值</td>
+</tr>
+</tbody></table>
+<h3 id="5-ALU计算单元"><a href="#5-ALU计算单元" class="headerlink" title="5. ALU计算单元"></a>5. ALU计算单元</h3><h4 id="端口定义列表-3"><a href="#端口定义列表-3" class="headerlink" title="端口定义列表"></a>端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>src_A</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>操作数1</td>
+</tr>
+<tr>
+<td>src_B</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>操作数2</td>
+</tr>
+<tr>
+<td>ALUOp</td>
+<td>I</td>
+<td>[3:0]</td>
+<td>ALU操作类型</td>
+</tr>
+<tr>
+<td>shamt</td>
+<td>I</td>
+<td>[4:0]</td>
+<td>移位量</td>
+</tr>
+<tr>
+<td>flowjudge</td>
+<td>I</td>
+<td>1</td>
+<td>是否进行溢出判断(目前只有addi)</td>
+</tr>
+<tr>
+<td>equal</td>
+<td>O</td>
+<td>1</td>
+<td>判断两个操作数是否相等</td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>O</td>
+<td>1</td>
+<td>溢出信号</td>
+</tr>
+<tr>
+<td>result</td>
+<td>O</td>
+<td>[31:0]</td>
+<td>计算结果</td>
+</tr>
+</tbody></table>
+<h3 id="6-Controller控制器"><a href="#6-Controller控制器" class="headerlink" title="6. Controller控制器"></a>6. Controller控制器</h3><p>​	采用与或门的思路对指令进行识别并产生相应的控制信号</p>
+<h4 id="1-端口定义列表-1"><a href="#1-端口定义列表-1" class="headerlink" title="1.端口定义列表:"></a>1.端口定义列表:</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>opcode</td>
+<td>I</td>
+<td>[5:0]</td>
+<td>操作码</td>
+</tr>
+<tr>
+<td>funct</td>
+<td>I</td>
+<td>[5:0]</td>
+<td>功能码</td>
+</tr>
+<tr>
+<td>MemtoReg</td>
+<td>O</td>
+<td>1</td>
+<td>选择将DM中的数据存储到GRF</td>
+</tr>
+<tr>
+<td>RegDst</td>
+<td>O</td>
+<td>1</td>
+<td>选择写入寄存器地址(只有R型指令有效)</td>
+</tr>
+<tr>
+<td>ALUSrc</td>
+<td>O</td>
+<td>1</td>
+<td>选择ALU第二个操作数(RD2&#x2F;imm_32)</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>O</td>
+<td>1</td>
+<td>寄存器堆写入使能信号</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>O</td>
+<td>1</td>
+<td>DM中RAM写入使能信号</td>
+</tr>
+<tr>
+<td>flowjudge</td>
+<td>O</td>
+<td>1</td>
+<td>进行运算溢出判断(当前指令集中只有addi有效)</td>
+</tr>
+<tr>
+<td>shiftvar</td>
+<td>O</td>
+<td>1</td>
+<td>选择以寄存器的[4:0]位进行移位</td>
+</tr>
+<tr>
+<td>ralink</td>
+<td>O</td>
+<td>1</td>
+<td>定向向31号寄存器中写入(jal指令)</td>
+</tr>
+<tr>
+<td>PCtoReg</td>
+<td>O</td>
+<td>1</td>
+<td>将PC+4值作为写入数据存入寄存器堆(jal&#x2F;jalr)</td>
+</tr>
+<tr>
+<td>EXTOp</td>
+<td>O</td>
+<td>1</td>
+<td>对立即数进行符号&#x2F;0扩展</td>
+</tr>
+<tr>
+<td>branch</td>
+<td>O</td>
+<td>1</td>
+<td>是否为B类跳转指令</td>
+</tr>
+<tr>
+<td>branchOp</td>
+<td>O</td>
+<td>[2:0]</td>
+<td>对B类跳转指令进行编码</td>
+</tr>
+<tr>
+<td>ALUOp</td>
+<td>O</td>
+<td>[3:0]</td>
+<td>ALU操作控制信号</td>
+</tr>
+<tr>
+<td>LSOp</td>
+<td>O</td>
+<td>[2:0]</td>
+<td>DM操作控制信号</td>
+</tr>
+<tr>
+<td>NPCOp</td>
+<td>O</td>
+<td>[1:0]</td>
+<td>NPC地址选择信号</td>
+</tr>
+</tbody></table>
+<p><strong>注：控制信号在对应使用模块中进行说明，P4的控制信号中取消了P3中的MemRead信号，感觉上要简洁一些</strong></p>
+<h4 id="2-设计代码示例——我的控制器风格"><a href="#2-设计代码示例——我的控制器风格" class="headerlink" title="2.设计代码示例——我的控制器风格"></a>2.设计代码示例——我的控制器风格</h4><p>​	设计代码比较长，只举例说明，<strong>好传统是利用localparam定义opcode和funct，用case语句进行分支选择而不是if-else</strong></p>
+<p><strong>注意：每次信号传入时的寄存器集体清零操作</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> Controller(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">5</span>:<span class="number">0</span>] opcode,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">5</span>:<span class="number">0</span>] funct,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> MemtoReg,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> MemWrite,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> ALUSrc,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> RegWrite,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> EXTOp,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> RegDst,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> PCtoReg,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> ralink,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> shiftvar,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> flowjudge,   <span class="comment">//由于要求实现的add sub不进行溢出判断 应该当前实现的指令中需要判断的只有addi</span></span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> Branch,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">wire</span> [<span class="number">2</span>:<span class="number">0</span>] branchOp,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">wire</span> [<span class="number">1</span>:<span class="number">0</span>] NPCOp,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">wire</span> [<span class="number">3</span>:<span class="number">0</span>] ALUOp,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">wire</span> [<span class="number">2</span>:<span class="number">0</span>] LSOp</span><br><span class="line">);</span><br><span class="line"><span class="comment">//有寄存器赋初值问题</span></span><br><span class="line"><span class="comment">//R型指令</span></span><br><span class="line"><span class="comment">//(运算)</span></span><br><span class="line"><span class="keyword">reg</span> op_add;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">localparam</span> R = <span class="number">6&#x27;b000000</span>;</span><br><span class="line"><span class="keyword">localparam</span> _add = <span class="number">6&#x27;b100000</span>;</span><br><span class="line">...</span><br><span class="line">    </span><br><span class="line"><span class="comment">//识别指令</span></span><br><span class="line"><span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line"><span class="comment">//控制信号清0</span></span><br><span class="line">op_add = <span class="number">1&#x27;b0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span>(opcode)</span><br><span class="line"></span><br><span class="line">R :</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">case</span>(funct)</span><br><span class="line">_add : op_add = <span class="number">1&#x27;b1</span>;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">  </span><br><span class="line">...</span><br><span class="line">    </span><br><span class="line"><span class="keyword">endcase</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//连接输出 </span></span><br><span class="line">RegWrite =  op_add | ... ;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-指令与控制信号汇总表"><a href="#3-指令与控制信号汇总表" class="headerlink" title="3.指令与控制信号汇总表"></a>3.指令与控制信号汇总表</h4><table>
+<thead>
+<tr>
+<th>控制信号</th>
+<th>有效指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MemtoReg</td>
+<td>lw,lh,lb,lhu,lbu</td>
+</tr>
+<tr>
+<td>RegDst</td>
+<td>add,sub,and,or,xor,nor,sll,srl,sra,sllv,srlv,srav,slt,sltu,jr,jalr(R型指令)</td>
+</tr>
+<tr>
+<td>ALUSrc</td>
+<td>sw,lw,sh,sb,lh,lhu,lb,lhu,lui,addi,addiu,andi,ori,xori,slti,sltiu</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>slt,sltu,xor,nor,or,and,add,sub,lui,ori,andi,xori,addi,addiu,lw,lh,lb,lhu,lbu,jal,jalr,sll,srl,sra,sllv,srlv,srav,slti,sltiu</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>sw,sb,sh</td>
+</tr>
+<tr>
+<td>flowjudge</td>
+<td>addi</td>
+</tr>
+<tr>
+<td>shiftvar</td>
+<td>sllv,srlv,srav</td>
+</tr>
+<tr>
+<td>ralink</td>
+<td>jal</td>
+</tr>
+<tr>
+<td>PCtoReg</td>
+<td>jal,jalr</td>
+</tr>
+<tr>
+<td>EXTOp</td>
+<td>addi,addiu,slti,sltiu,sw,sh,sb,lw,lh,lb,lhu,lbu,beq,bne,bgtz,bgez,bltz,blez</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>beq,bne,bgtz,bgez,bltz,blez</td>
+</tr>
+<tr>
+<td>branchOp[2]</td>
+<td>bne</td>
+</tr>
+<tr>
+<td>branchOp[1]</td>
+<td>bgtz,blez</td>
+</tr>
+<tr>
+<td>branchOp[0]</td>
+<td>bgez,blez,bltz</td>
+</tr>
+<tr>
+<td>ALUOp[3]</td>
+<td>srl,srlv,sra,srav,slt,sltu,slti,sltiu</td>
+</tr>
+<tr>
+<td>ALUOp[2]</td>
+<td>sll,sllv,xori,nor,lui,xor</td>
+</tr>
+<tr>
+<td>ALUOp[1]</td>
+<td>add,addi,addiu,sub,nor,sll,sllv,slt,slti,sltiu,sw,sh,sb,lw,lh,lhu,lb,lbu</td>
+</tr>
+<tr>
+<td>ALUOp[0]</td>
+<td>or,ori,sub,xor,xori,sll,sllv,sra,srav,sltu,sltiu</td>
+</tr>
+<tr>
+<td>NPCOp[1]</td>
+<td>jalr,jr,j,jal</td>
+</tr>
+<tr>
+<td>NPCOp[0]</td>
+<td>jalr,jr,beq,bne,bgtz,bgez,bltz,blez</td>
+</tr>
+<tr>
+<td>LSOp[2]</td>
+<td>lh,lhu,lb,lbu</td>
+</tr>
+<tr>
+<td>LSOp[1]</td>
+<td>lb,lbu,lw,sb</td>
+</tr>
+<tr>
+<td>LSOp[0]</td>
+<td>sh,lw,lhu,lbu</td>
+</tr>
+</tbody></table>
+<h3 id="7-EXT符号扩展单元"><a href="#7-EXT符号扩展单元" class="headerlink" title="7. EXT符号扩展单元"></a>7. EXT符号扩展单元</h3><h4 id="端口定义列表-4"><a href="#端口定义列表-4" class="headerlink" title="端口定义列表"></a>端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>imm</td>
+<td>I</td>
+<td>[15:0]</td>
+<td>进行扩展的16位立即数</td>
+</tr>
+<tr>
+<td>EXTOp</td>
+<td>I</td>
+<td>1</td>
+<td>选择进行符号扩展或0扩展</td>
+</tr>
+<tr>
+<td>imm_31</td>
+<td>O</td>
+<td>[31:0]</td>
+<td>进行扩展后的结果</td>
+</tr>
+</tbody></table>
+<h3 id="8-DM数据存储"><a href="#8-DM数据存储" class="headerlink" title="8. DM数据存储"></a>8. DM数据存储</h3><h4 id="1-端口定义列表-2"><a href="#1-端口定义列表-2" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>address</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>写入&#x2F;读取地址</td>
+</tr>
+<tr>
+<td>datawrite</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>写入数据</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>I</td>
+<td>1</td>
+<td>RAM写入使能信号</td>
+</tr>
+<tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td>同步复位信号</td>
+</tr>
+<tr>
+<td>LSOp</td>
+<td>I</td>
+<td>[2:0]</td>
+<td>对&#x2F;字&#x2F;半字&#x2F;字节操作</td>
+</tr>
+<tr>
+<td>readata</td>
+<td>O</td>
+<td>[31:0]</td>
+<td>读出数据</td>
+</tr>
+</tbody></table>
+<h5 id="LSOp编码与对应指令"><a href="#LSOp编码与对应指令" class="headerlink" title="LSOp编码与对应指令"></a>LSOp编码与对应指令</h5><table>
+<thead>
+<tr>
+<th>LSOp编码</th>
+<th>对应的存&#x2F;取指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>000</td>
+<td>sw</td>
+</tr>
+<tr>
+<td>001</td>
+<td>sh</td>
+</tr>
+<tr>
+<td>010</td>
+<td>sb</td>
+</tr>
+<tr>
+<td>011</td>
+<td>lw</td>
+</tr>
+<tr>
+<td>100</td>
+<td>lh</td>
+</tr>
+<tr>
+<td>101</td>
+<td>lhu</td>
+</tr>
+<tr>
+<td>110</td>
+<td>lb</td>
+</tr>
+<tr>
+<td>111</td>
+<td>lbu</td>
+</tr>
+</tbody></table>
+<h4 id="2-设计代码-1"><a href="#2-设计代码-1" class="headerlink" title="2.设计代码:"></a>2.设计代码:</h4><p>​	依旧是延续P3中先将对应地址处数据读出再插入的思想，其中存储为时序逻辑，读取为组合逻辑。(但是写起来要比logisim简单太多),使用3072个32位寄存器数组模拟RAM。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要求的容量为12KB 3072*32bit</span></span><br><span class="line"><span class="keyword">module</span> DM(</span><br><span class="line"><span class="keyword">input</span> clk,</span><br><span class="line"><span class="keyword">input</span> reset,</span><br><span class="line"><span class="keyword">input</span> MemWrite,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] LSOp,  <span class="comment">//w h b</span></span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] address,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] datawrite,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] dataread</span><br><span class="line">);</span><br><span class="line"><span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] RAM[<span class="number">3071</span>:<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">localparam</span> sw = <span class="number">3&#x27;b000</span>;</span><br><span class="line"><span class="keyword">localparam</span> sh = <span class="number">3&#x27;b001</span>;</span><br><span class="line"><span class="keyword">localparam</span> sb = <span class="number">3&#x27;b010</span>;</span><br><span class="line"><span class="keyword">localparam</span> lw = <span class="number">3&#x27;b011</span>;</span><br><span class="line"><span class="keyword">localparam</span> lh = <span class="number">3&#x27;b100</span>;</span><br><span class="line"><span class="keyword">localparam</span> lhu = <span class="number">3&#x27;b101</span>;</span><br><span class="line"><span class="keyword">localparam</span> lb = <span class="number">3&#x27;b110</span>;</span><br><span class="line"><span class="keyword">localparam</span> lbu = <span class="number">3&#x27;b111</span>;</span><br><span class="line"><span class="comment">//读出该地址处存储的数据</span></span><br><span class="line"><span class="keyword">reg</span> tmp = RAM[address[<span class="number">13</span>:<span class="number">2</span>]];</span><br><span class="line"><span class="comment">// write to RAM</span></span><br><span class="line"><span class="keyword">integer</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(reset) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; <span class="number">3072</span> ; i = i + <span class="number">1</span>) <span class="keyword">begin</span></span><br><span class="line">            RAM[i] &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (MemWrite) <span class="keyword">begin</span> <span class="comment">//对LSOp进行分类</span></span><br><span class="line">    <span class="keyword">if</span>(LSOp == sw) <span class="keyword">begin</span></span><br><span class="line">        RAM[address[<span class="number">13</span>:<span class="number">2</span>]] &lt;= datawrite;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LSOp == sh) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(address[<span class="number">1</span>] == <span class="number">1&#x27;b1</span>) <span class="keyword">begin</span></span><br><span class="line">            RAM[address[<span class="number">13</span>:<span class="number">2</span>]] &lt;= &#123;datawrite[<span class="number">15</span>:<span class="number">0</span>],tmp[<span class="number">15</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            RAM[address[<span class="number">13</span>:<span class="number">2</span>]] &lt;= &#123;tmp[<span class="number">31</span>:<span class="number">16</span>],datawrite[<span class="number">15</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LSOp == sb) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b00</span>) <span class="keyword">begin</span></span><br><span class="line">            RAM[address[<span class="number">13</span>:<span class="number">2</span>]] &lt;= &#123;tmp[<span class="number">31</span>:<span class="number">8</span>],datawrite[<span class="number">7</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b01</span>) <span class="keyword">begin</span></span><br><span class="line">            RAM[address[<span class="number">13</span>:<span class="number">2</span>]] &lt;= &#123;tmp[<span class="number">31</span>:<span class="number">16</span>],datawrite[<span class="number">7</span>:<span class="number">0</span>],tmp[<span class="number">7</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b10</span>) <span class="keyword">begin</span></span><br><span class="line">            RAM[address[<span class="number">13</span>:<span class="number">2</span>]] &lt;= &#123;tmp[<span class="number">31</span>:<span class="number">24</span>],datawrite[<span class="number">7</span>:<span class="number">0</span>],tmp[<span class="number">15</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            RAM[address[<span class="number">13</span>:<span class="number">2</span>]] &lt;= &#123;datawrite[<span class="number">7</span>:<span class="number">0</span>],tmp[<span class="number">23</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span>  </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//read from RAM</span></span><br><span class="line"><span class="keyword">always</span>@(*)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(LSOp == lw) <span class="keyword">begin</span></span><br><span class="line">        dataread = tmp;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LSOp == lh) <span class="keyword">begin</span>  <span class="comment">// sign-extend</span></span><br><span class="line">        <span class="keyword">if</span>(address[<span class="number">1</span>] == <span class="number">1&#x27;b0</span>) <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;&#123;<span class="number">16</span>&#123;tmp[<span class="number">15</span>]&#125;&#125;,tmp[<span class="number">15</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;&#123;<span class="number">16</span>&#123;tmp[<span class="number">31</span>]&#125;&#125;,tmp[<span class="number">31</span>:<span class="number">16</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LSOp == lhu) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(address[<span class="number">1</span>] == <span class="number">1&#x27;b0</span>) <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;<span class="number">16&#x27;b0</span>,tmp[<span class="number">15</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;<span class="number">16&#x27;b0</span>,tmp[<span class="number">31</span>:<span class="number">16</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (LSOp == lb) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b00</span>) <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;&#123;<span class="number">24</span>&#123;tmp[<span class="number">7</span>]&#125;&#125;,tmp[<span class="number">7</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b01</span>) <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;&#123;<span class="number">24</span>&#123;tmp[<span class="number">15</span>]&#125;&#125;,tmp[<span class="number">15</span>:<span class="number">8</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b10</span>) <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;&#123;<span class="number">24</span>&#123;tmp[<span class="number">23</span>]&#125;&#125;,tmp[<span class="number">23</span>:<span class="number">16</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;&#123;<span class="number">24</span>&#123;tmp[<span class="number">31</span>]&#125;&#125;,tmp[<span class="number">31</span>:<span class="number">24</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b00</span>) <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;<span class="number">24&#x27;b0</span>,tmp[<span class="number">7</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b01</span>) <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;<span class="number">24&#x27;b0</span>,tmp[<span class="number">15</span>:<span class="number">8</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (address[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b10</span>) <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;<span class="number">24&#x27;b0</span>,tmp[<span class="number">23</span>:<span class="number">16</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            dataread = &#123;<span class="number">24&#x27;b0</span>,tmp[<span class="number">31</span>:<span class="number">24</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-Sel-B-B类指令判断单元"><a href="#9-Sel-B-B类指令判断单元" class="headerlink" title="9.Sel-B B类指令判断单元"></a>9.Sel-B B类指令判断单元</h3><h4 id="1-端口定义列表-3"><a href="#1-端口定义列表-3" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>I</td>
+<td>[31:0]</td>
+<td>rs寄存器中的值</td>
+</tr>
+<tr>
+<td>judge</td>
+<td>I</td>
+<td>[4:0]</td>
+<td>区分bltz&#x2F;bgez</td>
+</tr>
+<tr>
+<td>branchOp</td>
+<td>I</td>
+<td>[2:0]</td>
+<td>指令编码</td>
+</tr>
+<tr>
+<td>equal</td>
+<td>I</td>
+<td>1</td>
+<td>beq判断相等</td>
+</tr>
+<tr>
+<td>branch</td>
+<td>I</td>
+<td>1</td>
+<td>是否为B类指令</td>
+</tr>
+<tr>
+<td>result</td>
+<td>O</td>
+<td>1</td>
+<td>执行B类跳转指令</td>
+</tr>
+</tbody></table>
+<h5 id="branchOp编码与对应指令"><a href="#branchOp编码与对应指令" class="headerlink" title="branchOp编码与对应指令"></a>branchOp编码与对应指令</h5><table>
+<thead>
+<tr>
+<th>branchOp编码</th>
+<th>对应指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>000</td>
+<td>beq</td>
+</tr>
+<tr>
+<td>001</td>
+<td>bltz</td>
+</tr>
+<tr>
+<td>001</td>
+<td>bgez</td>
+</tr>
+<tr>
+<td>010</td>
+<td>bgtz</td>
+</tr>
+<tr>
+<td>011</td>
+<td>blez</td>
+</tr>
+<tr>
+<td>100</td>
+<td>bne</td>
+</tr>
+</tbody></table>
+<h4 id="2-设计代码-2"><a href="#2-设计代码-2" class="headerlink" title="2.设计代码"></a>2.设计代码</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> SelectB(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] data,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">4</span>:<span class="number">0</span>] judge, <span class="comment">//实际上只用最后一位</span></span><br><span class="line"><span class="keyword">input</span> equal,</span><br><span class="line"><span class="keyword">input</span> Branch,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] branchOp,</span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> result</span><br><span class="line">);</span><br><span class="line"><span class="keyword">localparam</span> beq = <span class="number">3&#x27;b000</span>;</span><br><span class="line"><span class="keyword">localparam</span> bgez_bltz = <span class="number">3&#x27;b001</span>;</span><br><span class="line"><span class="keyword">localparam</span> bgtz = <span class="number">3&#x27;b010</span>;</span><br><span class="line"><span class="keyword">localparam</span> blez = <span class="number">3&#x27;b011</span>;</span><br><span class="line"><span class="keyword">localparam</span> bne = <span class="number">3&#x27;b100</span>;</span><br><span class="line"><span class="keyword">always</span>@(*)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">case</span>(branchOp)</span><br><span class="line">    beq : result = equal &amp; Branch;</span><br><span class="line">    bne : result = (~equal) &amp; Branch;</span><br><span class="line">    bgez_bltz :</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(judge[<span class="number">0</span>] == <span class="number">1&#x27;b1</span>) <span class="keyword">begin</span></span><br><span class="line">            result = (<span class="built_in">$signed</span>(data) &gt;= <span class="number">32&#x27;b0</span>) &amp; Branch;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            result = (<span class="built_in">$signed</span>(data) &lt; <span class="number">32&#x27;b0</span>) &amp; Branch;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    bgtz : result = (<span class="built_in">$signed</span>(data) &gt; <span class="number">32&#x27;b0</span>) &amp; Branch; </span><br><span class="line">    blez : result = (<span class="built_in">$signed</span>(data) &lt;= <span class="number">32&#x27;b0</span>) &amp; Branch;</span><br><span class="line">    <span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="10-MUX多路选择器集成文件"><a href="#10-MUX多路选择器集成文件" class="headerlink" title="10.MUX多路选择器集成文件"></a>10.MUX多路选择器集成文件</h3><p>​	将电路中用到的四个多路选择器在MUX.v中保存为四个模块，在mips.v中进行调用.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//寄存器写入地址选择 rt / rd / ra</span></span><br><span class="line"><span class="keyword">module</span> selTorD (</span><br><span class="line"><span class="keyword">input</span> [<span class="number">4</span>:<span class="number">0</span>] rt,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">4</span>:<span class="number">0</span>] rd,</span><br><span class="line"><span class="keyword">input</span> <span class="keyword">wire</span> RegDst,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">4</span>:<span class="number">0</span>] r0</span><br><span class="line">);</span><br><span class="line"><span class="keyword">assign</span> r0 = (RegDst == <span class="number">1&#x27;b1</span>) ? rd : rt;</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// rtd / ra?</span></span><br><span class="line"><span class="keyword">module</span> selR0orRA(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">4</span>:<span class="number">0</span>] r0,</span><br><span class="line"><span class="keyword">input</span> ralink,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">4</span>:<span class="number">0</span>] RegAddr</span><br><span class="line">);</span><br><span class="line"><span class="keyword">assign</span> RegAddr = (ralink == <span class="number">1&#x27;b1</span>) ? <span class="number">5&#x27;b11111</span> : r0;</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//寄存器写入数据选择</span></span><br><span class="line"><span class="keyword">module</span> ALUorDM(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] ALUresult,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] DMdata,</span><br><span class="line"><span class="keyword">input</span> MemtoReg,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] data0</span><br><span class="line">);</span><br><span class="line"><span class="keyword">assign</span> data0 = (MemtoReg == <span class="number">1&#x27;b1</span>) ? DMdata : ALUresult;</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> data0orPC(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] data0,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] pc,</span><br><span class="line"><span class="keyword">input</span> PCtoReg,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] RegData</span><br><span class="line">);</span><br><span class="line"><span class="keyword">assign</span> RegData = (PCtoReg == <span class="number">1&#x27;b1</span>) ? pc : data0;</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ALU移位选择</span></span><br><span class="line"><span class="keyword">module</span> RegorShamt(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">4</span>:<span class="number">0</span>] shamt,</span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] readdata1,</span><br><span class="line"><span class="keyword">input</span> shiftvar,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">4</span>:<span class="number">0</span>] shift</span><br><span class="line">);</span><br><span class="line"><span class="keyword">assign</span> shift = (shiftvar == <span class="number">1&#x27;b1</span>) ? readdata1[<span class="number">4</span>:<span class="number">0</span>] : shamt;</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ALU src_B选择</span></span><br><span class="line"><span class="keyword">module</span> ALUsrc_B(</span><br><span class="line"><span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] readdata2,</span><br><span class="line"><span class="keyword">input</span>[<span class="number">31</span>:<span class="number">0</span>] offset, <span class="comment">//imm_32</span></span><br><span class="line"><span class="keyword">input</span> ALUSrc,</span><br><span class="line"><span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] DatatoSrcB</span><br><span class="line">);</span><br><span class="line"><span class="keyword">assign</span> DatatoSrcB = (ALUSrc == <span class="number">1&#x27;b1</span>) ? offset : readdata2;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="11-顶层电路连接"><a href="#11-顶层电路连接" class="headerlink" title="11.顶层电路连接"></a>11.顶层电路连接</h3><p>​	顶层电路连接主要是利用与端口位宽配对的wire类型变量连接起实例化的各个模块。模块实例化使用指定端口的模式例如</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">IS top_is(</span><br><span class="line">    <span class="variable">.instr</span>(instr),</span><br><span class="line">    <span class="variable">.opcode</span>(opcode),</span><br><span class="line">    <span class="variable">.rs</span>(rs),</span><br><span class="line">    <span class="variable">.rt</span>(rt),</span><br><span class="line">    <span class="variable">.rd</span>(rd),</span><br><span class="line">    <span class="variable">.shamt</span>(shamt),</span><br><span class="line">    <span class="variable">.funct</span>(funct),</span><br><span class="line">    <span class="variable">.imm</span>(imm),</span><br><span class="line">    <span class="variable">.address</span>(j_address)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：确保在顶层电路中的所有连线(wire型变量)都要提前声明好位宽，我出的大部分bug都是因为这个原因，用到一个新的连线时立马声明该变量，否则ISE运行并不会报错，而是将该变量作为位宽为1处理，导致数据丢失，体现在在仿真时出现红线或蓝线，但是这种情况下ISE会给WARNING</strong></p>
+<p><strong>WARNING:</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WARNING: File <span class="string">&quot;C:/Users/123/Desktop/P4-CPU/mips.v&quot;</span> Line <span class="number">92</span>.  For <span class="keyword">instance</span> uut/top_ALUorDM/, width <span class="number">32</span> of formal port ALUresult is <span class="keyword">not</span> equal to width <span class="number">1</span> of actual signal ALUresult.</span><br></pre></td></tr></table></figure>
+
+<h2 id="二-test-scheme"><a href="#二-test-scheme" class="headerlink" title="二.test scheme"></a>二.test scheme</h2><p>​	编写测试数据如下，对顶层模块建立testbench进行仿真模拟即可而不需要对各个模块分别模拟。</p>
+<figure class="highlight mips"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lui </span>$<span class="number">0</span>, <span class="number">19569</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">1</span>, <span class="number">39483</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">2</span>, <span class="number">18131</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">3</span>, <span class="number">22132</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">4</span>, <span class="number">24751</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">5</span>, <span class="number">54167</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">6</span>, <span class="number">26566</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">7</span>, <span class="number">45168</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">8</span>, <span class="number">33552</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">9</span>, <span class="number">8645</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">10</span>, <span class="number">60414</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">11</span>, <span class="number">33459</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">12</span>, <span class="number">53176</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">13</span>, <span class="number">47958</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">14</span>, <span class="number">2778</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">15</span>, <span class="number">60761</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">16</span>, <span class="number">2966</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">17</span>, <span class="number">51490</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">18</span>, <span class="number">46369</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">19</span>, <span class="number">35006</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">20</span>, <span class="number">64454</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">21</span>, <span class="number">52806</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">22</span>, <span class="number">21466</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">23</span>, <span class="number">39517</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">24</span>, <span class="number">11681</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">25</span>, <span class="number">46088</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">26</span>, <span class="number">61510</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">27</span>, <span class="number">30570</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">28</span>, <span class="number">37526</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">29</span>, <span class="number">15029</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">30</span>, <span class="number">40281</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="number">31</span>, <span class="number">43390</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">0</span> $<span class="number">17</span>, <span class="number">19261</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">1</span> $<span class="number">19</span>, <span class="number">12907</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">2</span> $<span class="number">20</span>, <span class="number">48520</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">3</span> $<span class="number">23</span>, <span class="number">60075</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">4</span> $<span class="number">13</span>, <span class="number">57134</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">5</span> $<span class="number">19</span>, <span class="number">17016</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">6</span> $<span class="number">3</span>, <span class="number">58700</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">7</span> $<span class="number">3</span>, <span class="number">22848</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">8</span> $<span class="number">20</span>, <span class="number">15970</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">9</span> $<span class="number">13</span>, <span class="number">34258</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">10</span> $<span class="number">18</span>, <span class="number">49197</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">11</span> $<span class="number">4</span>, <span class="number">11904</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">12</span> $<span class="number">7</span>, <span class="number">54536</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">13</span> $<span class="number">3</span>, <span class="number">6104</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">14</span> $<span class="number">23</span>, <span class="number">16686</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">15</span> $<span class="number">2</span>, <span class="number">41533</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">16</span> $<span class="number">16</span>, <span class="number">59774</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">17</span> $<span class="number">25</span>, <span class="number">45854</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">18</span> $<span class="number">3</span>, <span class="number">64205</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">19</span> $<span class="number">30</span>, <span class="number">56319</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">20</span> $<span class="number">13</span>, <span class="number">26681</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">21</span> $<span class="number">28</span>, <span class="number">32553</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">22</span> $<span class="number">17</span>, <span class="number">3876</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">23</span> $<span class="number">16</span>, <span class="number">54173</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">24</span> $<span class="number">11</span>, <span class="number">45867</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">25</span> $<span class="number">24</span>, <span class="number">43728</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">26</span> $<span class="number">24</span>, <span class="number">33566</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">27</span> $<span class="number">5</span>, <span class="number">43487</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">28</span> $<span class="number">24</span>, <span class="number">31006</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">29</span> $<span class="number">4</span>, <span class="number">8142</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">30</span> $<span class="number">10</span>, <span class="number">38515</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="number">31</span> $<span class="number">16</span>, <span class="number">40043</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t0</span>, $<span class="built_in">zero</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t1</span>, $<span class="built_in">zero</span>, <span class="number">12288</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t2</span>, $<span class="built_in">zero</span>, <span class="number">4</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">at</span>, <span class="number">0xffff</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">at</span>, $<span class="built_in">at</span>, <span class="number">0xdf92</span></span><br><span class="line"><span class="symbol">label_2bc0125f7fa011ee863a00007f000001:</span></span><br><span class="line"><span class="keyword">beq </span>$<span class="built_in">t0</span>, $<span class="built_in">t1</span>, label_<span class="symbol">2b</span>c<span class="symbol">012607f</span>a011ee<span class="symbol">8f</span>8e<span class="symbol">00007f</span>000001</span><br><span class="line"><span class="keyword">nop</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">sw </span>$<span class="built_in">v0</span>, <span class="number">8302</span>($<span class="built_in">at</span>)</span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">v0</span>, $<span class="built_in">v0</span>, $<span class="built_in">v1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">t0</span>, $<span class="built_in">t0</span>, $<span class="built_in">t2</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">at</span>, $<span class="built_in">at</span>, $<span class="built_in">t2</span></span><br><span class="line"><span class="keyword">beq </span>$<span class="number">0</span>, $<span class="number">0</span>, label_<span class="symbol">2b</span>c<span class="symbol">0125f</span><span class="symbol">7f</span>a011ee863a<span class="symbol">00007f</span>000001</span><br><span class="line"><span class="keyword">nop</span></span><br><span class="line"><span class="keyword"></span><span class="symbol">label_2bc012607fa011ee8f8e00007f000001:</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s4</span>, $<span class="built_in">v1</span>, <span class="number">34376</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">a1</span>, <span class="number">32325</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">a1</span>, $<span class="built_in">v0</span>, $<span class="built_in">v0</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">t6</span>, $<span class="built_in">s5</span>, $<span class="built_in">a1</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s3</span>, <span class="number">54505</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">v0</span>, $<span class="built_in">t6</span>, $<span class="built_in">t9</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s3</span>, $<span class="built_in">t6</span>, $<span class="built_in">a3</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s7</span>, $<span class="built_in">s1</span>, $<span class="built_in">t9</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">t8</span>, <span class="number">35300</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t1</span>, $<span class="built_in">s7</span>, <span class="number">45350</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">a0</span>, $<span class="built_in">s0</span>, $<span class="built_in">s0</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t1</span>, $<span class="built_in">s6</span>, $<span class="built_in">s1</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t6</span>, $<span class="built_in">t8</span>, <span class="number">412</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">a2</span>, $<span class="built_in">t0</span>, $<span class="built_in">t2</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s4</span>, <span class="number">32853</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s5</span>, $<span class="built_in">s0</span>, $<span class="built_in">a0</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t9</span>, $<span class="built_in">s2</span>, <span class="number">11912</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t5</span>, $<span class="built_in">t6</span>, <span class="number">11999</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">t5</span>, <span class="number">56242</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t9</span>, $<span class="built_in">a2</span>, $<span class="built_in">a2</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t0</span>, $<span class="built_in">t4</span>, $<span class="built_in">a2</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t3</span>, $<span class="built_in">t9</span>, $<span class="built_in">s1</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s5</span>, $<span class="built_in">s6</span>, <span class="number">58937</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t5</span>, $<span class="built_in">a2</span>, $<span class="built_in">s3</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t7</span>, $<span class="built_in">a1</span>, <span class="number">18664</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s3</span>, $<span class="built_in">t8</span>, $<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">a0</span>, <span class="number">12092</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">t3</span>, <span class="number">64848</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">a0</span>, <span class="number">9488</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t9</span>, $<span class="built_in">s1</span>, $<span class="built_in">t8</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s7</span>, <span class="number">16221</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">v1</span>, $<span class="built_in">t4</span>, $<span class="built_in">t7</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">a0</span>, $<span class="built_in">t7</span>, <span class="number">60726</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s2</span>, <span class="number">10927</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">v0</span>, $<span class="built_in">a3</span>, <span class="number">13512</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">a1</span>, $<span class="built_in">s0</span>, <span class="number">15142</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t5</span>, $<span class="built_in">t3</span>, $<span class="built_in">t1</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s5</span>, <span class="number">2741</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s4</span>, $<span class="built_in">t8</span>, $<span class="built_in">t3</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">v0</span>, $<span class="built_in">t3</span>, $<span class="built_in">a0</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s5</span>, $<span class="built_in">s7</span>, $<span class="built_in">a0</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t5</span>, $<span class="built_in">a1</span>, <span class="number">24324</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t3</span>, $<span class="built_in">s4</span>, <span class="number">35988</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t8</span>, $<span class="built_in">s4</span>, $<span class="built_in">s1</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s6</span>, $<span class="built_in">s7</span>, $<span class="built_in">t5</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s7</span>, $<span class="built_in">t3</span>, $<span class="built_in">t2</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s3</span>, $<span class="built_in">v0</span>, $<span class="built_in">t9</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t1</span>, $<span class="built_in">s3</span>, $<span class="built_in">a3</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t8</span>, $<span class="built_in">t4</span>, $<span class="built_in">s6</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s5</span>, $<span class="built_in">t2</span>, <span class="number">23014</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s6</span>, $<span class="built_in">s3</span>, <span class="number">63729</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t9</span>, $<span class="built_in">s2</span>, <span class="number">121</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s4</span>, $<span class="built_in">v1</span>, <span class="number">34411</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">t1</span>, <span class="number">37485</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s3</span>, $<span class="built_in">a2</span>, $<span class="built_in">a0</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t6</span>, $<span class="built_in">t0</span>, $<span class="built_in">s1</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s2</span>, $<span class="built_in">s2</span>, $<span class="built_in">s1</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s5</span>, $<span class="built_in">s3</span>, $<span class="built_in">a1</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s3</span>, $<span class="built_in">s3</span>, $<span class="built_in">s1</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t3</span>, $<span class="built_in">t7</span>, $<span class="built_in">t4</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t6</span>, $<span class="built_in">s6</span>, <span class="number">24400</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s5</span>, $<span class="built_in">a1</span>, <span class="number">52111</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">t5</span>, $<span class="built_in">t9</span>, $<span class="built_in">s5</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s1</span>, <span class="number">64114</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s6</span>, $<span class="built_in">t5</span>, $<span class="built_in">v1</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s2</span>, <span class="number">50457</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">v0</span>, <span class="number">16829</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s2</span>, $<span class="built_in">t3</span>, $<span class="built_in">t7</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">a3</span>, $<span class="built_in">t9</span>, <span class="number">49220</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">a3</span>, $<span class="built_in">t0</span>, $<span class="built_in">s4</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">a3</span>, $<span class="built_in">s7</span>, $<span class="built_in">s4</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s5</span>, $<span class="built_in">s4</span>, $<span class="built_in">a2</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s0</span>, <span class="number">55025</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s1</span>, $<span class="built_in">s1</span>, $<span class="built_in">t0</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">a0</span>, $<span class="built_in">t4</span>, $<span class="built_in">t9</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">t0</span>, $<span class="built_in">s4</span>, $<span class="built_in">v0</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">a3</span>, $<span class="built_in">t3</span>, <span class="number">28342</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">v1</span>, $<span class="built_in">a1</span>, $<span class="built_in">a0</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t0</span>, $<span class="built_in">t2</span>, $<span class="built_in">s7</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">v1</span>, <span class="number">40464</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">a2</span>, <span class="number">50250</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">t1</span>, <span class="number">57460</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">v1</span>, $<span class="built_in">a2</span>, $<span class="built_in">v0</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s5</span>, $<span class="built_in">t8</span>, $<span class="built_in">t1</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s7</span>, $<span class="built_in">v1</span>, $<span class="built_in">s6</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t5</span>, $<span class="built_in">t3</span>, <span class="number">32301</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s5</span>, $<span class="built_in">t7</span>, <span class="number">40728</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s0</span>, $<span class="built_in">a0</span>, $<span class="built_in">t9</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">t3</span>, $<span class="built_in">t2</span>, $<span class="built_in">t9</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s7</span>, <span class="number">6500</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">a2</span>, $<span class="built_in">t7</span>, $<span class="built_in">t2</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s3</span>, $<span class="built_in">s0</span>, $<span class="built_in">s4</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">v0</span>, $<span class="built_in">t8</span>, $<span class="built_in">a3</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">t2</span>, <span class="number">33066</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">s7</span>, $<span class="built_in">v1</span>, $<span class="built_in">a0</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">s0</span>, $<span class="built_in">t2</span>, <span class="number">62213</span></span><br><span class="line"><span class="keyword">sub </span>$<span class="built_in">s7</span>, $<span class="built_in">s4</span>, $<span class="built_in">v0</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s1</span>, <span class="number">65402</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">a2</span>, <span class="number">47639</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">s5</span>, <span class="number">26593</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t0</span>, $<span class="built_in">zero</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t1</span>, $<span class="built_in">zero</span>, <span class="number">12288</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">t2</span>, $<span class="built_in">zero</span>, <span class="number">4</span></span><br><span class="line"><span class="keyword">lui </span>$<span class="built_in">at</span>, <span class="number">0xffff</span></span><br><span class="line"><span class="keyword">ori </span>$<span class="built_in">at</span>, $<span class="built_in">at</span>, <span class="number">0xd918</span></span><br><span class="line"><span class="symbol">label_2bc0628f7fa011ee9e7700007f000001:</span></span><br><span class="line"><span class="keyword">beq </span>$<span class="built_in">t0</span>, $<span class="built_in">t1</span>, label_<span class="symbol">2b</span>c<span class="symbol">094567f</span>a011ee<span class="symbol">879600007f</span>000001</span><br><span class="line"><span class="keyword">nop</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">lw </span>$<span class="built_in">v0</span>, <span class="number">9960</span>($<span class="built_in">at</span>)</span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">v0</span>, $<span class="built_in">v0</span>, $<span class="built_in">v1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">t0</span>, $<span class="built_in">t0</span>, $<span class="built_in">t2</span></span><br><span class="line"><span class="keyword">add </span>$<span class="built_in">at</span>, $<span class="built_in">at</span>, $<span class="built_in">t2</span></span><br><span class="line"><span class="keyword">beq </span>$<span class="number">0</span>, $<span class="number">0</span>, label_<span class="symbol">2b</span>c<span class="symbol">0628f</span><span class="symbol">7f</span>a011ee9e<span class="symbol">7700007f</span>000001</span><br><span class="line"><span class="keyword">nop</span></span><br><span class="line"><span class="keyword"></span><span class="symbol">label_2bc094567fa011ee879600007f000001:</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三-思考题"><a href="#三-思考题" class="headerlink" title="三.思考题"></a>三.思考题</h2><h4 id="1-addr信号从哪里来？addr位数为什么是-13-2"><a href="#1-addr信号从哪里来？addr位数为什么是-13-2" class="headerlink" title="1.addr信号从哪里来？addr位数为什么是[13:2]?"></a>1.addr信号从哪里来？addr位数为什么是[13:2]?</h4><p>​	addr信号来自ALU的计算结果，DM中RAM是按照字寻址，而传入的地址为字节，故左移两位，按字取地址</p>
+<h4 id="2-比较两种控制器示例"><a href="#2-比较两种控制器示例" class="headerlink" title="2.比较两种控制器示例"></a>2.比较两种控制器示例</h4><p>​	第二种依靠信号进行输出更好，符合电路的或逻辑，便于进行后续开发，只需要在后边补充或运算元素，举例如下</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> RegWrite = op_add | op_sbu | op_and ...</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-比较同步复位与异步复位中reset与clk信号优先级"><a href="#3-比较同步复位与异步复位中reset与clk信号优先级" class="headerlink" title="3.比较同步复位与异步复位中reset与clk信号优先级"></a>3.比较同步复位与异步复位中reset与clk信号优先级</h4><ol>
+<li>异步复位：reset优先级高于clk，无论何时都会复位</li>
+<li>同步复位：reset优先级低于clk，只有在时钟上升沿才会进行复位</li>
+</ol>
+<h4 id="4-请说明为什么在忽略溢出的前提下，addi-与-addiu-是等价的，add-与-addu-是等价的"><a href="#4-请说明为什么在忽略溢出的前提下，addi-与-addiu-是等价的，add-与-addu-是等价的" class="headerlink" title="4.请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的"></a>4.请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的</h4><p>​	addi相比addiu加入了溢出检测,add相比addu加入溢出检测</p>
+<p>​	以add和addu为例，有符号运算中最高位为符号位，关于add指令的RTL语言描述如下:</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">temp &lt;- (GPR[rs]<span class="number">31</span> || GPR[rs]) + (GPR[rt]<span class="number">31</span> || GPR[rt])</span><br><span class="line"><span class="keyword">if</span> temp32 != temp31 (<span class="number">32</span>位的temp != <span class="number">31</span>位的temp)</span><br><span class="line">    SignalException(IntegerOverflow)</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    GPR[rd] &lt;- temp</span><br></pre></td></tr></table></figure>
+
+<p>​	当GPR[rs]和[rt]的第30位都为1且符号位相同时，就分别对应着正数和负数的溢出情况，则<code>temp32 != temp31</code>判断溢出，抛出异常，如不检测溢出，则不会抛出异常，正常计算，故是等价的。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://DQR2206.github.io">dqr_infinity</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://dqr2206.github.io/2023/11/10/P4-Verilog-CPU/">http://dqr2206.github.io/2023/11/10/P4-Verilog-CPU/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://DQR2206.github.io" target="_blank">living happy and healthy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Nov/">Nov</a></div><div class="post_share"><div class="social-share" data-image="/img/gugong.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/./img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/12/P5-pipeline-CPU-Design-Document/" title="P5-pipeline-CPU-Design-Document"><img class="cover" src="/img/humian.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">P5-pipeline-CPU-Design-Document</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/06/P3-logisim-CPU-design/" title="支持40条指令P3_logisim_CPU"><img class="cover" src="/img/baixue.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">支持40条指令P3_logisim_CPU</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/04/OOpre%E6%80%BB%E7%BB%93/" title="OOpre总结"><img class="cover" src="/img/baixue.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-04</div><div class="title">OOpre总结</div></div></a></div><div><a href="/2023/11/06/P3-logisim-CPU-design/" title="支持40条指令P3_logisim_CPU"><img class="cover" src="/img/baixue.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-06</div><div class="title">支持40条指令P3_logisim_CPU</div></div></a></div><div><a href="/2023/11/12/P5-pipeline-CPU-Design-Document/" title="P5-pipeline-CPU-Design-Document"><img class="cover" src="/img/humian.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-12</div><div class="title">P5-pipeline-CPU-Design-Document</div></div></a></div><div><a href="/2023/11/27/P5%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P5课上测试"><img class="cover" src="/img/baixue.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-27</div><div class="title">P5课上测试</div></div></a></div><div><a href="/2023/11/28/P6-design-document/" title="P6-design-document"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-28</div><div class="title">P6-design-document</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODcyMi8zNTE4NA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dqr_infinity</div><div class="author-info__description">欢迎来看看！！！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DQR2206?tab=repositories"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/DQRinfinity" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="https://22373362@buaa.edu.cn" target="_blank" title=""><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P4-Verilog-CPU-Design-Document"><span class="toc-number">1.</span> <span class="toc-text">P4-Verilog-CPU-Design-Document</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6-%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E6%8F%8F%E8%BF%B0-P4%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3%E4%B8%AD%E6%9C%80%E5%A5%BD%E5%8A%A0%E4%B8%8AP3%E5%9B%BE"><span class="toc-number">1.1.</span> <span class="toc-text">零.数据通路描述(P4设计文档中最好加上P3图)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.2.</span> <span class="toc-text">一.模块设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-IFU%E5%8F%96%E6%8C%87%E4%BB%A4%E5%8D%95%E5%85%83"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.IFU取指令单元</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.端口定义列表:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.设计代码:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-small-tip-add-source%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">3.small tip : add source的用法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IS%E6%8C%87%E4%BB%A4%E5%88%86%E7%BA%BF%E5%99%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. IS指令分线器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">端口定义列表:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-NPC%E5%9C%B0%E5%9D%80%E8%AE%A1%E7%AE%97%E5%8D%95%E5%85%83"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. NPC地址计算单元</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-1"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">端口定义列表:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-GRF%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. GRF寄存器堆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-2"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">端口定义列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-ALU%E8%AE%A1%E7%AE%97%E5%8D%95%E5%85%83"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. ALU计算单元</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-3"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">端口定义列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Controller%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.2.6.</span> <span class="toc-text">6. Controller控制器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-1"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">1.端口定义列表:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B%E2%80%94%E2%80%94%E6%88%91%E7%9A%84%E6%8E%A7%E5%88%B6%E5%99%A8%E9%A3%8E%E6%A0%BC"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">2.设计代码示例——我的控制器风格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8C%87%E4%BB%A4%E4%B8%8E%E6%8E%A7%E5%88%B6%E4%BF%A1%E5%8F%B7%E6%B1%87%E6%80%BB%E8%A1%A8"><span class="toc-number">1.2.6.3.</span> <span class="toc-text">3.指令与控制信号汇总表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-EXT%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95%E5%8D%95%E5%85%83"><span class="toc-number">1.2.7.</span> <span class="toc-text">7. EXT符号扩展单元</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-4"><span class="toc-number">1.2.7.1.</span> <span class="toc-text">端口定义列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-DM%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><span class="toc-number">1.2.8.</span> <span class="toc-text">8. DM数据存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-2"><span class="toc-number">1.2.8.1.</span> <span class="toc-text">1.端口定义列表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#LSOp%E7%BC%96%E7%A0%81%E4%B8%8E%E5%AF%B9%E5%BA%94%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.8.1.1.</span> <span class="toc-text">LSOp编码与对应指令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.8.2.</span> <span class="toc-text">2.设计代码:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Sel-B-B%E7%B1%BB%E6%8C%87%E4%BB%A4%E5%88%A4%E6%96%AD%E5%8D%95%E5%85%83"><span class="toc-number">1.2.9.</span> <span class="toc-text">9.Sel-B B类指令判断单元</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-3"><span class="toc-number">1.2.9.1.</span> <span class="toc-text">1.端口定义列表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#branchOp%E7%BC%96%E7%A0%81%E4%B8%8E%E5%AF%B9%E5%BA%94%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.9.1.1.</span> <span class="toc-text">branchOp编码与对应指令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.2.9.2.</span> <span class="toc-text">2.设计代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-MUX%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8%E9%9B%86%E6%88%90%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.10.</span> <span class="toc-text">10.MUX多路选择器集成文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E9%A1%B6%E5%B1%82%E7%94%B5%E8%B7%AF%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.11.</span> <span class="toc-text">11.顶层电路连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-test-scheme"><span class="toc-number">1.3.</span> <span class="toc-text">二.test scheme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">三.思考题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-addr%E4%BF%A1%E5%8F%B7%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5%EF%BC%9Faddr%E4%BD%8D%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-13-2"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">1.addr信号从哪里来？addr位数为什么是[13:2]?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%AF%94%E8%BE%83%E4%B8%A4%E7%A7%8D%E6%8E%A7%E5%88%B6%E5%99%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">2.比较两种控制器示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%AF%94%E8%BE%83%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D%E4%B8%ADreset%E4%B8%8Eclk%E4%BF%A1%E5%8F%B7%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">3.比较同步复位与异步复位中reset与clk信号优先级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%AF%B7%E8%AF%B4%E6%98%8E%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E5%BF%BD%E7%95%A5%E6%BA%A2%E5%87%BA%E7%9A%84%E5%89%8D%E6%8F%90%E4%B8%8B%EF%BC%8Caddi-%E4%B8%8E-addiu-%E6%98%AF%E7%AD%89%E4%BB%B7%E7%9A%84%EF%BC%8Cadd-%E4%B8%8E-addu-%E6%98%AF%E7%AD%89%E4%BB%B7%E7%9A%84"><span class="toc-number">1.4.0.4.</span> <span class="toc-text">4.请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/03/P7-design-document/" title="P7-design-document"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P7-design-document"/></a><div class="content"><a class="title" href="/2023/12/03/P7-design-document/" title="P7-design-document">P7-design-document</a><time datetime="2023-12-03T07:34:11.000Z" title="发表于 2023-12-03 15:34:11">2023-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/02/P6%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P6课上测试"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P6课上测试"/></a><div class="content"><a class="title" href="/2023/12/02/P6%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P6课上测试">P6课上测试</a><time datetime="2023-12-02T07:00:59.000Z" title="发表于 2023-12-02 15:00:59">2023-12-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/28/P6-design-document/" title="P6-design-document"><img src="/img/gugong.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P6-design-document"/></a><div class="content"><a class="title" href="/2023/11/28/P6-design-document/" title="P6-design-document">P6-design-document</a><time datetime="2023-11-28T12:56:55.000Z" title="发表于 2023-11-28 20:56:55">2023-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/27/P5%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P5课上测试"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P5课上测试"/></a><div class="content"><a class="title" href="/2023/11/27/P5%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P5课上测试">P5课上测试</a><time datetime="2023-11-27T01:42:27.000Z" title="发表于 2023-11-27 09:42:27">2023-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/12/P5-pipeline-CPU-Design-Document/" title="P5-pipeline-CPU-Design-Document"><img src="/img/humian.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P5-pipeline-CPU-Design-Document"/></a><div class="content"><a class="title" href="/2023/11/12/P5-pipeline-CPU-Design-Document/" title="P5-pipeline-CPU-Design-Document">P5-pipeline-CPU-Design-Document</a><time datetime="2023-11-12T10:12:07.000Z" title="发表于 2023-11-12 18:12:07">2023-11-12</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/humian.webp')"><div id="footer-wrap"><div class="copyright">&copy;2023 By dqr_infinity</div><div class="footer_custom_text">你是怎么找到这来的？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="8421590201" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

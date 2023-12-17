@@ -1,0 +1,2576 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>P6-design-document | living happy and healthy</title><meta name="author" content="dqr_infinity"><meta name="copyright" content="dqr_infinity"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="P6设计文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P6-design-document">
+<meta property="og:url" content="http://dqr2206.github.io/2023/11/28/P6-design-document/index.html">
+<meta property="og:site_name" content="living happy and healthy">
+<meta property="og:description" content="P6设计文档">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://dqr2206.github.io/img/gugong.webp">
+<meta property="article:published_time" content="2023-11-28T12:56:55.000Z">
+<meta property="article:modified_time" content="2023-12-02T15:38:31.555Z">
+<meta property="article:author" content="dqr_infinity">
+<meta property="article:tag" content="Nov">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dqr2206.github.io/img/gugong.webp"><link rel="shortcut icon" href="/./img/web.jpeg"><link rel="canonical" href="http://dqr2206.github.io/2023/11/28/P6-design-document/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":0,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最近更新为准"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":200000000000000},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":10,"languages":{"author":"作者: dqr_infinity","link":"链接: ","source":"来源: living happy and healthy","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'P6-design-document',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: flase,
+  isToc: true,
+  postUpdate: '2023-12-02 23:38:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/gugong.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="living happy and healthy"><span class="site-name">living happy and healthy</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">P6-design-document</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-28T12:56:55.000Z" title="发表于 2023-11-28 20:56:55">2023-11-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-02T15:38:31.555Z" title="更新于 2023-12-02 23:38:31">2023-12-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%BB%84/">计组</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="P6-design-document"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="P6-Design-Document"><a href="#P6-Design-Document" class="headerlink" title="P6-Design-Document"></a><center>P6-Design-Document</center></h1><div align = "right">——22373362杜启嵘</div>
+
+<h2 id="一-数据通路图示"><a href="#一-数据通路图示" class="headerlink" title="一.数据通路图示"></a>一.数据通路图示</h2><p>​	P6在P5的基础上新增乘除槽单元、字节使能单元、数据扩展单元，在顶层模块中增加与testbench的接口，将IM与DM外移到testbench中。</p>
+<p><img src="/./../img/image-20231130193453498.png" alt="image-20231130193453498"></p>
+<h2 id="二-功能模块定义"><a href="#二-功能模块定义" class="headerlink" title="二.功能模块定义"></a>二.功能模块定义</h2><h3 id="1-MCU"><a href="#1-MCU" class="headerlink" title="1. MCU"></a>1. MCU</h3><h4 id="1-端口定义列表"><a href="#1-端口定义列表" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D_opcode</td>
+<td>I</td>
+<td>6</td>
+<td>操作码</td>
+</tr>
+<tr>
+<td>D_funct</td>
+<td>I</td>
+<td>6</td>
+<td>功能码</td>
+</tr>
+<tr>
+<td>SelA3_D</td>
+<td>O</td>
+<td>2</td>
+<td>选择写入寄存器地址</td>
+</tr>
+<tr>
+<td>RegWrite_D</td>
+<td>O</td>
+<td>1</td>
+<td>寄存器堆写入地址</td>
+</tr>
+<tr>
+<td>EXTOp_D</td>
+<td>O</td>
+<td>1</td>
+<td>立即数扩展信号</td>
+</tr>
+<tr>
+<td>SelEMout_D</td>
+<td>O</td>
+<td>1</td>
+<td>选择E、M级转发数据</td>
+</tr>
+<tr>
+<td>SelWout_D</td>
+<td>O</td>
+<td>2</td>
+<td>选择W级转发数据&#x2F;写入GRF数据</td>
+</tr>
+<tr>
+<td>SeLALUB_D</td>
+<td>O</td>
+<td>1</td>
+<td>选择ALU_B端口输入数据</td>
+</tr>
+<tr>
+<td>SelALUS_D</td>
+<td>O</td>
+<td>1</td>
+<td>选择ALU_S端口移位数据</td>
+</tr>
+<tr>
+<td>check_D</td>
+<td>O</td>
+<td>1</td>
+<td>判定是否为新信号(课上扩展使用)</td>
+</tr>
+<tr>
+<td>mf_D</td>
+<td>O</td>
+<td>1</td>
+<td>mfhi&#x2F;mflo指令，选择E级输出数据</td>
+</tr>
+<tr>
+<td>start_D</td>
+<td>O</td>
+<td>1</td>
+<td>乘除类导致延迟的指令信号，只有md类需要</td>
+</tr>
+<tr>
+<td>CMPOp_D</td>
+<td>O</td>
+<td>3</td>
+<td>B类跳转指令操作码</td>
+</tr>
+<tr>
+<td>NPCOp_D</td>
+<td>O</td>
+<td>3</td>
+<td>跳转地址选择</td>
+</tr>
+<tr>
+<td>ALUOp_D</td>
+<td>O</td>
+<td>4</td>
+<td>ALU计算操作</td>
+</tr>
+<tr>
+<td>MDUOp_D</td>
+<td>O</td>
+<td>4</td>
+<td>乘除类计算操作</td>
+</tr>
+<tr>
+<td>DMOp_D</td>
+<td>O</td>
+<td>4</td>
+<td>存取指令操作</td>
+</tr>
+<tr>
+<td>T_rs_use_D</td>
+<td>O</td>
+<td>2</td>
+<td>位于D级用到rs寄存器中值的周期数</td>
+</tr>
+<tr>
+<td>T_rt_use_D</td>
+<td>O</td>
+<td>2</td>
+<td>位于D级用到rt寄存器中值的周期数</td>
+</tr>
+<tr>
+<td>T_new_D</td>
+<td>O</td>
+<td>2</td>
+<td>位于D级产生新信号的周期数</td>
+</tr>
+</tbody></table>
+<p><strong>注：由于BE模块产生字节使能信号，将原内存写入使能信号MemWrite省去</strong></p>
+<h4 id="2-指令分类与T-use-T-new处理"><a href="#2-指令分类与T-use-T-new处理" class="headerlink" title="2.指令分类与T_use&#x2F;T_new处理"></a>2.指令分类与T_use&#x2F;T_new处理</h4><p><strong>指令分类如下</strong></p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>包含的指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cal_R</td>
+<td>add,sub,and,or,slt,sltu</td>
+</tr>
+<tr>
+<td>cal_I</td>
+<td>andi,ori,addi,lui</td>
+</tr>
+<tr>
+<td>shift</td>
+<td>sll</td>
+</tr>
+<tr>
+<td>shiftv</td>
+<td>sllv</td>
+</tr>
+<tr>
+<td>branch</td>
+<td>beq,bne</td>
+</tr>
+<tr>
+<td>store</td>
+<td>sw,sh,sb</td>
+</tr>
+<tr>
+<td>load</td>
+<td>lw,lh,lb</td>
+</tr>
+<tr>
+<td>md（有运算延迟）</td>
+<td>mult,multu,div,divu</td>
+</tr>
+<tr>
+<td>mf（读取）</td>
+<td>mfhi,mflo</td>
+</tr>
+<tr>
+<td>mt（写入）</td>
+<td>mthi,mtlo</td>
+</tr>
+</tbody></table>
+<p>​	<strong>对指令进行分类的好处是使得控制信号的产生更加简洁，增加指令时可以先考虑它属于哪一类</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> T_rs_use_D = (branch | op_jr | op_jalr) ? <span class="number">2&#x27;b00</span> :</span><br><span class="line">						  (cal_R | cal_I | load | store | shiftv | md | mt) ? <span class="number">2&#x27;b01</span> :</span><br><span class="line">						  <span class="number">2&#x27;b11</span>;<span class="comment">//用不到置为3</span></span><br><span class="line"><span class="keyword">assign</span> T_rt_use_D = (branch) ? <span class="number">2&#x27;b00</span> :</span><br><span class="line">						  (cal_R | shift | shiftv | md) ? <span class="number">2&#x27;b01</span> :</span><br><span class="line">						  <span class="number">2&#x27;b11</span>;</span><br><span class="line"><span class="keyword">assign</span> T_new_D = (load) ? <span class="number">2&#x27;b11</span> :</span><br><span class="line">					  (cal_R | cal_I | shift | shiftv | mf) ? <span class="number">2&#x27;b10</span> :</span><br><span class="line">					  <span class="number">2&#x27;b00</span>;</span><br></pre></td></tr></table></figure>
+
+<img src="./../img/%E6%8C%87%E4%BB%A4%E6%97%B6%E9%97%B4%E8%A1%A8.jpg" alt="img"  />
+
+<h3 id="3-HCU"><a href="#3-HCU" class="headerlink" title="3.HCU"></a>3.HCU</h3><h4 id="1-端口定义列表-1"><a href="#1-端口定义列表-1" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>输入信号</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MDUOp_D</td>
+<td>I</td>
+<td>4</td>
+<td>D级当前指令是否为乘除指令</td>
+</tr>
+<tr>
+<td>D_A1</td>
+<td>I</td>
+<td>5</td>
+<td>D级A1输入</td>
+</tr>
+<tr>
+<td>D_A2</td>
+<td>I</td>
+<td>5</td>
+<td>D级A2输入</td>
+</tr>
+<tr>
+<td>E_A1</td>
+<td>I</td>
+<td>5</td>
+<td>E级A1输入</td>
+</tr>
+<tr>
+<td>E_A2</td>
+<td>I</td>
+<td>5</td>
+<td>E级A2输入</td>
+</tr>
+<tr>
+<td>E_A3</td>
+<td>I</td>
+<td>5</td>
+<td>E级A3输入</td>
+</tr>
+<tr>
+<td>check_E</td>
+<td>I</td>
+<td>1</td>
+<td>课上扩展</td>
+</tr>
+<tr>
+<td>start</td>
+<td>I</td>
+<td>1</td>
+<td>E级乘除运算启动信号</td>
+</tr>
+<tr>
+<td>busy</td>
+<td>I</td>
+<td>1</td>
+<td>E级乘除运算进行符号</td>
+</tr>
+<tr>
+<td>M_A2</td>
+<td>I</td>
+<td>5</td>
+<td>M级A2输入</td>
+</tr>
+<tr>
+<td>M_A3</td>
+<td>I</td>
+<td>5</td>
+<td>M级A3输入</td>
+</tr>
+<tr>
+<td>check_M</td>
+<td>I</td>
+<td>1</td>
+<td>课上扩展</td>
+</tr>
+<tr>
+<td>W_A3</td>
+<td>I</td>
+<td>5</td>
+<td>W级A3输入</td>
+</tr>
+<tr>
+<td>RegWrite_E</td>
+<td>I</td>
+<td>1</td>
+<td>E级保存的GRF写入使能信号</td>
+</tr>
+<tr>
+<td>RegWrite_M</td>
+<td>I</td>
+<td>1</td>
+<td>M级保存的GRF写入使能信号</td>
+</tr>
+<tr>
+<td>RegWrite_W</td>
+<td>I</td>
+<td>1</td>
+<td>W级保存的GRF写入使能信号</td>
+</tr>
+<tr>
+<td>T_rs_use</td>
+<td>I</td>
+<td>2</td>
+<td>D级中MCU输出的T_rs_use_D信号</td>
+</tr>
+<tr>
+<td>T_rt_use</td>
+<td>I</td>
+<td>2</td>
+<td>D级中MCU输出的T_rt_use_D信号</td>
+</tr>
+<tr>
+<td>T_new_E</td>
+<td>I</td>
+<td>2</td>
+<td>E级中T_new_E输入</td>
+</tr>
+<tr>
+<td>T_new_M</td>
+<td>I</td>
+<td>2</td>
+<td>M级中T_new_M输入</td>
+</tr>
+<tr>
+<td>T_new_W</td>
+<td>I</td>
+<td>2</td>
+<td>W级中T_new_W输入</td>
+</tr>
+<tr>
+<td><strong>输出信号</strong></td>
+<td><strong>位宽</strong></td>
+<td><strong>作用级</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>FwdCMPD1</td>
+<td>2</td>
+<td>D</td>
+<td>对HMUX_CMP_D1输出进行选择</td>
+</tr>
+<tr>
+<td>FwdCMPD2</td>
+<td>2</td>
+<td>D</td>
+<td>对HMUX_CMP_D2输出进行选择</td>
+</tr>
+<tr>
+<td>FwdALUA</td>
+<td>2</td>
+<td>E</td>
+<td>对HMUX_ALU_A输出进行选择</td>
+</tr>
+<tr>
+<td>FwdALUB</td>
+<td>2</td>
+<td>E</td>
+<td>对HMUX_ALU_B输出进行选择</td>
+</tr>
+<tr>
+<td>FwdDM</td>
+<td>1</td>
+<td>M</td>
+<td>对HMUX_DM的输出进行选择</td>
+</tr>
+<tr>
+<td>stall</td>
+<td>1</td>
+<td>D,F,M</td>
+<td>暂停信号</td>
+</tr>
+</tbody></table>
+<h4 id="2-暂停与转发"><a href="#2-暂停与转发" class="headerlink" title="2.暂停与转发"></a>2.暂停与转发</h4><ul>
+<li><p>将P5中列举出的8种暂停情况合并为4种，更加简洁且易于扩展</p>
+</li>
+<li><p>针对乘除槽增加暂停信号</p>
+</li>
+<li><p>当 busy 信号或 start 信号为 1 时，<code>mult, multu, div, divu, mfhi, mflo, mthi, mtlo</code> 等乘除法相关的指令均被阻塞在 D 流水级</p>
+</li>
+<li><p>转发与P5相比未作改动</p>
+</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wire</span> stall_rs_e = (T_rs_use &lt; T_new_E)&amp;&amp;(D_A1 == E_A3)&amp;&amp;(D_A1 != <span class="number">5&#x27;b0</span>)&amp;&amp;(RegWrite_E);</span><br><span class="line"><span class="keyword">wire</span> stall_rs_m = (T_rs_use &lt; T_new_M)&amp;&amp;(D_A1 == M_A3)&amp;&amp;(D_A1 != <span class="number">5&#x27;b0</span>)&amp;&amp;(RegWrite_M);</span><br><span class="line"><span class="keyword">wire</span> stall_rs = stall_rs_e | stall_rs_m ;</span><br><span class="line"><span class="keyword">wire</span> stall_rt_e = (T_rt_use &lt; T_new_E)&amp;&amp;(D_A2 == E_A3)&amp;&amp;(D_A2 != <span class="number">5&#x27;b0</span>)&amp;&amp;(RegWrite_E);</span><br><span class="line"><span class="keyword">wire</span> stall_rt_m = (T_rt_use &lt; T_new_M)&amp;&amp;(D_A2 == M_A3)&amp;&amp;(D_A2 != <span class="number">5&#x27;b0</span>)&amp;&amp;(RegWrite_M);</span><br><span class="line"><span class="keyword">wire</span> stall_rt = stall_rt_e | stall_rt_m ;</span><br><span class="line"><span class="keyword">wire</span> stall_mdu = (MDUOp_D != <span class="number">4&#x27;b0000</span>)&amp;&amp;(busy | start);</span><br><span class="line"><span class="keyword">assign</span> stall = stall_rs | stall_rt | stall_mdu;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-ALU"><a href="#3-ALU" class="headerlink" title="3.ALU"></a>3.ALU</h3><h4 id="1-端口定义列表-2"><a href="#1-端口定义列表-2" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>src_A</td>
+<td>I</td>
+<td>32</td>
+<td>操作数1</td>
+</tr>
+<tr>
+<td>src_B</td>
+<td>I</td>
+<td>32</td>
+<td>操作数2</td>
+</tr>
+<tr>
+<td>shamt_f</td>
+<td>I</td>
+<td>5</td>
+<td>移位数据</td>
+</tr>
+<tr>
+<td>ALUOp</td>
+<td>I</td>
+<td>3</td>
+<td>运算类型</td>
+</tr>
+<tr>
+<td>AO</td>
+<td>O</td>
+<td>32</td>
+<td>运算结果</td>
+</tr>
+</tbody></table>
+<h4 id="2-ALUOp编码与运算选择"><a href="#2-ALUOp编码与运算选择" class="headerlink" title="2.ALUOp编码与运算选择"></a>2.ALUOp编码与运算选择</h4><table>
+<thead>
+<tr>
+<th>ALU运算</th>
+<th>ALUOp编码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>-</td>
+<td>0001</td>
+</tr>
+<tr>
+<td>|</td>
+<td>0010</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>0011</td>
+</tr>
+<tr>
+<td>load to higher half (lui)</td>
+<td>0100</td>
+</tr>
+<tr>
+<td>signed compare (slt)</td>
+<td>0101</td>
+</tr>
+<tr>
+<td>unsigned compare(sltu)</td>
+<td>0110</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>0111</td>
+</tr>
+</tbody></table>
+<h3 id="4-EXT"><a href="#4-EXT" class="headerlink" title="4.EXT"></a>4.EXT</h3><h4 id="端口定义列表"><a href="#端口定义列表" class="headerlink" title="端口定义列表"></a>端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>imm</td>
+<td>I</td>
+<td>16</td>
+<td>D级16位立即数</td>
+</tr>
+<tr>
+<td>EXTOp</td>
+<td>I</td>
+<td>1</td>
+<td>选择进行符号扩展&#x2F;零扩展</td>
+</tr>
+<tr>
+<td>imm_32</td>
+<td>I</td>
+<td>32</td>
+<td>位扩展结果</td>
+</tr>
+</tbody></table>
+<h3 id="5-GRF"><a href="#5-GRF" class="headerlink" title="5.GRF"></a>5.GRF</h3><h4 id="1-端口定义列表-3"><a href="#1-端口定义列表-3" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td>同步复位信号</td>
+</tr>
+<tr>
+<td>rs</td>
+<td>I</td>
+<td>5</td>
+<td>rs寄存器</td>
+</tr>
+<tr>
+<td>rt</td>
+<td>I</td>
+<td>5</td>
+<td>rt寄存器</td>
+</tr>
+<tr>
+<td>rd</td>
+<td>I</td>
+<td>5</td>
+<td>rd寄存器</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>I</td>
+<td>32</td>
+<td>指令执行地址</td>
+</tr>
+<tr>
+<td>datawrite</td>
+<td>I</td>
+<td>32</td>
+<td>写入数据选择</td>
+</tr>
+<tr>
+<td>RegWrite</td>
+<td>I</td>
+<td>1</td>
+<td>写入使能</td>
+</tr>
+<tr>
+<td>dataread1</td>
+<td>O</td>
+<td>32</td>
+<td>读rs寄存器</td>
+</tr>
+<tr>
+<td>dataread2</td>
+<td>O</td>
+<td>32</td>
+<td>读rt寄存器</td>
+</tr>
+</tbody></table>
+<p><strong>注意：这里的RegWrite,datawirte,A3(rd),pc信号均来自W级</strong></p>
+<h4 id="2-GRF内部转发"><a href="#2-GRF内部转发" class="headerlink" title="2.GRF内部转发"></a>2.GRF内部转发</h4><p>​	设计GRF内部转发逻辑：GRF既是D级的一个部件又是W级之后的流水线寄存器。当W级写GRF，D级读GRF时，如果读取寄存器与写入寄存器为同一寄存器时不进行转发，新值虽然被写入GRF但流入E级的值依然为旧值。</p>
+<p><strong>判断条件：当写入信号RegWrite有效且A1&#x3D;&#x3D;A3或A2&#x3D;&#x3D;A3时，将写入值作为对应输出值</strong></p>
+<p>判断逻辑如下:</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//forward</span></span><br><span class="line"><span class="keyword">assign</span> dataread1 = (RegWrite &amp;&amp; rs == rd &amp;&amp; rd != <span class="number">0</span>) ? datawrite : grf[rs];</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-IFU"><a href="#6-IFU" class="headerlink" title="6.IFU"></a>6.IFU</h3><h4 id="端口定义列表-1"><a href="#端口定义列表-1" class="headerlink" title="端口定义列表"></a>端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td>同步复位信号</td>
+</tr>
+<tr>
+<td>en</td>
+<td>I</td>
+<td>1</td>
+<td>使能信号(~stall)</td>
+</tr>
+<tr>
+<td>npc</td>
+<td>I</td>
+<td>32</td>
+<td>下一指令地址</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>O</td>
+<td>32</td>
+<td>F级当前地址</td>
+</tr>
+<tr>
+<td>pc8</td>
+<td>O</td>
+<td>32</td>
+<td>输出PC+8，随流水段传递(jal考虑延迟槽)</td>
+</tr>
+<tr>
+<td>instr</td>
+<td>O</td>
+<td>32</td>
+<td>取出的指令</td>
+</tr>
+</tbody></table>
+<h3 id="7-NPC"><a href="#7-NPC" class="headerlink" title="7.NPC"></a>7.NPC</h3><h4 id="1-端口定义列表-4"><a href="#1-端口定义列表-4" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D_pc</td>
+<td>I</td>
+<td>32</td>
+<td>D级PC</td>
+</tr>
+<tr>
+<td>F_pc</td>
+<td>I</td>
+<td>32</td>
+<td>F级PC</td>
+</tr>
+<tr>
+<td>b_result</td>
+<td>I</td>
+<td>1</td>
+<td>D级CMP模块判断结果</td>
+</tr>
+<tr>
+<td>b_offset</td>
+<td>I</td>
+<td>32</td>
+<td>B类指令的跳转地址</td>
+</tr>
+<tr>
+<td>j_address</td>
+<td>I</td>
+<td>26</td>
+<td>J类指令跳转地址</td>
+</tr>
+<tr>
+<td>reg_address</td>
+<td>I</td>
+<td>32</td>
+<td>跳转到寄存器中的地址(jr)</td>
+</tr>
+<tr>
+<td>NPCOp</td>
+<td>I</td>
+<td>3</td>
+<td>地址选择信号</td>
+</tr>
+<tr>
+<td>npc</td>
+<td>O</td>
+<td>32</td>
+<td>程序下一条指令地址</td>
+</tr>
+</tbody></table>
+<h4 id="2-NPCOp编码与地址选择"><a href="#2-NPCOp编码与地址选择" class="headerlink" title="2.NPCOp编码与地址选择"></a>2.NPCOp编码与地址选择</h4><table>
+<thead>
+<tr>
+<th>NPCOp编码</th>
+<th>选择跳转地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>000</td>
+<td>F_pc + 4</td>
+</tr>
+<tr>
+<td>001(B) &amp;&amp; b_result</td>
+<td>D_pc + 4 + (b_offset &lt;&lt; 2’b10)</td>
+</tr>
+<tr>
+<td>010(jal)</td>
+<td>{(D_pc + 4)[31:28],j_address,2’b00}</td>
+</tr>
+<tr>
+<td>011(jr)</td>
+<td>reg_address</td>
+</tr>
+</tbody></table>
+<p><strong>注：NPC是横跨D级和E级的模块，如果是beq或jal等指令，则需要在D_pc基础上进行操作，否则为F_pc+4</strong></p>
+<h3 id="8-CMP"><a href="#8-CMP" class="headerlink" title="8.CMP"></a>8.CMP</h3><h4 id="1-端口定义列表-5"><a href="#1-端口定义列表-5" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D_V1</td>
+<td>I</td>
+<td>32</td>
+<td>GRF中读出的rs寄存器的值</td>
+</tr>
+<tr>
+<td>D_V2</td>
+<td>I</td>
+<td>32</td>
+<td>GRF中读出的rt寄存器的值</td>
+</tr>
+<tr>
+<td>CMPOp</td>
+<td>I</td>
+<td>3</td>
+<td>选择比较类型</td>
+</tr>
+<tr>
+<td>b_result</td>
+<td>O</td>
+<td>1</td>
+<td>是否满足B类跳转指令的跳转条件</td>
+</tr>
+</tbody></table>
+<h4 id="2-CMPOp编码与对应指令"><a href="#2-CMPOp编码与对应指令" class="headerlink" title="2.CMPOp编码与对应指令"></a>2.CMPOp编码与对应指令</h4><p>当前只实现beq，该信号的设置更大的意义在于其可扩展性，便于课上添加指令</p>
+<table>
+<thead>
+<tr>
+<th>CMPOp编码</th>
+<th>对应指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>000</td>
+<td>beq</td>
+</tr>
+<tr>
+<td>001</td>
+<td>bne</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<h3 id="9-MDU"><a href="#9-MDU" class="headerlink" title="9.MDU"></a>9.MDU</h3><h4 id="1-端口定义列表-6"><a href="#1-端口定义列表-6" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td>同步复位信号</td>
+</tr>
+<tr>
+<td>start</td>
+<td>I</td>
+<td>1</td>
+<td>开始乘除运算信号</td>
+</tr>
+<tr>
+<td>MDUOp</td>
+<td>I</td>
+<td>4</td>
+<td>乘除操作</td>
+</tr>
+<tr>
+<td>A</td>
+<td>I</td>
+<td>32</td>
+<td>操作数A</td>
+</tr>
+<tr>
+<td>B</td>
+<td>I</td>
+<td>32</td>
+<td>操作数B</td>
+</tr>
+<tr>
+<td>out</td>
+<td>I</td>
+<td>32</td>
+<td>mfhi&#x2F;mflo输出结果</td>
+</tr>
+<tr>
+<td>busy</td>
+<td>I</td>
+<td>1</td>
+<td>正在执行乘除运算指示信号</td>
+</tr>
+</tbody></table>
+<h4 id="2-MDUOp编码与对应指令"><a href="#2-MDUOp编码与对应指令" class="headerlink" title="2.MDUOp编码与对应指令"></a>2.MDUOp编码与对应指令</h4><table>
+<thead>
+<tr>
+<th>DMOp编码</th>
+<th>对应指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0000</td>
+<td>非乘除指令，记为nop</td>
+</tr>
+<tr>
+<td>0001</td>
+<td>mult</td>
+</tr>
+<tr>
+<td>0010</td>
+<td>multu</td>
+</tr>
+<tr>
+<td>0011</td>
+<td>div</td>
+</tr>
+<tr>
+<td>0100</td>
+<td>divu</td>
+</tr>
+<tr>
+<td>0101</td>
+<td>mfhi</td>
+</tr>
+<tr>
+<td>0110</td>
+<td>mflo</td>
+</tr>
+<tr>
+<td>0111</td>
+<td>mthi</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>mtlo</td>
+</tr>
+</tbody></table>
+<h4 id="3-代码实现逻辑"><a href="#3-代码实现逻辑" class="headerlink" title="3.代码实现逻辑"></a>3.代码实现逻辑</h4><ul>
+<li>乘法mult&#x2F;multu延迟5周期，除法div&#x2F;divu延迟10周期，在计算出结果后存储在tmpHI,tmpLO中，等到耗满延迟再转存入HI,LO.mfhi&#x2F;mflo从HI,LO中读取。</li>
+<li>设置计数器 判断是否达到该种运算的延迟(delay)，若达到，则将数值从tmp转存入HI&#x2F;LO，同时将busy信号置0</li>
+<li>实际上得到的结果为64位的结果，使用{tmpHI,tmpLO}位拼接写法进行拆分。</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// counter </span></span><br><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk)<span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span>(reset)<span class="keyword">begin</span></span><br><span class="line">		cnt &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">		busy &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(start)<span class="keyword">begin</span>   <span class="comment">//start claculate</span></span><br><span class="line">		busy &lt;= <span class="number">1&#x27;b1</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(busy) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(cnt == delay - <span class="number">1</span>)<span class="keyword">begin</span>  <span class="comment">//next T : busy = 0</span></span><br><span class="line">			cnt &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">			busy &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">			cnt &lt;= cnt + <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk)<span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span>(reset)<span class="keyword">begin</span></span><br><span class="line">		tmpHI &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">		tmpLO &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">		HI &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">		LO &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">else</span>  <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> (!busy) <span class="keyword">begin</span>  <span class="comment">//进行新运算</span></span><br><span class="line">		<span class="keyword">case</span>(MDUOp)</span><br><span class="line">		mult :</span><br><span class="line">		<span class="keyword">begin</span></span><br><span class="line">			delay &lt;= <span class="number">4&#x27;b0101</span>; <span class="comment">//5</span></span><br><span class="line">			&#123;tmpHI,tmpLO&#125; &lt;= <span class="built_in">$signed</span>(A) * <span class="built_in">$signed</span>(B); </span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		multu :</span><br><span class="line">		<span class="keyword">begin</span></span><br><span class="line">			delay &lt;= <span class="number">4&#x27;b0101</span>;</span><br><span class="line">			&#123;tmpHI,tmpLO&#125; &lt;= <span class="built_in">$unsigned</span>(A) * <span class="built_in">$unsigned</span>(B);</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		div :</span><br><span class="line">		<span class="keyword">begin</span></span><br><span class="line">			delay &lt;= <span class="number">4&#x27;b1010</span>; <span class="comment">//10</span></span><br><span class="line">			tmpLO &lt;= <span class="built_in">$signed</span>(A) / <span class="built_in">$signed</span>(B);</span><br><span class="line">			tmpHI &lt;= <span class="built_in">$signed</span>(A) % <span class="built_in">$signed</span>(B);</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		divu :</span><br><span class="line">		<span class="keyword">begin</span></span><br><span class="line">			delay &lt;= <span class="number">4&#x27;b1010</span>;</span><br><span class="line">			tmpLO &lt;= <span class="built_in">$unsigned</span>(A) / <span class="built_in">$unsigned</span>(B);</span><br><span class="line">			tmpHI &lt;= <span class="built_in">$unsigned</span>(A) % <span class="built_in">$unsigned</span>(B);</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		mthi : HI &lt;= A;</span><br><span class="line">		mtlo : LO &lt;= A;</span><br><span class="line">		<span class="keyword">endcase</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">begin</span>      <span class="comment">//保持老运算</span></span><br><span class="line">		<span class="keyword">if</span>(cnt == delay - <span class="number">1&#x27;b1</span>)<span class="keyword">begin</span>  <span class="comment">// next T : busy = 0;</span></span><br><span class="line">			HI &lt;= tmpHI;</span><br><span class="line">			LO &lt;= tmpLO;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">			HI &lt;= HI;</span><br><span class="line">			LO &lt;= LO;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">// mfhi/mflo为组合逻辑</span></span><br><span class="line"><span class="keyword">assign</span> out = (MDUOp == mfhi)? HI :</span><br><span class="line">				 (MDUOp == mflo)? LO :</span><br><span class="line">				 <span class="number">32&#x27;b0</span>;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="10-BE"><a href="#10-BE" class="headerlink" title="10.BE"></a>10.BE</h3><h4 id="1-端口定义列表-7"><a href="#1-端口定义列表-7" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>address</td>
+<td>I</td>
+<td>32</td>
+<td>存数据地址</td>
+</tr>
+<tr>
+<td>DMOp</td>
+<td>I</td>
+<td>4</td>
+<td>存数操作</td>
+</tr>
+<tr>
+<td>WD_in</td>
+<td>I</td>
+<td>32</td>
+<td>未经处理的存入数据</td>
+</tr>
+<tr>
+<td>byteen</td>
+<td>O</td>
+<td>4</td>
+<td>字节使能信号</td>
+</tr>
+<tr>
+<td>WD_out</td>
+<td>O</td>
+<td>32</td>
+<td>处理后的存入数据(字&#x2F;半字&#x2F;字节)</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>注：byteen为存入字节使能信号、对应位置的值为1表示允许存入，如sw-&gt;byteen &#x3D; 1111</strong></li>
+</ul>
+<h4 id="2-DMOp编码与存数操作"><a href="#2-DMOp编码与存数操作" class="headerlink" title="2.DMOp编码与存数操作"></a>2.DMOp编码与存数操作</h4><table>
+<thead>
+<tr>
+<th>DMOp</th>
+<th>对应指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0001</td>
+<td>sw</td>
+</tr>
+<tr>
+<td>0010</td>
+<td>sh</td>
+</tr>
+<tr>
+<td>0011</td>
+<td>sb</td>
+</tr>
+</tbody></table>
+<h3 id="11-DE"><a href="#11-DE" class="headerlink" title="11.DE"></a>11.DE</h3><h4 id="1-端口定义列表-8"><a href="#1-端口定义列表-8" class="headerlink" title="1.端口定义列表"></a>1.端口定义列表</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>address</td>
+<td>I</td>
+<td>32</td>
+<td>取数地址</td>
+</tr>
+<tr>
+<td>DMOp</td>
+<td>I</td>
+<td>4</td>
+<td>取数操作</td>
+</tr>
+<tr>
+<td>RD_in</td>
+<td>I</td>
+<td>32</td>
+<td>未经处理的取出数据</td>
+</tr>
+<tr>
+<td>RD_out</td>
+<td>O</td>
+<td>32</td>
+<td>处理后的取出数据</td>
+</tr>
+</tbody></table>
+<h4 id="2-DMOp编码与取数操作"><a href="#2-DMOp编码与取数操作" class="headerlink" title="2.DMOp编码与取数操作"></a>2.DMOp编码与取数操作</h4><table>
+<thead>
+<tr>
+<th>DMOp</th>
+<th>对应指令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1000</td>
+<td>lw</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>lh</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>lb</td>
+</tr>
+</tbody></table>
+<h3 id="12-MUX"><a href="#12-MUX" class="headerlink" title="12.MUX"></a>12.MUX</h3><h4 id="1-功能多路选择器"><a href="#1-功能多路选择器" class="headerlink" title="1.功能多路选择器"></a>1.功能多路选择器</h4><h5 id="1-MUX-A3-D级写入寄存器选择"><a href="#1-MUX-A3-D级写入寄存器选择" class="headerlink" title="1.MUX_A3 D级写入寄存器选择"></a>1.MUX_A3 D级写入寄存器选择</h5><h6 id="端口定义列表-2"><a href="#端口定义列表-2" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D_instr_rs</td>
+<td>I</td>
+<td>5</td>
+<td>instr中rs段</td>
+</tr>
+<tr>
+<td>D_instr_rt</td>
+<td>I</td>
+<td>5</td>
+<td>instr中rt段</td>
+</tr>
+<tr>
+<td>SelA3_D</td>
+<td>I</td>
+<td>2</td>
+<td>rd选择信号</td>
+</tr>
+<tr>
+<td>D_A3</td>
+<td>O</td>
+<td>5</td>
+<td>写入寄存器A3</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果"><a href="#选择信号与结果" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>SelA3_D</th>
+<th>D_A3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2’b10</td>
+<td>31</td>
+</tr>
+<tr>
+<td>2’b01</td>
+<td>rd</td>
+</tr>
+<tr>
+<td>2’b00</td>
+<td>rt</td>
+</tr>
+</tbody></table>
+<h5 id="2-MUX-ALU-B-ALUB端口选择"><a href="#2-MUX-ALU-B-ALUB端口选择" class="headerlink" title="2.MUX_ALU_B ALUB端口选择"></a>2.MUX_ALU_B ALUB端口选择</h5><h6 id="端口定义列表-3"><a href="#端口定义列表-3" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E_V2_f</td>
+<td>I</td>
+<td>32</td>
+<td>转发后的V2</td>
+</tr>
+<tr>
+<td>E_E32</td>
+<td>I</td>
+<td>32</td>
+<td>32位立即数</td>
+</tr>
+<tr>
+<td>SelALUB_E</td>
+<td>I</td>
+<td>1</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>E_ALU_B</td>
+<td>O</td>
+<td>32</td>
+<td>输出到ALUB端口的结果</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-1"><a href="#选择信号与结果-1" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>SelALUB_E</th>
+<th>E_ALU_B</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1’b1</td>
+<td>E_E32</td>
+</tr>
+<tr>
+<td>1’b0</td>
+<td>E_V2_f</td>
+</tr>
+</tbody></table>
+<h5 id="3-MUX-E-out-选择E级转发数据"><a href="#3-MUX-E-out-选择E级转发数据" class="headerlink" title="3.MUX_E_out  选择E级转发数据"></a>3.MUX_E_out  选择E级转发数据</h5><h6 id="端口定义列表-4"><a href="#端口定义列表-4" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E_E32</td>
+<td>I</td>
+<td>32</td>
+<td>32位立即数</td>
+</tr>
+<tr>
+<td>E_pc8</td>
+<td>I</td>
+<td>32</td>
+<td>流水PC8(jal)</td>
+</tr>
+<tr>
+<td>SelEMout_E</td>
+<td>I</td>
+<td>1</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>E_out</td>
+<td>O</td>
+<td>32</td>
+<td>E级转发数据</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-2"><a href="#选择信号与结果-2" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>SelEMout_E</th>
+<th>E_out</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1’b1</td>
+<td>E_pc8</td>
+</tr>
+<tr>
+<td>1’b0</td>
+<td>E_E32</td>
+</tr>
+</tbody></table>
+<h5 id="4-MUX-M-out-选择M级转发数据"><a href="#4-MUX-M-out-选择M级转发数据" class="headerlink" title="4.MUX_M_out 选择M级转发数据"></a>4.MUX_M_out 选择M级转发数据</h5><h6 id="端口定义列表-5"><a href="#端口定义列表-5" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>M_AO</td>
+<td>I</td>
+<td>32</td>
+<td>M级ALU计算结果</td>
+</tr>
+<tr>
+<td>M_pc8</td>
+<td>I</td>
+<td>32</td>
+<td>流水PC8(jal)</td>
+</tr>
+<tr>
+<td>SelEMout_M</td>
+<td>I</td>
+<td>1</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>M_out</td>
+<td>O</td>
+<td>32</td>
+<td>M级转发数据</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-3"><a href="#选择信号与结果-3" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>SelEMout_M</th>
+<th>M_out</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1’b1</td>
+<td>M_pc8</td>
+</tr>
+<tr>
+<td>1’b0</td>
+<td>M_AO</td>
+</tr>
+</tbody></table>
+<h5 id="5-MUX-W-out-选择W级转发数据"><a href="#5-MUX-W-out-选择W级转发数据" class="headerlink" title="5.MUX_W_out 选择W级转发数据"></a>5.MUX_W_out 选择W级转发数据</h5><h6 id="端口定义列表-6"><a href="#端口定义列表-6" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W_AO</td>
+<td>I</td>
+<td>32</td>
+<td>W级ALU计算结果</td>
+</tr>
+<tr>
+<td>W_DR</td>
+<td>I</td>
+<td>32</td>
+<td>W级DM中读取出的数据</td>
+</tr>
+<tr>
+<td>W_pc8</td>
+<td>I</td>
+<td>32</td>
+<td>W级流水PC8(jal)</td>
+</tr>
+<tr>
+<td>SelWout_W</td>
+<td>I</td>
+<td>2</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>W_out</td>
+<td>O</td>
+<td>32</td>
+<td>W级转发数据&#x2F;GRF写入数据</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-4"><a href="#选择信号与结果-4" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>SelWout_W</th>
+<th>W_out</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2’b10</td>
+<td>W_pc8</td>
+</tr>
+<tr>
+<td>2’b01</td>
+<td>W_DR</td>
+</tr>
+<tr>
+<td>2’b00</td>
+<td>W_AO</td>
+</tr>
+</tbody></table>
+<h5 id="6-MUX-MDU-ALU选择E级输出数据"><a href="#6-MUX-MDU-ALU选择E级输出数据" class="headerlink" title="6.MUX_MDU_ALU选择E级输出数据"></a>6.MUX_MDU_ALU选择E级输出数据</h5><h6 id="端口定义列表-7"><a href="#端口定义列表-7" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E_AO</td>
+<td>I</td>
+<td>32</td>
+<td>ALU输出</td>
+</tr>
+<tr>
+<td>E_MDU_out</td>
+<td>I</td>
+<td>32</td>
+<td>MDU输出</td>
+</tr>
+<tr>
+<td>E_mf</td>
+<td>I</td>
+<td>1</td>
+<td>是否为mf类指令</td>
+</tr>
+<tr>
+<td>E_AO_new</td>
+<td>O</td>
+<td>32</td>
+<td>E级输出值</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-5"><a href="#选择信号与结果-5" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>E_mf</th>
+<th>E_AO_new</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>E_MDU_out</td>
+</tr>
+<tr>
+<td>0</td>
+<td>E_AO</td>
+</tr>
+</tbody></table>
+<h4 id="2-转发多路选择器"><a href="#2-转发多路选择器" class="headerlink" title="2.转发多路选择器"></a>2.转发多路选择器</h4><h5 id="1-HMUX-CMP-D1-CMP模块rs寄存器值转发"><a href="#1-HMUX-CMP-D1-CMP模块rs寄存器值转发" class="headerlink" title="1.HMUX_CMP_D1 CMP模块rs寄存器值转发"></a>1.HMUX_CMP_D1 CMP模块rs寄存器值转发</h5><h6 id="端口定义列表-8"><a href="#端口定义列表-8" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GRF_RD1</td>
+<td>I</td>
+<td>32</td>
+<td>GRF中读取出的rs值</td>
+</tr>
+<tr>
+<td>M_out</td>
+<td>I</td>
+<td>32</td>
+<td>M级转发数据</td>
+</tr>
+<tr>
+<td>E_out</td>
+<td>I</td>
+<td>32</td>
+<td>E级转发数据</td>
+</tr>
+<tr>
+<td>FwdCMPD1</td>
+<td>I</td>
+<td>2</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>D_V1_f</td>
+<td>O</td>
+<td>32</td>
+<td>转发后的rs寄存器值</td>
+</tr>
+</tbody></table>
+<p>​	<strong>注：转发寄存器中有数据优先级的问题，越新产生的数据优先级越高，考虑到GRF中内部转发的逻辑，事实上GRF_RD1也代表着潜在的W级转发数据，但是仍然不破坏优先级关系E&gt;M&gt;W</strong></p>
+<h6 id="选择信号与结果-6"><a href="#选择信号与结果-6" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>FwdCMPD1</th>
+<th>D_V1_f</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2’b10</td>
+<td>E_out</td>
+</tr>
+<tr>
+<td>2’b01</td>
+<td>M_out</td>
+</tr>
+<tr>
+<td>2’b00</td>
+<td>GRF_RD1</td>
+</tr>
+</tbody></table>
+<h5 id="2-HMUX-CMP-D2-CMP模块rt寄存器值转发"><a href="#2-HMUX-CMP-D2-CMP模块rt寄存器值转发" class="headerlink" title="2.HMUX_CMP_D2 CMP模块rt寄存器值转发"></a>2.HMUX_CMP_D2 CMP模块rt寄存器值转发</h5><h6 id="端口定义列表-9"><a href="#端口定义列表-9" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GRF_RD2</td>
+<td>I</td>
+<td>32</td>
+<td>GRF中读取出的rt值</td>
+</tr>
+<tr>
+<td>M_out</td>
+<td>I</td>
+<td>32</td>
+<td>M级转发数据</td>
+</tr>
+<tr>
+<td>E_out</td>
+<td>I</td>
+<td>32</td>
+<td>E级转发数据</td>
+</tr>
+<tr>
+<td>FwdCMPD2</td>
+<td>I</td>
+<td>2</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>D_V2_f</td>
+<td>O</td>
+<td>32</td>
+<td>转发后的rt寄存器值</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-7"><a href="#选择信号与结果-7" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>FwdCMPD2</th>
+<th>D_V1_f</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2’b10</td>
+<td>E_out</td>
+</tr>
+<tr>
+<td>2’b01</td>
+<td>M_out</td>
+</tr>
+<tr>
+<td>2’b00</td>
+<td>GRF_RD2</td>
+</tr>
+</tbody></table>
+<h5 id="3-HMUX-ALU-A-ALU模块V1值转发-MDU输入V1"><a href="#3-HMUX-ALU-A-ALU模块V1值转发-MDU输入V1" class="headerlink" title="3.HMUX_ALU_A ALU模块V1值转发&#x2F;MDU输入V1"></a>3.HMUX_ALU_A ALU模块V1值转发&#x2F;MDU输入V1</h5><h6 id="端口定义列表-10"><a href="#端口定义列表-10" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E_V1</td>
+<td>I</td>
+<td>32</td>
+<td>GRF中读取出的rs值</td>
+</tr>
+<tr>
+<td>M_out</td>
+<td>I</td>
+<td>32</td>
+<td>M级转发数据</td>
+</tr>
+<tr>
+<td>W_out</td>
+<td>I</td>
+<td>32</td>
+<td>W级转发数据</td>
+</tr>
+<tr>
+<td>FwdALUA</td>
+<td>I</td>
+<td>2</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>E_V1_f</td>
+<td>O</td>
+<td>32</td>
+<td>转发后的V1值</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-8"><a href="#选择信号与结果-8" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>FwdALUA</th>
+<th>E_V1_f</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2’b10</td>
+<td>M_out</td>
+</tr>
+<tr>
+<td>2’b01</td>
+<td>W_out</td>
+</tr>
+<tr>
+<td>2’b00</td>
+<td>E_V1</td>
+</tr>
+</tbody></table>
+<h5 id="4-HMUX-ALU-B-ALU模块V2值转发-MDU输入V2"><a href="#4-HMUX-ALU-B-ALU模块V2值转发-MDU输入V2" class="headerlink" title="4.HMUX_ALU_B ALU模块V2值转发&#x2F;MDU输入V2"></a>4.HMUX_ALU_B ALU模块V2值转发&#x2F;MDU输入V2</h5><h6 id="端口定义列表-11"><a href="#端口定义列表-11" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E_V2</td>
+<td>I</td>
+<td>32</td>
+<td>GRF中读取出的rt值</td>
+</tr>
+<tr>
+<td>M_out</td>
+<td>I</td>
+<td>32</td>
+<td>M级转发数据</td>
+</tr>
+<tr>
+<td>W_out</td>
+<td>I</td>
+<td>32</td>
+<td>W级转发数据</td>
+</tr>
+<tr>
+<td>FwdALUB</td>
+<td>I</td>
+<td>2</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>E_V2_f</td>
+<td>O</td>
+<td>32</td>
+<td>转发后的V2值</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-9"><a href="#选择信号与结果-9" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>FwdALUB</th>
+<th>E_V2_f</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2’b10</td>
+<td>M_out</td>
+</tr>
+<tr>
+<td>2’b01</td>
+<td>W_out</td>
+</tr>
+<tr>
+<td>2’b00</td>
+<td>E_V2</td>
+</tr>
+</tbody></table>
+<h5 id="5-HMUX-DM-DM写入数据转发"><a href="#5-HMUX-DM-DM写入数据转发" class="headerlink" title="5.HMUX_DM DM写入数据转发"></a>5.HMUX_DM DM写入数据转发</h5><h6 id="端口定义列表-12"><a href="#端口定义列表-12" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>M_V2</td>
+<td>I</td>
+<td>32</td>
+<td>M级V2</td>
+</tr>
+<tr>
+<td>W_out</td>
+<td>I</td>
+<td>32</td>
+<td>W级转发数据</td>
+</tr>
+<tr>
+<td>FwdDM</td>
+<td>I</td>
+<td>1</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>M_V1_f</td>
+<td>O</td>
+<td>32</td>
+<td>DM写入数据</td>
+</tr>
+</tbody></table>
+<h6 id="选择信号与结果-10"><a href="#选择信号与结果-10" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>FwdDM</th>
+<th>M_V1_f</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1’b1</td>
+<td>W_out</td>
+</tr>
+<tr>
+<td>1’b0</td>
+<td>M_V2</td>
+</tr>
+</tbody></table>
+<h5 id="6-HMUX-NPC-NPC模块跳转寄存器值转发"><a href="#6-HMUX-NPC-NPC模块跳转寄存器值转发" class="headerlink" title="6.HMUX_NPC NPC模块跳转寄存器值转发"></a>6.HMUX_NPC NPC模块跳转寄存器值转发</h5><h6 id="端口定义列表-13"><a href="#端口定义列表-13" class="headerlink" title="端口定义列表"></a>端口定义列表</h6><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GRF_RD1</td>
+<td>I</td>
+<td>32</td>
+<td>GRF中读取出的rs值</td>
+</tr>
+<tr>
+<td>M_out</td>
+<td>I</td>
+<td>32</td>
+<td>M级转发数据</td>
+</tr>
+<tr>
+<td>E_out</td>
+<td>I</td>
+<td>32</td>
+<td>E级转发数据</td>
+</tr>
+<tr>
+<td>FwdCMPD1</td>
+<td>I</td>
+<td>2</td>
+<td>选择信号</td>
+</tr>
+<tr>
+<td>D_RA_f</td>
+<td>O</td>
+<td>32</td>
+<td>转发后的rs寄存器值</td>
+</tr>
+</tbody></table>
+<p>​	<strong>注：其实可以共用CMPD1的转发数据</strong></p>
+<h6 id="选择信号与结果-11"><a href="#选择信号与结果-11" class="headerlink" title="选择信号与结果"></a>选择信号与结果</h6><table>
+<thead>
+<tr>
+<th>FwdCMPD1</th>
+<th>D_RA_f</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2’b10</td>
+<td>E_out</td>
+</tr>
+<tr>
+<td>2’b01</td>
+<td>M_out</td>
+</tr>
+<tr>
+<td>2’b00</td>
+<td>GRF_RD1</td>
+</tr>
+</tbody></table>
+<h3 id="13-流水线寄存器"><a href="#13-流水线寄存器" class="headerlink" title="13.流水线寄存器"></a>13.流水线寄存器</h3><h4 id="1-D-REG"><a href="#1-D-REG" class="headerlink" title="1.D_REG"></a>1.D_REG</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td>同步复位信号</td>
+</tr>
+<tr>
+<td>en</td>
+<td>I</td>
+<td>1</td>
+<td>~stall（冻结D级）</td>
+</tr>
+<tr>
+<td>F_instr</td>
+<td>I</td>
+<td>32</td>
+<td>F级取指令</td>
+</tr>
+<tr>
+<td>F_pc</td>
+<td>I</td>
+<td>32</td>
+<td>F级PC</td>
+</tr>
+<tr>
+<td>F_pc8</td>
+<td>I</td>
+<td>32</td>
+<td>F级PC+8(jal)</td>
+</tr>
+<tr>
+<td>D_instr</td>
+<td>O</td>
+<td>32</td>
+<td>D级执行指令</td>
+</tr>
+<tr>
+<td>D_pc</td>
+<td>O</td>
+<td>32</td>
+<td>D级PC</td>
+</tr>
+<tr>
+<td>D_pc8</td>
+<td>O</td>
+<td>32</td>
+<td>D级PC+8</td>
+</tr>
+</tbody></table>
+<h4 id="2-E-REG"><a href="#2-E-REG" class="headerlink" title="2.E_REG"></a>2.E_REG</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td>同步复位信号</td>
+</tr>
+<tr>
+<td>clr</td>
+<td>I</td>
+<td>1</td>
+<td>stall(清空E级)</td>
+</tr>
+<tr>
+<td>D_V1</td>
+<td>I</td>
+<td>32</td>
+<td>D级GRF中读取rs寄存器的值</td>
+</tr>
+<tr>
+<td>D_V2</td>
+<td>I</td>
+<td>32</td>
+<td>D级GRF中读取rt寄存器的值</td>
+</tr>
+<tr>
+<td>D_A1</td>
+<td>I</td>
+<td>5</td>
+<td>D级A1</td>
+</tr>
+<tr>
+<td>D_A2</td>
+<td>I</td>
+<td>5</td>
+<td>D级A2</td>
+</tr>
+<tr>
+<td>D_A3</td>
+<td>I</td>
+<td>5</td>
+<td>D级A3</td>
+</tr>
+<tr>
+<td>D_E32</td>
+<td>I</td>
+<td>32</td>
+<td>32位立即数</td>
+</tr>
+<tr>
+<td>D_pc</td>
+<td>I</td>
+<td>32</td>
+<td>D级pc</td>
+</tr>
+<tr>
+<td>D_pc8</td>
+<td>I</td>
+<td>32</td>
+<td>D级pc+8</td>
+</tr>
+<tr>
+<td>T_new_D</td>
+<td>I</td>
+<td>2</td>
+<td>D级T_new</td>
+</tr>
+<tr>
+<td>RegWrite_D</td>
+<td>I</td>
+<td>1</td>
+<td>D级GRF写入使能</td>
+</tr>
+<tr>
+<td>start_D</td>
+<td>I</td>
+<td>1</td>
+<td>D级乘除指令开始信号</td>
+</tr>
+<tr>
+<td>SelEMout_D</td>
+<td>I</td>
+<td>1</td>
+<td>E、M级转发数据选择信号</td>
+</tr>
+<tr>
+<td>SelWout_D</td>
+<td>I</td>
+<td>1</td>
+<td>W级转发数据选择信号</td>
+</tr>
+<tr>
+<td>SelALUB_D</td>
+<td>I</td>
+<td>1</td>
+<td>ALUB端口数据选择</td>
+</tr>
+<tr>
+<td>ALUOp_D</td>
+<td>I</td>
+<td>4</td>
+<td>ALU操作选择</td>
+</tr>
+<tr>
+<td>DMOp_D</td>
+<td>I</td>
+<td>4</td>
+<td>DM操作选择</td>
+</tr>
+<tr>
+<td>MDUOp_D</td>
+<td>I</td>
+<td>4</td>
+<td>乘除指令操作</td>
+</tr>
+<tr>
+<td>E_V1</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>E_V2</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>E_A1</td>
+<td>O</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>E_A2</td>
+<td>O</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>E_A3</td>
+<td>O</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>E_E32</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>E_pc</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>E_pc8</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>T_new_E</td>
+<td>O</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>RegWrite_E</td>
+<td>O</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>SelEMout_E</td>
+<td>O</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>SelWout_E</td>
+<td>O</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>SelALUB_E</td>
+<td>O</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>ALUOp_E</td>
+<td>O</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>DMOp_E</td>
+<td>O</td>
+<td>3</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="3-M-REG"><a href="#3-M-REG" class="headerlink" title="3.M_REG"></a>3.M_REG</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>E_AO</td>
+<td>I</td>
+<td>32</td>
+<td>E级ALU&#x2F;MDU输出</td>
+</tr>
+<tr>
+<td>E_V2</td>
+<td>I</td>
+<td>32</td>
+<td><strong>注意：E_V2不是D_V2,而是经过转发后的D_V2_f</strong></td>
+</tr>
+<tr>
+<td>E_A2</td>
+<td>I</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>E_A3</td>
+<td>I</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>E_pc</td>
+<td>I</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>E_pc8</td>
+<td>I</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>T_new_E</td>
+<td>I</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>RegWrite_E</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>start_E</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>SelEMout_E</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>SelWout_E</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>DMOp_E</td>
+<td>I</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>M_AO</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>M_V2</td>
+<td>O</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>M_A2</td>
+<td>O</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>M_A3</td>
+<td>O</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>M_pc</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>M_pc8</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>T_new_M</td>
+<td>O</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>RegWrite_M</td>
+<td>O</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>SelEMout_M</td>
+<td>O</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>SelWout_M</td>
+<td>O</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>DMOp_M</td>
+<td>O</td>
+<td>3</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="4-W-REG"><a href="#4-W-REG" class="headerlink" title="4.W_REG"></a>4.W_REG</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方向</th>
+<th>位宽</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>M_AO</td>
+<td>I</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>M_DR</td>
+<td>I</td>
+<td>32</td>
+<td>M级DM中读出的数据</td>
+</tr>
+<tr>
+<td>M_A3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>M_pc</td>
+<td>I</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>M_pc8</td>
+<td>I</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>SelWout_M</td>
+<td>I</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>T_new_M</td>
+<td>I</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>RegWrite_M</td>
+<td>I</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>W_AO</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>W_DR</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>W_A3</td>
+<td>O</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>W_pc</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>W_pc8</td>
+<td>O</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>SelWout_W</td>
+<td>O</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>T_new_W</td>
+<td>O</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>RegWrite_W</td>
+<td>O</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="三-测试"><a href="#三-测试" class="headerlink" title="三.测试"></a>三.测试</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">li $<span class="number">0</span> -<span class="number">1590414783</span></span><br><span class="line">li $<span class="number">1</span> -<span class="number">1387657999</span></span><br><span class="line">li $<span class="number">2</span> <span class="number">97336612</span></span><br><span class="line">li $<span class="number">3</span> -<span class="number">1971889419</span></span><br><span class="line">li $<span class="number">4</span> <span class="number">1148790734</span></span><br><span class="line">li $<span class="number">5</span> -<span class="number">289210629</span></span><br><span class="line">li $<span class="number">6</span> <span class="number">1026640559</span></span><br><span class="line">li $<span class="number">7</span> <span class="number">1852052372</span></span><br><span class="line">li $<span class="number">8</span>, <span class="number">7860</span></span><br><span class="line"></span><br><span class="line">sltu $<span class="number">4</span>, $<span class="number">0</span>, $<span class="number">1</span></span><br><span class="line">srav $<span class="number">4</span>, $<span class="number">1</span>, $<span class="number">6</span></span><br><span class="line"><span class="keyword">or</span> $<span class="number">6</span>, $<span class="number">0</span>, $<span class="number">4</span></span><br><span class="line"><span class="keyword">xor</span> $<span class="number">0</span>, $<span class="number">6</span>, $<span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">nor</span> $<span class="number">3</span>, $<span class="number">5</span>, $<span class="number">2</span></span><br><span class="line">slt $<span class="number">0</span>, $<span class="number">5</span>, $<span class="number">3</span></span><br><span class="line">ori $<span class="number">5</span>, $<span class="number">1</span>, -<span class="number">31050</span></span><br><span class="line"><span class="keyword">or</span> $<span class="number">5</span>, $<span class="number">2</span>, $<span class="number">6</span></span><br><span class="line"></span><br><span class="line">subu $<span class="number">1</span>, $<span class="number">2</span>, $<span class="number">6</span></span><br><span class="line">sltu $<span class="number">4</span>, $<span class="number">4</span>, $<span class="number">3</span></span><br><span class="line">lbu $<span class="number">0</span>, <span class="number">878</span>($<span class="number">0</span>)</span><br><span class="line">slt $<span class="number">2</span>, $<span class="number">2</span>, $<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">or</span> $<span class="number">6</span>, $<span class="number">2</span>, $<span class="number">4</span></span><br><span class="line">srav $<span class="number">1</span>, $<span class="number">7</span>, $<span class="number">0</span></span><br><span class="line">sll $<span class="number">0</span>, $<span class="number">7</span>, <span class="number">7</span></span><br><span class="line">srlv $<span class="number">6</span>, $<span class="number">3</span>, $<span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">nor</span> $<span class="number">3</span>, $<span class="number">3</span>, $<span class="number">7</span></span><br><span class="line"><span class="keyword">or</span> $<span class="number">5</span>, $<span class="number">7</span>, $<span class="number">2</span></span><br><span class="line">div $<span class="number">4</span>, $<span class="number">8</span></span><br><span class="line">sltu $<span class="number">7</span>, $<span class="number">3</span>, $<span class="number">2</span></span><br><span class="line"></span><br><span class="line">sllv $<span class="number">6</span>, $<span class="number">2</span>, $<span class="number">0</span></span><br><span class="line">srlv $<span class="number">5</span>, $<span class="number">5</span>, $<span class="number">5</span></span><br><span class="line">mtlo $<span class="number">0</span></span><br><span class="line">addu $<span class="number">0</span>, $<span class="number">5</span>, $<span class="number">4</span></span><br><span class="line"></span><br><span class="line">slt $<span class="number">6</span>, $<span class="number">7</span>, $<span class="number">6</span></span><br><span class="line">addu $<span class="number">5</span>, $<span class="number">1</span>, $<span class="number">1</span></span><br><span class="line">mfhi $<span class="number">1</span></span><br><span class="line"><span class="keyword">nor</span> $<span class="number">4</span>, $<span class="number">5</span>, $<span class="number">5</span></span><br><span class="line"></span><br><span class="line">srav $<span class="number">3</span>, $<span class="number">5</span>, $<span class="number">4</span></span><br><span class="line">sltiu $<span class="number">3</span>, $<span class="number">4</span>, <span class="number">7080</span></span><br><span class="line"><span class="keyword">and</span> $<span class="number">3</span>, $<span class="number">0</span>, $<span class="number">4</span></span><br><span class="line"><span class="keyword">or</span> $<span class="number">7</span>, $<span class="number">5</span>, $<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">xor</span> $<span class="number">5</span>, $<span class="number">3</span>, $<span class="number">3</span></span><br><span class="line">andi $<span class="number">2</span>, $<span class="number">6</span>, <span class="number">25900</span></span><br><span class="line">xori $<span class="number">1</span>, $<span class="number">5</span>, <span class="number">18289</span></span><br><span class="line">srlv $<span class="number">0</span>, $<span class="number">6</span>, $<span class="number">5</span></span><br><span class="line"></span><br><span class="line">slt $<span class="number">4</span>, $<span class="number">6</span>, $<span class="number">2</span></span><br><span class="line">ori $<span class="number">7</span>, $<span class="number">3</span>, -<span class="number">32729</span></span><br><span class="line">lh $<span class="number">7</span>, <span class="number">1250</span>($<span class="number">0</span>)</span><br><span class="line">sllv $<span class="number">7</span>, $<span class="number">4</span>, $<span class="number">4</span></span><br><span class="line"></span><br><span class="line">addu $<span class="number">4</span>, $<span class="number">1</span>, $<span class="number">2</span></span><br><span class="line">xori $<span class="number">7</span>, $<span class="number">0</span>, <span class="number">11378</span></span><br><span class="line">srl $<span class="number">4</span>, $<span class="number">4</span>, <span class="number">5</span></span><br><span class="line">addu $<span class="number">6</span>, $<span class="number">5</span>, $<span class="number">6</span></span><br><span class="line"></span><br><span class="line">srav $<span class="number">7</span>, $<span class="number">3</span>, $<span class="number">4</span></span><br><span class="line">slti $<span class="number">1</span>, $<span class="number">5</span>, -<span class="number">24158</span></span><br><span class="line">multu $<span class="number">6</span>, $<span class="number">8</span></span><br><span class="line">sltu $<span class="number">6</span>, $<span class="number">0</span>, $<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四-思考题"><a href="#四-思考题" class="headerlink" title="四.思考题"></a>四.思考题</h2><p>1、为什么需要有单独的乘除法部件而不是整合进 ALU？为何需要有独立的 HI、LO 寄存器？</p>
+<ul>
+<li>乘除法都有较高的延迟，若整合进ALU，则进行乘除法的时候，所有的运算类指令都只能阻塞在D级，造成了极大的性能损失。单独设置MDU的话，无关的指令还能正常的在ALU运行，效率较高。</li>
+<li>HI，LO寄存器并不是通用寄存器，和其他通用寄存器的用法不一致，不能通过非乘除法指令修改和访问，因此不需要置于GRF中，内置在MDU中即可。</li>
+</ul>
+<p>2、真实的流水线 CPU 是如何使用实现乘除法的？请查阅相关资料进行简单说明。</p>
+<ul>
+<li><p>真实的流水线CPU采用的乘法是有加法器和移位器循环，具体实现过程为：</p>
+<blockquote>
+<p>首先CPU会初始化三个通用寄存器用来存放被乘数，乘数，部分积。<br>部分积寄存器初始化为0。<br>判断乘数寄存器的低位是0|1，如果为0则将乘数寄存器右移一位，同时将部分积寄存器也右移一位。<br>在位移时遵循计算机位移规则，乘数寄存器低位溢出的一位丢弃，部分积寄存器低位溢出的一位填充到乘数寄存器的高位。<br>同时部分积寄存器高位补0。如果为1则将部分积寄存器加上被乘数寄存器，再进行移位操作。<br>当所有乘数位处理完成后部分积寄存器做高位，乘数寄存器做低位就是最终乘法结果。</p>
+</blockquote>
+</li>
+<li><p>还有另一种乘法的方式：</p>
+<blockquote>
+<p>只需两个寄存器，A[31:0],B[63:0]，A初始化为被乘数，B初始化为乘数。<br>每一次取B的最低位，为1则将A[31:0]+B[63:32] -&gt; B[63:32]，为0则不操作。<br>每次将B &gt;&gt; 1，然后高位补0。</p>
+</blockquote>
+</li>
+<li><p>除法实现：</p>
+<blockquote>
+<p>与乘法的操作基本相反，首先CPU会初始化三个寄存器,用来存放被除数，除数，部分商。余数(被除数与除数比较的结果)放到被除数的有效高位上。CPU做除法时和做除法时是相反的，乘法是右移，除法是左移，乘法做的是加法，除法做的是减法。首先CPU会把被除数bit位与除数bit位对齐，然后再让对齐的被除数与除数比较(双符号位判断)。比如01-10&#x3D;11(前面的1是符号位) 1-2&#x3D;-1 计算机通过符号位和后一位的bit位来判断大于和小于，那么01-10&#x3D;11 就说明01小于10，如果得数为01就代表大于，如果得数为00代表等于。如果得数大于或等于则将比较的结果放到被除数的有效高位上然后再商寄存器上商：1 并向后多看一位(上商就是将商的最低位左移1位腾出商寄存器最低位上新的商)如果得数小于则上商：0 并向后多看一位然后循环做以上操作当所有的被除数都处理完后，商做结果被除数里面的值就是余数。</p>
+</blockquote>
+</li>
+</ul>
+<p>3、请结合自己的实现分析，你是如何处理 Busy 信号带来的周期阻塞的？</p>
+<ul>
+<li>除cnt和busy置位以外全是组合逻辑的操作（不然可能会多出来一个空周期）</li>
+<li>对于乘除指令：<ul>
+<li>将busy_E，start_E，MDUOp_D传入HCU</li>
+<li>然后md暂停信号为<code>(busy_E | start_E) &amp; (MDUOp_D != 4&#39;b0000)</code></li>
+</ul>
+</li>
+</ul>
+<p>4、请问采用字节使能信号的方式处理写指令有什么好处？（提示：从清晰性、统一性等角度考虑）</p>
+<ul>
+<li>对于需要写入的位置更加的直观，相当于将DMWE、DMOP写入的A[1:0]用四位字节使能信号表示，十分的统一。</li>
+</ul>
+<p>5、请思考，我们在按字节读和按字节写时，实际从 DM 获得的数据和向 DM 写入的数据是否是一字节？在什么情况下我们按字节读和按字节写的效率会高于按字读和按字写呢？</p>
+<ul>
+<li>按字节读写的时候，我们获得的是一字节，但是我们如果要lw或lh的话我们就需要拼接。如果是sw或sh的话我们需要多次存入。</li>
+<li>若用lb，sb，lh，sh这种非取字的读写时，按字节读可以省去，取位，拼接的步骤，效率要优于按字读写。</li>
+</ul>
+<p>6、为了对抗复杂性你采取了哪些抽象和规范手段？这些手段在译码和处理数据冲突的时候有什么样的特点与帮助？</p>
+<ul>
+<li>NPC统一，NPC统一为一个模块</li>
+<li>指令分类，cal_R,cal_I,shift,shiftv,branch,load,store等</li>
+<li>每一级设置outMUX，只需在MCU中控制outSel即可决定转发值及写入寄存器的值</li>
+</ul>
+<p>7、在本实验中你遇到了哪些不同指令类型组合产生的冲突？你又是如何解决的？相应的测试样例是什么样的？</p>
+<ul>
+<li>在常规测试通过后，我们可以将T_rsUse和T_rtUse相同的指令归类为同一需求指令，把T_new相同的指令归类为同一供给指令。<ul>
+<li>所以可以在new方面有下列指令：add，lw，jal，mfhi</li>
+<li>在rsUse方面有下面情况：add，sll，lw，beq，jr，mult，mthi</li>
+</ul>
+</li>
+<li>然后对着转发的时间表，设计测试数据：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">复制# rs0_E1</span><br><span class="line">add   $t0, $t1, $t2</span><br><span class="line">beq   $t0, $t3, label1</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line"># rs0_E2</span><br><span class="line">lw    $t0, 0($t1)</span><br><span class="line">beq   $t0, $t3, label1</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line">#rs0_E0</span><br><span class="line">jal   label1</span><br><span class="line">nop</span><br><span class="line">ori   $t0, $0, 0x1234</span><br><span class="line">label1: jr $ra</span><br><span class="line">nop</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>8、如果你是手动构造的样例，请说明构造策略，说明你的测试程序如何保证覆盖了所有需要测试的情况；如果你是完全随机生成的测试样例，请思考完全随机的测试程序有何不足之处；如果你在生成测试样例时采用了特殊的策略，比如构造连续数据冒险序列，请你描述一下你使用的策略如何结合了随机性达到强测的效果。</p>
+<ul>
+<li>手动构造策略见上</li>
+<li>完全随机生成有几大不足之处，如无法保证内存对齐，无法保证延迟槽中没有跳转分支，无法避免一定几率的死循环等等</li>
+<li>但可以加入策略：<ul>
+<li>比如只用t0-t6寄存器以保证产生足够多的冲突</li>
+<li>在检测到生成跳转后禁用跳转指令</li>
+<li>检测到内存不对齐可以不生成等等</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://DQR2206.github.io">dqr_infinity</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://dqr2206.github.io/2023/11/28/P6-design-document/">http://dqr2206.github.io/2023/11/28/P6-design-document/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://DQR2206.github.io" target="_blank">living happy and healthy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Nov/">Nov</a></div><div class="post_share"><div class="social-share" data-image="/img/gugong.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/./img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/02/P6%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P6课上测试"><img class="cover" src="/img/baixue.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">P6课上测试</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/27/P5%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P5课上测试"><img class="cover" src="/img/baixue.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">P5课上测试</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/04/OOpre%E6%80%BB%E7%BB%93/" title="OOpre总结"><img class="cover" src="/img/baixue.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-04</div><div class="title">OOpre总结</div></div></a></div><div><a href="/2023/11/06/P3-logisim-CPU-design/" title="支持40条指令P3_logisim_CPU"><img class="cover" src="/img/baixue.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-06</div><div class="title">支持40条指令P3_logisim_CPU</div></div></a></div><div><a href="/2023/11/12/P5-pipeline-CPU-Design-Document/" title="P5-pipeline-CPU-Design-Document"><img class="cover" src="/img/humian.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-12</div><div class="title">P5-pipeline-CPU-Design-Document</div></div></a></div><div><a href="/2023/11/27/P5%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P5课上测试"><img class="cover" src="/img/baixue.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-27</div><div class="title">P5课上测试</div></div></a></div><div><a href="/2023/11/10/P4-Verilog-CPU/" title="支持40条指令P4_Verilog_CPU"><img class="cover" src="/img/gugong.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-10</div><div class="title">支持40条指令P4_Verilog_CPU</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODcyMi8zNTE4NA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dqr_infinity</div><div class="author-info__description">欢迎来看看！！！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DQR2206?tab=repositories"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/DQRinfinity" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="https://22373362@buaa.edu.cn" target="_blank" title=""><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P6-Design-Document"><span class="toc-number">1.</span> <span class="toc-text">P6-Design-Document</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E5%9B%BE%E7%A4%BA"><span class="toc-number">1.1.</span> <span class="toc-text">一.数据通路图示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.</span> <span class="toc-text">二.功能模块定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-MCU"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. MCU</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8C%87%E4%BB%A4%E5%88%86%E7%B1%BB%E4%B8%8ET-use-T-new%E5%A4%84%E7%90%86"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.指令分类与T_use&#x2F;T_new处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-HCU"><span class="toc-number">1.2.2.</span> <span class="toc-text">3.HCU</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-1"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9A%82%E5%81%9C%E4%B8%8E%E8%BD%AC%E5%8F%91"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2.暂停与转发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ALU"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.ALU</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-2"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ALUOp%E7%BC%96%E7%A0%81%E4%B8%8E%E8%BF%90%E7%AE%97%E9%80%89%E6%8B%A9"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2.ALUOp编码与运算选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-EXT"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.EXT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">端口定义列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-GRF"><span class="toc-number">1.2.5.</span> <span class="toc-text">5.GRF</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-3"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-GRF%E5%86%85%E9%83%A8%E8%BD%AC%E5%8F%91"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">2.GRF内部转发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-IFU"><span class="toc-number">1.2.6.</span> <span class="toc-text">6.IFU</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-1"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">端口定义列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-NPC"><span class="toc-number">1.2.7.</span> <span class="toc-text">7.NPC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-4"><span class="toc-number">1.2.7.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-NPCOp%E7%BC%96%E7%A0%81%E4%B8%8E%E5%9C%B0%E5%9D%80%E9%80%89%E6%8B%A9"><span class="toc-number">1.2.7.2.</span> <span class="toc-text">2.NPCOp编码与地址选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-CMP"><span class="toc-number">1.2.8.</span> <span class="toc-text">8.CMP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-5"><span class="toc-number">1.2.8.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-CMPOp%E7%BC%96%E7%A0%81%E4%B8%8E%E5%AF%B9%E5%BA%94%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.8.2.</span> <span class="toc-text">2.CMPOp编码与对应指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-MDU"><span class="toc-number">1.2.9.</span> <span class="toc-text">9.MDU</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-6"><span class="toc-number">1.2.9.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-MDUOp%E7%BC%96%E7%A0%81%E4%B8%8E%E5%AF%B9%E5%BA%94%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.9.2.</span> <span class="toc-text">2.MDUOp编码与对应指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.9.3.</span> <span class="toc-text">3.代码实现逻辑</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-BE"><span class="toc-number">1.2.10.</span> <span class="toc-text">10.BE</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-7"><span class="toc-number">1.2.10.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-DMOp%E7%BC%96%E7%A0%81%E4%B8%8E%E5%AD%98%E6%95%B0%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.10.2.</span> <span class="toc-text">2.DMOp编码与存数操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-DE"><span class="toc-number">1.2.11.</span> <span class="toc-text">11.DE</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-8"><span class="toc-number">1.2.11.1.</span> <span class="toc-text">1.端口定义列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-DMOp%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8F%96%E6%95%B0%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.11.2.</span> <span class="toc-text">2.DMOp编码与取数操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-MUX"><span class="toc-number">1.2.12.</span> <span class="toc-text">12.MUX</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.12.1.</span> <span class="toc-text">1.功能多路选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-MUX-A3-D%E7%BA%A7%E5%86%99%E5%85%A5%E5%AF%84%E5%AD%98%E5%99%A8%E9%80%89%E6%8B%A9"><span class="toc-number">1.2.12.1.1.</span> <span class="toc-text">1.MUX_A3 D级写入寄存器选择</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-2"><span class="toc-number">1.2.12.1.1.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.12.1.1.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-MUX-ALU-B-ALUB%E7%AB%AF%E5%8F%A3%E9%80%89%E6%8B%A9"><span class="toc-number">1.2.12.1.2.</span> <span class="toc-text">2.MUX_ALU_B ALUB端口选择</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-3"><span class="toc-number">1.2.12.1.2.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-1"><span class="toc-number">1.2.12.1.2.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-MUX-E-out-%E9%80%89%E6%8B%A9E%E7%BA%A7%E8%BD%AC%E5%8F%91%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.12.1.3.</span> <span class="toc-text">3.MUX_E_out  选择E级转发数据</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-4"><span class="toc-number">1.2.12.1.3.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-2"><span class="toc-number">1.2.12.1.3.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-MUX-M-out-%E9%80%89%E6%8B%A9M%E7%BA%A7%E8%BD%AC%E5%8F%91%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.12.1.4.</span> <span class="toc-text">4.MUX_M_out 选择M级转发数据</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-5"><span class="toc-number">1.2.12.1.4.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-3"><span class="toc-number">1.2.12.1.4.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-MUX-W-out-%E9%80%89%E6%8B%A9W%E7%BA%A7%E8%BD%AC%E5%8F%91%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.12.1.5.</span> <span class="toc-text">5.MUX_W_out 选择W级转发数据</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-6"><span class="toc-number">1.2.12.1.5.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-4"><span class="toc-number">1.2.12.1.5.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-MUX-MDU-ALU%E9%80%89%E6%8B%A9E%E7%BA%A7%E8%BE%93%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.12.1.6.</span> <span class="toc-text">6.MUX_MDU_ALU选择E级输出数据</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-7"><span class="toc-number">1.2.12.1.6.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-5"><span class="toc-number">1.2.12.1.6.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BD%AC%E5%8F%91%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.12.2.</span> <span class="toc-text">2.转发多路选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-HMUX-CMP-D1-CMP%E6%A8%A1%E5%9D%97rs%E5%AF%84%E5%AD%98%E5%99%A8%E5%80%BC%E8%BD%AC%E5%8F%91"><span class="toc-number">1.2.12.2.1.</span> <span class="toc-text">1.HMUX_CMP_D1 CMP模块rs寄存器值转发</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-8"><span class="toc-number">1.2.12.2.1.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-6"><span class="toc-number">1.2.12.2.1.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-HMUX-CMP-D2-CMP%E6%A8%A1%E5%9D%97rt%E5%AF%84%E5%AD%98%E5%99%A8%E5%80%BC%E8%BD%AC%E5%8F%91"><span class="toc-number">1.2.12.2.2.</span> <span class="toc-text">2.HMUX_CMP_D2 CMP模块rt寄存器值转发</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-9"><span class="toc-number">1.2.12.2.2.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-7"><span class="toc-number">1.2.12.2.2.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-HMUX-ALU-A-ALU%E6%A8%A1%E5%9D%97V1%E5%80%BC%E8%BD%AC%E5%8F%91-MDU%E8%BE%93%E5%85%A5V1"><span class="toc-number">1.2.12.2.3.</span> <span class="toc-text">3.HMUX_ALU_A ALU模块V1值转发&#x2F;MDU输入V1</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-10"><span class="toc-number">1.2.12.2.3.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-8"><span class="toc-number">1.2.12.2.3.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-HMUX-ALU-B-ALU%E6%A8%A1%E5%9D%97V2%E5%80%BC%E8%BD%AC%E5%8F%91-MDU%E8%BE%93%E5%85%A5V2"><span class="toc-number">1.2.12.2.4.</span> <span class="toc-text">4.HMUX_ALU_B ALU模块V2值转发&#x2F;MDU输入V2</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-11"><span class="toc-number">1.2.12.2.4.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-9"><span class="toc-number">1.2.12.2.4.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-HMUX-DM-DM%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8F%91"><span class="toc-number">1.2.12.2.5.</span> <span class="toc-text">5.HMUX_DM DM写入数据转发</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-12"><span class="toc-number">1.2.12.2.5.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-10"><span class="toc-number">1.2.12.2.5.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-HMUX-NPC-NPC%E6%A8%A1%E5%9D%97%E8%B7%B3%E8%BD%AC%E5%AF%84%E5%AD%98%E5%99%A8%E5%80%BC%E8%BD%AC%E5%8F%91"><span class="toc-number">1.2.12.2.6.</span> <span class="toc-text">6.HMUX_NPC NPC模块跳转寄存器值转发</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-13"><span class="toc-number">1.2.12.2.6.1.</span> <span class="toc-text">端口定义列表</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BB%93%E6%9E%9C-11"><span class="toc-number">1.2.12.2.6.2.</span> <span class="toc-text">选择信号与结果</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.2.13.</span> <span class="toc-text">13.流水线寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-D-REG"><span class="toc-number">1.2.13.1.</span> <span class="toc-text">1.D_REG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-E-REG"><span class="toc-number">1.2.13.2.</span> <span class="toc-text">2.E_REG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-M-REG"><span class="toc-number">1.2.13.3.</span> <span class="toc-text">3.M_REG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-W-REG"><span class="toc-number">1.2.13.4.</span> <span class="toc-text">4.W_REG</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%B5%8B%E8%AF%95"><span class="toc-number">1.3.</span> <span class="toc-text">三.测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">四.思考题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/03/P7-design-document/" title="P7-design-document"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P7-design-document"/></a><div class="content"><a class="title" href="/2023/12/03/P7-design-document/" title="P7-design-document">P7-design-document</a><time datetime="2023-12-03T07:34:11.000Z" title="发表于 2023-12-03 15:34:11">2023-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/02/P6%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P6课上测试"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P6课上测试"/></a><div class="content"><a class="title" href="/2023/12/02/P6%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P6课上测试">P6课上测试</a><time datetime="2023-12-02T07:00:59.000Z" title="发表于 2023-12-02 15:00:59">2023-12-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/28/P6-design-document/" title="P6-design-document"><img src="/img/gugong.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P6-design-document"/></a><div class="content"><a class="title" href="/2023/11/28/P6-design-document/" title="P6-design-document">P6-design-document</a><time datetime="2023-11-28T12:56:55.000Z" title="发表于 2023-11-28 20:56:55">2023-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/27/P5%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P5课上测试"><img src="/img/baixue.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P5课上测试"/></a><div class="content"><a class="title" href="/2023/11/27/P5%E8%AF%BE%E4%B8%8A%E6%B5%8B%E8%AF%95/" title="P5课上测试">P5课上测试</a><time datetime="2023-11-27T01:42:27.000Z" title="发表于 2023-11-27 09:42:27">2023-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/12/P5-pipeline-CPU-Design-Document/" title="P5-pipeline-CPU-Design-Document"><img src="/img/humian.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="P5-pipeline-CPU-Design-Document"/></a><div class="content"><a class="title" href="/2023/11/12/P5-pipeline-CPU-Design-Document/" title="P5-pipeline-CPU-Design-Document">P5-pipeline-CPU-Design-Document</a><time datetime="2023-11-12T10:12:07.000Z" title="发表于 2023-11-12 18:12:07">2023-11-12</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/./img/gugong.webp')"><div id="footer-wrap"><div class="copyright">&copy;2023 By dqr_infinity</div><div class="footer_custom_text">你是怎么找到这来的？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="8421590201" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
